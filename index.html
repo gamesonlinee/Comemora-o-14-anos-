@@ -23,13 +23,13 @@ body{
     overflow-x:hidden;
 }
 /* =========================
-   CORAÇÕES
+   CORAÇÕES FLUTUANTES
 ========================= */
 .heart{
     position:fixed;
     bottom:-30px;
     font-size:20px;
-    animation:subir 8s linear infinite;
+    animation:subir 8s linear forwards;
     opacity:.7;
     z-index:999;
     pointer-events:none;
@@ -341,12 +341,12 @@ section{
     margin:15px auto;
 }
 /* =========================
-   PLAYER DA MÚSICA
+   MÚSICA
 ========================= */
 .music-box{
-    max-width:700px;
+    max-width:650px;
     margin:40px auto 0;
-    padding:20px;
+    padding:25px;
     background:white;
     border-radius:22px;
     box-shadow:
@@ -356,19 +356,16 @@ section{
 .music-title{
     font-family:'Great Vibes',cursive;
     color:#d63447;
-    font-size:2.4rem;
-    margin-bottom:5px;
+    font-size:2.6rem;
 }
 .music-subtitle{
     color:#777;
-    font-size:.9rem;
     margin-bottom:20px;
+    font-size:.9rem;
 }
-.music-box iframe{
+audio{
     width:100%;
-    height:152px;
-    border-radius:14px;
-    border:0;
+    height:50px;
 }
 /* =========================
    RODAPÉ
@@ -383,7 +380,7 @@ footer span{
     color:#ff7588;
 }
 /* =========================
-   ANIMAÇÃO AO ROLAR
+   ANIMAÇÃO
 ========================= */
 .reveal{
     opacity:0;
@@ -470,36 +467,20 @@ footer span{
         <!-- CONTADOR -->
         <div class="countdown">
             <div class="countdown-item">
-                <span id="days">
-                    00
-                </span>
-                <small>
-                    Dias
-                </small>
+                <span id="days">00</span>
+                <small>Dias</small>
             </div>
             <div class="countdown-item">
-                <span id="hours">
-                    00
-                </span>
-                <small>
-                    Horas
-                </small>
+                <span id="hours">00</span>
+                <small>Horas</small>
             </div>
             <div class="countdown-item">
-                <span id="minutes">
-                    00
-                </span>
-                <small>
-                    Minutos
-                </small>
+                <span id="minutes">00</span>
+                <small>Minutos</small>
             </div>
             <div class="countdown-item">
-                <span id="seconds">
-                    00
-                </span>
-                <small>
-                    Segundos
-                </small>
+                <span id="seconds">00</span>
+                <small>Segundos</small>
             </div>
         </div>
     </div>
@@ -762,21 +743,24 @@ footer span{
             ❤️
         </p>
         <!-- =========================
-             PLAYER DA MÚSICA
+             MÚSICA
         ========================= -->
         <div class="music-box">
             <div class="music-title">
                 Nossa Música ❤️
             </div>
             <div class="music-subtitle">
-                O Que É Que Tem — Jorge & Mateus
+                A Hora É Agora — Jorge & Mateus
             </div>
-            <iframe
-                src="https://www.youtube.com/embed/QoXlyT4A0Ks"
-                title="O Que É Que Tem - Jorge & Mateus"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
+            <audio
+                id="musica"
+                controls
+                loop>
+                <source
+                    src="Jorge e Matheus a hr eh agr.mp3"
+                    type="audio/mpeg">
+                Seu navegador não suporta áudio.
+            </audio>
         </div>
     </div>
 </section>
@@ -885,7 +869,7 @@ setInterval(
     1200
 );
 /* =========================
-   ANIMAÇÃO
+   ANIMAÇÃO AO ROLAR
 ========================= */
 function revealOnScroll(){
     const elements =
@@ -917,7 +901,7 @@ window.addEventListener(
 );
 revealOnScroll();
 /* =========================
-   ABRIR SURPRESA
+   ABRIR SURPRESA + MÚSICA
 ========================= */
 function abrirSurpresa(){
     const message =
@@ -928,11 +912,41 @@ function abrirSurpresa(){
         document.querySelector(
             ".surprise-button"
         );
+    const musica =
+        document.getElementById(
+            "musica"
+        );
+    /*
+       Mostra a surpresa
+    */
     message.style.display =
         "block";
     button.style.display =
         "none";
-    /* Chuva especial de corações */
+    /*
+       Tenta iniciar a música
+       imediatamente após o clique.
+    */
+    musica.currentTime = 0;
+    const tocar =
+        musica.play();
+    if(tocar !== undefined){
+        tocar.catch(
+            function(){
+                /*
+                   Caso o navegador impeça
+                   o autoplay, o player aparece
+                   normalmente para tocar no Play.
+                */
+                console.log(
+                    "Toque no Play para iniciar a música."
+                );
+            }
+        );
+    }
+    /*
+       Chuva de corações
+    */
     for(
         let i=0;
         i<35;
