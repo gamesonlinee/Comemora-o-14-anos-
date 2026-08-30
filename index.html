@@ -1,256 +1,932 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>14 Anos de Amor - Dia 16</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Montserrat', sans-serif; background-color: #faf6f6; color: #333; line-height: 1.6; }
-
-        /* Capa / Hero */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('foto1.jpg') center/cover no-repeat;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #fff;
-            padding: 20px;
-        }
-
-        .hero h1 { font-family: 'Great Vibes', cursive; font-size: 4.8rem; color: #ffe6e6; }
-        .hero h2 { font-size: 1.5rem; font-weight: 300; margin-bottom: 10px; }
-        .hero p { font-size: 1.1rem; max-width: 600px; margin-bottom: 25px; }
-
-        /* Menu de Navegação por Botões */
-        .nav-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            max-width: 900px;
-            margin-bottom: 20px;
-        }
-
-        .btn-nav {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(8px);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-        }
-
-        .btn-nav:hover {
-            background: #d63447;
-            border-color: #d63447;
-            transform: translateY(-2px);
-        }
-
-        /* Contador */
-        .countdown { display: flex; gap: 15px; margin-top: 10px; }
-        .countdown-item {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            padding: 10px 16px;
-            border-radius: 12px;
-            text-align: center;
-        }
-        .countdown-item span { display: block; font-size: 1.5rem; font-weight: 600; }
-
-        /* Container Principal */
-        section { padding: 50px 20px; max-width: 1000px; margin: 0 auto; }
-        .section-title { text-align: center; font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: #d63447; margin-bottom: 30px; }
-
-        /* Cards das Fotos com Legendas */
-        .photo-card {
-            background: #fff;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-            margin-bottom: 45px;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s ease;
-        }
-
-        .photo-card:hover { transform: translateY(-5px); }
-
-        .photo-card img {
-            width: 100%;
-            max-height: 550px;
-            object-fit: cover;
-        }
-
-        .photo-card .card-body {
-            padding: 25px;
-            text-align: center;
-        }
-
-        .photo-card h3 {
-            color: #d63447;
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-
-        .photo-card p {
-            color: #555;
-            font-size: 1rem;
-        }
-
-        /* Carta de Amor */
-        .love-letter {
-            background: #fff0f3;
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            border: 1px solid #ffccd5;
-            margin-top: 20px;
-        }
-
-        footer { text-align: center; padding: 25px; background: #222; color: #aaa; font-size: 0.9rem; }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 3.2rem; }
-            .hero h2 { font-size: 1.2rem; }
-            .photo-card img { max-height: 400px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>14 Anos de Amor ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+html{
+    scroll-behavior:smooth;
+}
+body{
+    font-family:'Montserrat',sans-serif;
+    background:#fff7f8;
+    color:#333;
+    overflow-x:hidden;
+}
+/* =========================
+   CORAÇÕES FLUTUANTES
+========================= */
+.heart{
+    position:fixed;
+    bottom:-30px;
+    font-size:20px;
+    animation:subir 8s linear infinite;
+    opacity:.7;
+    z-index:999;
+    pointer-events:none;
+}
+@keyframes subir{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+    20%{
+        opacity:.8;
+    }
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+/* =========================
+   CAPA
+========================= */
+.hero{
+    min-height:100vh;
+    background:
+    linear-gradient(
+        rgba(20,5,10,.55),
+        rgba(20,5,10,.75)
+    ),
+    url("IMG_3282.jpg") center/cover no-repeat;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    padding:30px 20px;
+    position:relative;
+}
+.hero-content{
+    max-width:900px;
+    animation:
+    aparecer 2s ease;
+}
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+.hero .small-title{
+    font-size:1rem;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    margin-bottom:15px;
+}
+.hero h1{
+    font-family:'Great Vibes',cursive;
+    font-size:
+    clamp(4rem,12vw,8rem);
+    color:#ffe3e8;
+    text-shadow:
+    0 5px 25px rgba(0,0,0,.5);
+}
+.hero h2{
+    font-size:
+    clamp(1.3rem,4vw,2rem);
+    font-weight:400;
+    margin-bottom:15px;
+}
+.hero p{
+    max-width:650px;
+    margin:auto;
+    font-size:1rem;
+    line-height:1.8;
+}
+/* =========================
+   BOTÃO
+========================= */
+.main-button{
+    display:inline-block;
+    margin-top:30px;
+    padding:14px 28px;
+    border-radius:40px;
+    background:#d63447;
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+    box-shadow:
+    0 8px 25px rgba(214,52,71,.4);
+}
+.main-button:hover{
+    transform:translateY(-4px);
+    background:#b91f35;
+}
+/* =========================
+   CONTADOR
+========================= */
+.countdown{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:35px;
+}
+.countdown-item{
+    min-width:75px;
+    padding:12px 10px;
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:15px;
+}
+.countdown-item span{
+    display:block;
+    font-size:1.7rem;
+    font-weight:700;
+}
+.countdown-item small{
+    font-size:.7rem;
+    text-transform:uppercase;
+}
+/* =========================
+   SEÇÕES
+========================= */
+section{
+    max-width:1100px;
+    margin:auto;
+    padding:80px 20px;
+}
+.section-title{
+    text-align:center;
+    font-family:'Great Vibes',cursive;
+    font-size:
+    clamp(3rem,8vw,5rem);
+    color:#d63447;
+    margin-bottom:15px;
+}
+.section-subtitle{
+    text-align:center;
+    color:#777;
+    margin-bottom:50px;
+}
+/* =========================
+   LINHA DO TEMPO
+========================= */
+.timeline{
+    position:relative;
+}
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:2px;
+    background:#f0b8c1;
+    transform:translateX(-50%);
+}
+.memory{
+    width:48%;
+    margin-bottom:60px;
+    position:relative;
+}
+.memory:nth-child(odd){
+    margin-right:auto;
+}
+.memory:nth-child(even){
+    margin-left:auto;
+}
+.memory-card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:
+    0 10px 35px rgba(0,0,0,.08);
+    transition:.4s;
+}
+.memory-card:hover{
+    transform:translateY(-8px);
+    box-shadow:
+    0 18px 40px rgba(0,0,0,.12);
+}
+.memory-card img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+    display:block;
+}
+.memory-text{
+    padding:25px;
+}
+.memory-text h3{
+    color:#d63447;
+    font-size:1.3rem;
+    margin-bottom:8px;
+}
+.memory-text p{
+    color:#666;
+    line-height:1.7;
+}
+/* =========================
+   GALERIA
+========================= */
+.gallery{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+.gallery img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    border-radius:15px;
+    cursor:pointer;
+    transition:.4s;
+    box-shadow:
+    0 5px 20px rgba(0,0,0,.08);
+}
+.gallery img:hover{
+    transform:scale(1.03);
+}
+/* =========================
+   CARTA
+========================= */
+.letter{
+    background:
+    linear-gradient(
+        135deg,
+        #fff0f3,
+        #fff9fa
+    );
+    border:1px solid #ffd0d8;
+    border-radius:25px;
+    padding:
+    clamp(30px,6vw,60px);
+    text-align:center;
+    box-shadow:
+    0 10px 35px rgba(0,0,0,.05);
+}
+.letter p{
+    max-width:750px;
+    margin:15px auto;
+    line-height:1.9;
+    color:#555;
+}
+.signature{
+    font-family:'Great Vibes',cursive;
+    font-size:3rem;
+    color:#d63447;
+    margin-top:25px;
+}
+/* =========================
+   SURPRESA
+========================= */
+.surprise{
+    text-align:center;
+    padding-top:40px;
+}
+.surprise-button{
+    border:none;
+    background:#d63447;
+    color:white;
+    padding:17px 35px;
+    border-radius:50px;
+    font-size:1rem;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:
+    0 8px 25px rgba(214,52,71,.35);
+    transition:.3s;
+}
+.surprise-button:hover{
+    transform:scale(1.05);
+}
+.hidden-message{
+    display:none;
+    margin-top:30px;
+    animation:aparecer 1s ease;
+}
+.hidden-message h3{
+    font-family:'Great Vibes',cursive;
+    font-size:4rem;
+    color:#d63447;
+}
+.hidden-message p{
+    font-size:1.1rem;
+    line-height:1.8;
+    max-width:700px;
+    margin:auto;
+}
+/* =========================
+   MÚSICA
+========================= */
+.music-button{
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    border:none;
+    background:#d63447;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+    z-index:1000;
+    box-shadow:
+    0 5px 20px rgba(0,0,0,.25);
+}
+/* =========================
+   RODAPÉ
+========================= */
+footer{
+    background:#24191b;
+    color:#bbb;
+    text-align:center;
+    padding:30px 20px;
+}
+footer span{
+    color:#ff7588;
+}
+/* =========================
+   CELULAR
+========================= */
+@media(max-width:700px){
+    .hero{
+        min-height:100svh;
+    }
+    .hero h1{
+        font-size:4rem;
+    }
+    .countdown{
+        gap:6px;
+    }
+    .countdown-item{
+        min-width:65px;
+    }
+    .countdown-item span{
+        font-size:1.3rem;
+    }
+    .timeline::before{
+        display:none;
+    }
+    .memory{
+        width:100%;
+        margin-bottom:35px;
+    }
+    .memory:nth-child(even){
+        margin-left:0;
+    }
+    .memory-card img{
+        height:300px;
+    }
+    .gallery{
+        grid-template-columns:
+        repeat(2,1fr);
+        gap:8px;
+    }
+    .gallery img{
+        height:220px;
+    }
+}
+/* =========================
+   ANIMAÇÃO AO ROLAR
+========================= */
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:
+    opacity .8s ease,
+    transform .8s ease;
+}
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+</style>
 </head>
 <body>
-
-    <!-- Capa Principal -->
-    <div class="hero">
-        <h1>14 Anos de Amor</h1>
-        <h2>Feliz Dia 16!</h2>
-        <p>Uma história construída dia após dia, repleta de companheirismo, conquistas e a nossa linda família.</p>
-
-        <!-- Botões de Atalho para Ir Direto à Foto -->
-        <div class="nav-buttons">
-            <a href="#foto1" class="btn-nav">1. Passeio em Família</a>
-            <a href="#foto2" class="btn-nav">2. Dia no Kart</a>
-            <a href="#foto3" class="btn-nav">3. Teleférico</a>
-            <a href="#foto4" class="btn-nav">4. A Chegada</a>
-            <a href="#foto5" class="btn-nav">5. Shopping</a>
-            <a href="#foto6" class="btn-nav">6. Niver 3 Anos</a>
-            <a href="#foto7" class="btn-nav">7. Ensaio Fardados</a>
-            <a href="#foto8" class="btn-nav">8. Viagem Aparecida</a>
+<!-- =========================
+     CAPA
+========================= -->
+<div class="hero">
+    <div class="hero-content">
+        <div class="small-title">
+            Uma história que começou há 14 anos
         </div>
-
-        <div class="countdown" id="countdown">
-            <div class="countdown-item"><span id="days">00</span>Dias</div>
-            <div class="countdown-item"><span id="hours">00</span>Horas</div>
-            <div class="countdown-item"><span id="minutes">00</span>Min</div>
-            <div class="countdown-item"><span id="seconds">00</span>Seg</div>
+        <h1>
+            Nosso Amor
+        </h1>
+        <h2>
+            Feliz Dia 16 ❤️
+        </h2>
+        <p>
+            14 anos de histórias, aventuras, desafios,
+            conquistas, sorrisos e, acima de tudo,
+            amor.
+        </p>
+        <a href="#historia" class="main-button">
+            ❤️ Reviver nossa história
+        </a>
+        <!-- CONTADOR -->
+        <div class="countdown">
+            <div class="countdown-item">
+                <span id="days">00</span>
+                <small>Dias</small>
+            </div>
+            <div class="countdown-item">
+                <span id="hours">00</span>
+                <small>Horas</small>
+            </div>
+            <div class="countdown-item">
+                <span id="minutes">00</span>
+                <small>Minutos</small>
+            </div>
+            <div class="countdown-item">
+                <span id="seconds">00</span>
+                <small>Segundos</small>
+            </div>
         </div>
     </div>
-
-    <!-- Feed de Memórias -->
-    <section>
-        <h2 class="section-title">Nossa Trajetória</h2>
-
-        <div class="photo-card" id="foto1">
-            <img src="foto1.jpg" alt="Passeio em Família">
-            <div class="card-body">
-                <h3>Momentos Simples e Especiais</h3>
-                <p>Cada passeio de carro com vocês vira uma memória guardada no coração. A alegria de estarmos juntos onde quer que a gente vá.</p>
+</div>
+<!-- =========================
+     HISTÓRIA
+========================= -->
+<section id="historia">
+    <h2 class="section-title">
+        Nossa Trajetória
+    </h2>
+    <p class="section-subtitle">
+        Algumas das milhares de lembranças que construímos juntos.
+    </p>
+    <div class="timeline">
+        <!-- FOTO 3282 -->
+        <div class="memory reveal">
+            <div class="memory-card">
+                <img src="IMG_3282.jpg"
+                     alt="Nossa memória">
+                <div class="memory-text">
+                    <h3>
+                        Momentos Simples ❤️
+                    </h3>
+                    <p>
+                        Cada momento ao seu lado se transforma
+                        em uma lembrança que eu quero guardar
+                        para sempre.
+                    </p>
+                </div>
             </div>
         </div>
-
-        <div class="photo-card" id="foto2">
-            <img src="foto2.jpg" alt="Dia no Kart">
-            <div class="card-body">
-                <h3>Parceria em Todas as Aventuras</h3>
-                <p>Dia de pista, adrenalina e muita diversão! Apoiar os sonhos um do outro e viver novos momentos em família é o que nos move.</p>
+        <!-- FOTO 3283 -->
+        <div class="memory reveal">
+            <div class="memory-card">
+                <img src="IMG_3283.jpg"
+                     alt="Nossa memória">
+                <div class="memory-text">
+                    <h3>
+                        Aventuras Juntos
+                    </h3>
+                    <p>
+                        Porque ao seu lado até os momentos
+                        mais simples se tornam especiais.
+                    </p>
+                </div>
             </div>
         </div>
-
-        <div class="photo-card" id="foto3">
-            <img src="foto3.jpg" alt="Passeio no Teleférico">
-            <div class="card-body">
-                <h3>Colecionando Vistas e Sorrisos</h3>
-                <p>Lá do alto, vendo a paisagem e lembrando do quanto a nossa própria história é bonita de se admirar. Amo viajar com vocês.</p>
+        <!-- FOTO 3284 -->
+        <div class="memory reveal">
+            <div class="memory-card">
+                <img src="IMG_3284.jpg"
+                     alt="Nossa memória">
+                <div class="memory-text">
+                    <h3>
+                        Nossa Família ❤️
+                    </h3>
+                    <p>
+                        O maior presente que nossa história
+                        poderia nos dar.
+                    </p>
+                </div>
             </div>
         </div>
-
-        <div class="photo-card" id="foto4">
-            <img src="foto4.jpg" alt="A Chegada do Bebê">
-            <div class="card-body">
-                <h3>O Amor que Só Se Multiplica</h3>
-                <p>Mais um pedacinho nosso chegando ao mundo. Esse carinho entre as irmãs e o aconchego da nossa casa não têm preço.</p>
+        <!-- FOTO 3285 -->
+        <div class="memory reveal">
+            <div class="memory-card">
+                <img src="IMG_3285.jpg"
+                     alt="Nossa memória">
+                <div class="memory-text">
+                    <h3>
+                        Sorrisos
+                    </h3>
+                    <p>
+                        São esses pequenos momentos que fazem
+                        tudo valer a pena.
+                    </p>
+                </div>
             </div>
         </div>
- 
-        <div class="photo-card" id="foto5">
-            <img src="foto5.jpg" alt="Passeio no Shopping">
-            <div class="card-body">
-                <h3>Nossa Rotina Cheia de Vida</h3>
-                <p>Um passeio num dia comum que se torna inesquecível só por ter vocês ao meu lado. Minhas três princesas!</p>
+        <!-- FOTO 3286 -->
+        <div class="memory reveal">
+            <div class="memory-card">
+                <img src="IMG_3286.jpg"
+                     alt="Nossa memória">
+                <div class="memory-text">
+                    <h3>
+                        Ao Seu Lado
+                    </h3>
+                    <p>
+                        Onde quer que a vida nos leve,
+                        quero continuar caminhando com você.
+                    </p>
+                </div>
             </div>
         </div>
-
-        <div class="photo-card" id="foto6">
-            <img src="foto6.jpg" alt="Aniversário de 3 Anos">
-            <div class="card-body">
-                <h3>Comemorando Cada Vitórias</h3>
-                <p>Festa, docinhos, balões e a felicidade de ver nossas filhas crescendo com saúde e cercadas de muito amor.</p>
+        <!-- FOTO 3287 -->
+        <div class="memory reveal">
+            <div class="memory-card">
+                <img src="IMG_3287.jpg"
+                     alt="Nossa memória">
+                <div class="memory-text">
+                    <h3>
+                        Momentos Inesquecíveis
+                    </h3>
+                    <p>
+                        Algumas fotografias congelam momentos.
+                        O coração guarda para sempre.
+                    </p>
+                </div>
             </div>
         </div>
-
-        <div class="photo-card" id="foto7">
-            <img src="foto7.jpg" alt="Ensaio Fardados">
-            <div class="card-body">
-                <h3>Orgulho e Propósito</h3>
-                <p>Lado a lado na missão e na vida. Um ensaio que representa nossa força, nossa dedicação e a proteção da nossa família.</p>
+        <!-- FOTO 3288 -->
+        <div class="memory reveal">
+            <div class="memory-card">
+                <img src="IMG_3288.jpg"
+                     alt="Nossa memória">
+                <div class="memory-text">
+                    <h3>
+                        Nossa História
+                    </h3>
+                    <p>
+                        Uma história escrita com amor,
+                        companheirismo e muita parceria.
+                    </p>
+                </div>
             </div>
         </div>
-
-        <div class="photo-card" id="foto8">
-            <img src="foto8.jpg" alt="Viagem para Aparecida">
-            <div class="card-body">
-                <h3>Agradecendo por Tudo</h3>
-                <p>Noite especial abençoada. Olhar para trás e ver esses 14 anos de história nos dá a certeza de que Deus sempre esteve guiando cada passo.</p>
+        <!-- FOTO 3289 -->
+        <div class="memory reveal">
+            <div class="memory-card">
+                <img src="IMG_3289.jpg"
+                     alt="Nossa memória">
+                <div class="memory-text">
+                    <h3>
+                        Juntos
+                    </h3>
+                    <p>
+                        Depois de tantos anos,
+                        ainda escolheria você.
+                    </p>
+                </div>
             </div>
         </div>
-
-        <!-- Mensagem de Fechamento -->
-        <div class="love-letter">
-            <h2 class="section-title" style="margin-bottom: 15px;">14 Anos Guardados no Coração</h2>
-            <p>Nenhum texto é capaz de resumir tudo o que vivemos até aqui. São 14 anos de cumplicidade, aprendizado, conquistas e a construção da família mais linda do mundo.</p>
-            <p style="margin-top: 10px;">Obrigado por ser minha parceira de vida, minha melhor amiga e a mãe incrível das nossas meninas.</p>
-            <p style="font-weight: bold; color: #d63447; margin-top: 20px; font-size: 1.2rem;">Feliz Dia 16! Te amo para sempre. ❤️</p>
+    </div>
+</section>
+<!-- =========================
+     GALERIA
+========================= -->
+<section>
+    <h2 class="section-title">
+        Nossas Memórias
+    </h2>
+    <p class="section-subtitle">
+        Um pedacinho dos nossos 14 anos.
+    </p>
+    <div class="gallery">
+        <img src="IMG_3290.jpg" alt="Memória">
+        <img src="IMG_3291.jpg" alt="Memória">
+        <img src="IMG_3292.jpg" alt="Memória">
+        <img src="IMG_3293.jpg" alt="Memória">
+        <img src="IMG_3294.jpg" alt="Memória">
+        <img src="IMG_3295.jpg" alt="Memória">
+        <img src="IMG_3296.jpg" alt="Memória">
+        <img src="IMG_3297.jpg" alt="Memória">
+        <img src="IMG_3298.jpg" alt="Memória">
+        <img src="IMG_3299.jpg" alt="Memória">
+        <img src="IMG_3300.jpg" alt="Memória">
+        <img src="IMG_3301.jpg" alt="Memória">
+        <img src="IMG_3302.jpg" alt="Memória">
+        <img src="IMG_3303.jpg" alt="Memória">
+        <img src="IMG_3304.jpg" alt="Memória">
+        <img src="IMG_3305.jpg" alt="Memória">
+        <img src="IMG_3306.jpg" alt="Memória">
+        <img src="IMG_3307.jpg" alt="Memória">
+        <img src="IMG_3308.jpg" alt="Memória">
+    </div>
+</section>
+<!-- =========================
+     CARTA
+========================= -->
+<section>
+    <div class="letter reveal">
+        <h2 class="section-title">
+            Uma Carta Para Você
+        </h2>
+        <p>
+            14 anos.
+        </p>
+        <p>
+            Quando olho para trás e penso em tudo que
+            vivemos, percebo que nossa história é muito
+            maior do que qualquer fotografia consegue mostrar.
+        </p>
+        <p>
+            Foram momentos felizes, momentos difíceis,
+            conquistas, mudanças, sonhos e tantos outros
+            momentos que fizeram parte da nossa caminhada.
+        </p>
+        <p>
+            E no meio de tudo isso construímos algo que
+            considero o maior presente da minha vida:
+            <strong>nossa família.</strong>
+        </p>
+        <p>
+            Obrigado por estar comigo, por dividir a vida,
+            os sonhos, as dificuldades e as alegrias.
+        </p>
+        <p>
+            Obrigado por ser minha parceira e por construir
+            comigo essa história que ainda está longe de terminar.
+        </p>
+        <p>
+            Que venham muitos outros anos,
+            muitas viagens, muitos sonhos realizados,
+            muitas risadas e muitos momentos ao seu lado.
+        </p>
+        <div class="signature">
+            Eu escolheria você novamente. ❤️
         </div>
-    </section>
-
-    <footer>
-        <p>14 Anos de História — Comemoração do Nosso Dia 16 ❤️</p>
-    </footer>
-
-    <script>
-        function updateCountdown() {
-            const now = new Date();
-            let targetDate = new Date(now.getFullYear(), now.getMonth(), 16);
-            if (now.getDate() >= 16) {
-                targetDate.setMonth(targetDate.getMonth() + 1);
-            }
-            const diff = targetDate - now;
-
-            document.getElementById('days').innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
-            document.getElementById('hours').innerText = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
-            document.getElementById('minutes').innerText = String(Math.floor((diff / 1000 / 60) % 60)).padStart(2, '0');
-            document.getElementById('seconds').innerText = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+    </div>
+</section>
+<!-- =========================
+     SURPRESA FINAL
+========================= -->
+<section class="surprise">
+    <h2 class="section-title">
+        E ainda tem uma surpresa...
+    </h2>
+    <p class="section-subtitle">
+        Você chegou até aqui. Agora clique.
+    </p>
+    <button
+        class="surprise-button"
+        onclick="mostrarSurpresa()">
+        🎁 Abrir minha surpresa
+    </button>
+    <div
+        class="hidden-message"
+        id="surpriseMessage">
+        <h3>
+            Eu te amo! ❤️
+        </h3>
+        <p>
+            Se eu pudesse voltar no tempo e viver tudo
+            novamente, eu viveria cada momento ao seu lado.
+        </p>
+        <p>
+            E se a vida me desse a oportunidade de escolher
+            mais uma vez...
+        </p>
+        <p>
+            <strong>
+                Eu escolheria você.
+            </strong>
+        </p>
+        <p>
+            Feliz Dia 16.
+            Feliz 14 anos de nós.
+            ❤️
+        </p>
+    </div>
+</section>
+<!-- =========================
+     RODAPÉ
+========================= -->
+<footer>
+    <p>
+        Feito com ❤️ para celebrar
+        <span>14 anos de história</span>.
+    </p>
+    <p style="margin-top:8px;">
+        Nosso Dia 16 ❤️
+    </p>
+</footer>
+<!-- =========================
+     MÚSICA
+========================= -->
+<audio id="music" loop>
+    <!--
+    COLOQUE SUA MÚSICA COM O NOME:
+    musica.mp3
+    na mesma pasta do index.html.
+    -->
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+<button
+    class="music-button"
+    onclick="toggleMusic()"
+    id="musicButton">
+    🎵
+</button>
+<script>
+/* =========================
+   CONTADOR PARA O PRÓXIMO DIA 16
+========================= */
+function updateCountdown(){
+    const now = new Date();
+    let target =
+        new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            16,
+            0,
+            0,
+            0
+        );
+    if(now.getDate() >= 16){
+        target.setMonth(
+            target.getMonth()+1
+        );
+    }
+    const diff =
+        target.getTime()-now.getTime();
+    const days =
+        Math.floor(
+            diff/(1000*60*60*24)
+        );
+    const hours =
+        Math.floor(
+            (diff/(1000*60*60))%24
+        );
+    const minutes =
+        Math.floor(
+            (diff/(1000*60))%60
+        );
+    const seconds =
+        Math.floor(
+            (diff/1000)%60
+        );
+    document.getElementById("days")
+        .innerText =
+        String(days).padStart(2,"0");
+    document.getElementById("hours")
+        .innerText =
+        String(hours).padStart(2,"0");
+    document.getElementById("minutes")
+        .innerText =
+        String(minutes).padStart(2,"0");
+    document.getElementById("seconds")
+        .innerText =
+        String(seconds).padStart(2,"0");
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
+/* =========================
+   CORAÇÕES
+========================= */
+function criarCoracao(){
+    const heart =
+        document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML =
+        Math.random() > .5
+        ? "❤️"
+        : "💕";
+    heart.style.left =
+        Math.random()*100+"vw";
+    heart.style.animationDuration =
+        (5+Math.random()*5)+"s";
+    heart.style.fontSize =
+        (12+Math.random()*18)+"px";
+    document.body.appendChild(heart);
+    setTimeout(
+        ()=>heart.remove(),
+        10000
+    );
+}
+setInterval(criarCoracao,1200);
+/* =========================
+   ANIMAÇÃO AO ROLAR
+========================= */
+function revealOnScroll(){
+    const elements =
+        document.querySelectorAll(".reveal");
+    const windowHeight =
+        window.innerHeight;
+    elements.forEach(element=>{
+        const position =
+            element.getBoundingClientRect().top;
+        if(position <
+           windowHeight-80){
+            element.classList.add("active");
         }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-    </script>
+    });
+}
+window.addEventListener(
+    "scroll",
+    revealOnScroll
+);
+revealOnScroll();
+/* =========================
+   SURPRESA
+========================= */
+function mostrarSurpresa(){
+    const message =
+        document.getElementById(
+            "surpriseMessage"
+        );
+    message.style.display="block";
+    document.querySelector(
+        ".surprise-button"
+    ).style.display="none";
+}
+/* =========================
+   MÚSICA
+========================= */
+const music =
+    document.getElementById("music");
+const musicButton =
+    document.getElementById(
+        "musicButton"
+    );
+function toggleMusic(){
+    if(music.paused){
+        music.play()
+        .then(()=>{
+            musicButton.innerHTML="🔊";
+        })
+        .catch(()=>{
+            alert(
+                "Coloque o arquivo musica.mp3 na mesma pasta do site."
+            );
+        });
+    }else{
+        music.pause();
+        musicButton.innerHTML="🎵";
+    }
+}
+/* =========================
+   CLIQUE NAS FOTOS
+========================= */
+document.querySelectorAll(
+    ".gallery img"
+).forEach(img=>{
+    img.addEventListener(
+        "click",
+        ()=>{
+            const overlay =
+                document.createElement(
+                    "div"
+                );
+            overlay.style.position="fixed";
+            overlay.style.inset="0";
+            overlay.style.background=
+                "rgba(0,0,0,.92)";
+            overlay.style.display=
+                "flex";
+            overlay.style.alignItems=
+                "center";
+            overlay.style.justifyContent=
+                "center";
+            overlay.style.zIndex="2000";
+            overlay.style.padding="20px";
+            const image =
+                document.createElement(
+                    "img"
+                );
+            image.src=img.src;
+            image.style.maxWidth="95%";
+            image.style.maxHeight="90%";
+            image.style.objectFit="contain";
+            image.style.borderRadius="15px";
+            overlay.appendChild(image);
+            overlay.addEventListener(
+                "click",
+                ()=>{
+                    overlay.remove();
+                }
+            );
+            document.body.appendChild(
+                overlay
+            );
+        }
+    );
+});
+</script>
 </body>
 </html>
-
