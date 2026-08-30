@@ -2,11 +2,9 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>14 Anos de Amor ❤️</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap"
-rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{
     margin:0;
@@ -23,7 +21,7 @@ body{
     overflow-x:hidden;
 }
 /* =========================
-   CORAÇÕES FLUTUANTES
+   CORAÇÕES
 ========================= */
 .heart{
     position:fixed;
@@ -54,8 +52,8 @@ body{
     min-height:100vh;
     background:
     linear-gradient(
-        rgba(20,5,10,.55),
-        rgba(20,5,10,.75)
+        rgba(20,5,10,.28),
+        rgba(20,5,10,.42)
     ),
     url("IMG_3282.png")
     center/cover no-repeat;
@@ -71,6 +69,8 @@ body{
 .hero-content{
     max-width:900px;
     animation:aparecer 2s ease;
+    text-shadow:
+    0 2px 8px rgba(0,0,0,.45);
 }
 @keyframes aparecer{
     from{
@@ -92,9 +92,9 @@ body{
     font-family:'Great Vibes',cursive;
     font-size:
     clamp(4rem,12vw,8rem);
-    color:#ffe3e8;
+    color:#fff0f3;
     text-shadow:
-    0 5px 25px rgba(0,0,0,.5);
+    0 5px 25px rgba(0,0,0,.45);
 }
 .hero h2{
     font-size:
@@ -109,7 +109,7 @@ body{
     line-height:1.8;
 }
 /* =========================
-   BOTÃO PRINCIPAL
+   BOTÃO
 ========================= */
 .main-button{
     display:inline-block;
@@ -141,9 +141,9 @@ body{
 .countdown-item{
     min-width:75px;
     padding:12px 10px;
-    background:rgba(255,255,255,.15);
+    background:rgba(255,255,255,.2);
     backdrop-filter:blur(10px);
-    border:1px solid rgba(255,255,255,.25);
+    border:1px solid rgba(255,255,255,.4);
     border-radius:15px;
 }
 .countdown-item span{
@@ -177,31 +177,13 @@ section{
     margin-bottom:50px;
 }
 /* =========================
-   LINHA DO TEMPO
+   MEMÓRIAS
 ========================= */
 .timeline{
-    position:relative;
-}
-.timeline::before{
-    content:"";
-    position:absolute;
-    left:50%;
-    top:0;
-    bottom:0;
-    width:2px;
-    background:#f0b8c1;
-    transform:translateX(-50%);
-}
-.memory{
-    width:48%;
-    margin-bottom:60px;
-    position:relative;
-}
-.memory:nth-child(odd){
-    margin-right:auto;
-}
-.memory:nth-child(even){
-    margin-left:auto;
+    display:grid;
+    grid-template-columns:
+    repeat(2,1fr);
+    gap:35px;
 }
 .memory-card{
     background:white;
@@ -210,15 +192,16 @@ section{
     box-shadow:
     0 10px 35px rgba(0,0,0,.08);
     transition:.4s;
+    height:100%;
 }
 .memory-card:hover{
     transform:translateY(-8px);
     box-shadow:
-    0 18px 40px rgba(0,0,0,.12);
+    0 18px 40px rgba(0,0,0,.13);
 }
 .memory-card img{
     width:100%;
-    height:350px;
+    height:360px;
     object-fit:cover;
     display:block;
 }
@@ -240,12 +223,12 @@ section{
 .gallery{
     display:grid;
     grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
+    repeat(3,1fr);
     gap:15px;
 }
 .gallery img{
     width:100%;
-    height:280px;
+    height:300px;
     object-fit:cover;
     border-radius:15px;
     cursor:pointer;
@@ -331,8 +314,6 @@ section{
     font-size:
     clamp(4rem,12vw,7rem);
     color:#d63447;
-    text-shadow:
-    0 5px 20px rgba(214,52,71,.2);
 }
 .hidden-message p{
     font-size:1.1rem;
@@ -380,20 +361,6 @@ footer span{
     color:#ff7588;
 }
 /* =========================
-   ANIMAÇÃO
-========================= */
-.reveal{
-    opacity:0;
-    transform:translateY(40px);
-    transition:
-    opacity .8s ease,
-    transform .8s ease;
-}
-.reveal.active{
-    opacity:1;
-    transform:translateY(0);
-}
-/* =========================
    CELULAR
 ========================= */
 @media(max-width:700px){
@@ -412,15 +379,8 @@ footer span{
     .countdown-item span{
         font-size:1.3rem;
     }
-    .timeline::before{
-        display:none;
-    }
-    .memory{
-        width:100%;
-        margin-bottom:35px;
-    }
-    .memory:nth-child(even){
-        margin-left:0;
+    .timeline{
+        grid-template-columns:1fr;
     }
     .memory-card img{
         height:300px;
@@ -455,16 +415,15 @@ footer span{
             Feliz Dia 16 ❤️
         </h2>
         <p>
-            14 anos de histórias, aventuras, desafios,
-            conquistas, sorrisos e, acima de tudo,
-            amor.
+            14 anos de histórias, aventuras,
+            desafios, conquistas, sorrisos e,
+            acima de tudo, amor.
         </p>
         <a
             href="#historia"
             class="main-button">
             ❤️ Reviver nossa história
         </a>
-        <!-- CONTADOR -->
         <div class="countdown">
             <div class="countdown-item">
                 <span id="days">00</span>
@@ -486,184 +445,131 @@ footer span{
     </div>
 </div>
 <!-- =========================
-     HISTÓRIA
+     TODAS AS MEMÓRIAS
 ========================= -->
 <section id="historia">
     <h2 class="section-title">
         Nossa Trajetória
     </h2>
     <p class="section-subtitle">
-        Algumas das milhares de lembranças que construímos juntos.
+        Cada fotografia guarda um pedacinho da nossa história.
     </p>
     <div class="timeline">
-        <div class="memory reveal">
-            <div class="memory-card">
-                <img
-                    src="IMG_3282.png"
-                    alt="Nossa memória">
-                <div class="memory-text">
-                    <h3>
-                        Momentos Simples ❤️
-                    </h3>
-                    <p>
-                        Cada momento ao seu lado se transforma
-                        em uma lembrança que eu quero guardar
-                        para sempre.
-                    </p>
-                </div>
+        <div class="memory-card">
+            <img src="IMG_3282.png" alt="Memória 3282">
+            <div class="memory-text">
+                <h3>O começo de mais uma lembrança ❤️</h3>
+                <p>
+                    Cada momento ao seu lado merece ser guardado.
+                </p>
             </div>
         </div>
-        <div class="memory reveal">
-            <div class="memory-card">
-                <img
-                    src="IMG_3283.png"
-                    alt="Nossa memória">
-                <div class="memory-text">
-                    <h3>
-                        Aventuras Juntos
-                    </h3>
-                    <p>
-                        Porque ao seu lado até os momentos
-                        mais simples se tornam especiais.
-                    </p>
-                </div>
+        <div class="memory-card">
+            <img src="IMG_3283.png" alt="Memória 3283">
+            <div class="memory-text">
+                <h3>Momentos especiais</h3>
+                <p>
+                    Porque juntos conseguimos transformar
+                    qualquer dia em uma lembrança inesquecível.
+                </p>
             </div>
         </div>
-        <div class="memory reveal">
-            <div class="memory-card">
-                <img
-                    src="IMG_3284.png"
-                    alt="Nossa memória">
-                <div class="memory-text">
-                    <h3>
-                        Nossa Família ❤️
-                    </h3>
-                    <p>
-                        O maior presente que nossa história
-                        poderia nos dar.
-                    </p>
-                </div>
+        <div class="memory-card">
+            <img src="IMG_3284.png" alt="Memória 3284">
+            <div class="memory-text">
+                <h3>Nossa família ❤️</h3>
+                <p>
+                    O maior presente que nossa história poderia nos dar.
+                </p>
             </div>
         </div>
-        <div class="memory reveal">
-            <div class="memory-card">
-                <img
-                    src="IMG_3285.png"
-                    alt="Nossa memória">
-                <div class="memory-text">
-                    <h3>
-                        Sorrisos
-                    </h3>
-                    <p>
-                        São esses pequenos momentos que fazem
-                        tudo valer a pena.
-                    </p>
-                </div>
+        <div class="memory-card">
+            <img src="IMG_3285.png" alt="Memória 3285">
+            <div class="memory-text">
+                <h3>Sorrisos</h3>
+                <p>
+                    São esses pequenos momentos que fazem tudo valer a pena.
+                </p>
             </div>
         </div>
-        <div class="memory reveal">
-            <div class="memory-card">
-                <img
-                    src="IMG_3286.png"
-                    alt="Nossa memória">
-                <div class="memory-text">
-                    <h3>
-                        Ao Seu Lado
-                    </h3>
-                    <p>
-                        Onde quer que a vida nos leve,
-                        quero continuar caminhando com você.
-                    </p>
-                </div>
+        <div class="memory-card">
+            <img src="IMG_3286.png" alt="Memória 3286">
+            <div class="memory-text">
+                <h3>Ao seu lado</h3>
+                <p>
+                    Onde quer que a vida nos leve,
+                    quero continuar caminhando com você.
+                </p>
             </div>
         </div>
-        <div class="memory reveal">
-            <div class="memory-card">
-                <img
-                    src="IMG_3287.png"
-                    alt="Nossa memória">
-                <div class="memory-text">
-                    <h3>
-                        Momentos Inesquecíveis
-                    </h3>
-                    <p>
-                        Algumas fotografias congelam momentos.
-                        O coração guarda para sempre.
-                    </p>
-                </div>
+        <div class="memory-card">
+            <img src="IMG_3287.png" alt="Memória 3287">
+            <div class="memory-text">
+                <h3>Aventuras juntos</h3>
+                <p>
+                    Mais uma página da nossa história.
+                </p>
             </div>
         </div>
-        <div class="memory reveal">
-            <div class="memory-card">
-                <img
-                    src="IMG_3288.png"
-                    alt="Nossa memória">
-                <div class="memory-text">
-                    <h3>
-                        Nossa História
-                    </h3>
-                    <p>
-                        Uma história escrita com amor,
-                        companheirismo e muita parceria.
-                    </p>
-                </div>
+        <div class="memory-card">
+            <img src="IMG_3288.png" alt="Memória 3288">
+            <div class="memory-text">
+                <h3>14 anos de nós</h3>
+                <p>
+                    Uma história construída dia após dia.
+                </p>
             </div>
         </div>
-        <div class="memory reveal">
-            <div class="memory-card">
-                <img
-                    src="IMG_3289.png"
-                    alt="Nossa memória">
-                <div class="memory-text">
-                    <h3>
-                        Juntos ❤️
-                    </h3>
-                    <p>
-                        Depois de tantos anos,
-                        ainda escolheria você.
-                    </p>
-                </div>
+        <div class="memory-card">
+            <img src="IMG_3289.png" alt="Memória 3289">
+            <div class="memory-text">
+                <h3>Para sempre ❤️</h3>
+                <p>
+                    Depois de tantos anos, ainda escolheria você.
+                </p>
             </div>
         </div>
     </div>
 </section>
 <!-- =========================
-     GALERIA
+     GALERIA COMPLETA
 ========================= -->
 <section>
     <h2 class="section-title">
         Nossas Memórias
     </h2>
     <p class="section-subtitle">
-        Um pedacinho dos nossos 14 anos.
+        Mais momentos dos nossos 14 anos.
     </p>
     <div class="gallery">
-        <img src="IMG_3290.png" alt="Memória">
-        <img src="IMG_3291.png" alt="Memória">
-        <img src="IMG_3292.png" alt="Memória">
-        <img src="IMG_3293.png" alt="Memória">
-        <img src="IMG_3294.png" alt="Memória">
-        <img src="IMG_3295.png" alt="Memória">
-        <img src="IMG_3296.png" alt="Memória">
-        <img src="IMG_3297.png" alt="Memória">
-        <img src="IMG_3298.png" alt="Memória">
-        <img src="IMG_3299.png" alt="Memória">
-        <img src="IMG_3300.png" alt="Memória">
-        <img src="IMG_3301.png" alt="Memória">
-        <img src="IMG_3302.jpeg" alt="Memória">
-        <img src="IMG_3303.jpeg" alt="Memória">
-        <img src="IMG_3304.jpeg" alt="Memória">
-        <img src="IMG_3305.jpeg" alt="Memória">
-        <img src="IMG_3306.jpeg" alt="Memória">
-        <img src="IMG_3307.jpeg" alt="Memória">
-        <img src="IMG_3308.jpeg" alt="Memória">
+        <img src="IMG_3290.png" alt="Memória 3290">
+        <img src="IMG_3291.png" alt="Memória 3291">
+        <img src="IMG_3292.png" alt="Memória 3292">
+        <img src="IMG_3293.png" alt="Memória 3293">
+        <img src="IMG_3294.png" alt="Memória 3294">
+        <img src="IMG_3295.png" alt="Memória 3295">
+        <img src="IMG_3296.png" alt="Memória 3296">
+        <img src="IMG_3297.png" alt="Memória 3297">
+        <img src="IMG_3298.png" alt="Memória 3298">
+        <img src="IMG_3299.png" alt="Memória 3299">
+        <img src="IMG_3300.png" alt="Memória 3300">
+        <img src="IMG_3301.png" alt="Memória 3301">
+        <img src="IMG_3302.jpeg" alt="Memória 3302">
+        <img src="IMG_3303.jpeg" alt="Memória 3303">
+        <img src="IMG_3304.jpeg" alt="Memória 3304">
+        <img src="IMG_3305.jpeg" alt="Memória 3305">
+        <img src="IMG_3306.jpeg" alt="Memória 3306">
+        <img src="IMG_3307.jpeg" alt="Memória 3307">
+        <img src="IMG_3308.jpeg" alt="Memória 3308">
+        <img src="IMG_3310.png" alt="Memória 3310">
+        <img src="IMG_3311.jpeg" alt="Memória 3311">
     </div>
 </section>
 <!-- =========================
      CARTA
 ========================= -->
 <section>
-    <div class="letter reveal">
+    <div class="letter">
         <h2 class="section-title">
             Uma Carta Para Você
         </h2>
@@ -704,7 +610,7 @@ footer span{
     </div>
 </section>
 <!-- =========================
-     SURPRESA FINAL
+     SURPRESA
 ========================= -->
 <section class="surprise">
     <h2 class="section-title">
@@ -738,13 +644,9 @@ footer span{
             </strong>
         </p>
         <p>
-            Feliz Dia 16.
-            Feliz 14 anos de nós.
-            ❤️
+            Feliz Dia 16.<br>
+            Feliz 14 anos de nós. ❤️
         </p>
-        <!-- =========================
-             MÚSICA
-        ========================= -->
         <div class="music-box">
             <div class="music-title">
                 Nossa Música ❤️
@@ -781,17 +683,15 @@ footer span{
    CONTADOR
 ========================= */
 function updateCountdown(){
-    const now =
-        new Date();
-    let target =
-        new Date(
-            now.getFullYear(),
-            now.getMonth(),
-            16,
-            0,
-            0,
-            0
-        );
+    const now = new Date();
+    let target = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        16,
+        0,
+        0,
+        0
+    );
     if(now.getDate() >= 16){
         target.setMonth(
             target.getMonth()+1
@@ -864,44 +764,8 @@ function criarCoracao(){
         10000
     );
 }
-setInterval(
-    criarCoracao,
-    1200
-);
 /* =========================
-   ANIMAÇÃO AO ROLAR
-========================= */
-function revealOnScroll(){
-    const elements =
-        document.querySelectorAll(
-            ".reveal"
-        );
-    const windowHeight =
-        window.innerHeight;
-    elements.forEach(
-        element=>{
-            const position =
-                element
-                .getBoundingClientRect()
-                .top;
-            if(
-                position <
-                windowHeight-80
-            ){
-                element.classList.add(
-                    "active"
-                );
-            }
-        }
-    );
-}
-window.addEventListener(
-    "scroll",
-    revealOnScroll
-);
-revealOnScroll();
-/* =========================
-   ABRIR SURPRESA + MÚSICA
+   SURPRESA + MÚSICA
 ========================= */
 function abrirSurpresa(){
     const message =
@@ -916,16 +780,13 @@ function abrirSurpresa(){
         document.getElementById(
             "musica"
         );
-    /*
-       Mostra a surpresa
-    */
     message.style.display =
         "block";
     button.style.display =
         "none";
     /*
-       Tenta iniciar a música
-       imediatamente após o clique.
+       A música começa pelo clique
+       no botão da surpresa.
     */
     musica.currentTime = 0;
     const tocar =
@@ -933,23 +794,18 @@ function abrirSurpresa(){
     if(tocar !== undefined){
         tocar.catch(
             function(){
-                /*
-                   Caso o navegador impeça
-                   o autoplay, o player aparece
-                   normalmente para tocar no Play.
-                */
                 console.log(
-                    "Toque no Play para iniciar a música."
+                    "O navegador bloqueou a reprodução automática."
                 );
             }
         );
     }
     /*
-       Chuva de corações
+       Chuva especial de corações.
     */
     for(
         let i=0;
-        i<35;
+        i<40;
         i++
     ){
         setTimeout(
