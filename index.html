@@ -1,1 +1,256 @@
-# Comemora-o-14-anos-
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14 Anos de Amor - Dia 16</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #faf6f6; color: #333; line-height: 1.6; }
+
+        /* Capa / Hero */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('foto1.jpg') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .hero h1 { font-family: 'Great Vibes', cursive; font-size: 4.8rem; color: #ffe6e6; }
+        .hero h2 { font-size: 1.5rem; font-weight: 300; margin-bottom: 10px; }
+        .hero p { font-size: 1.1rem; max-width: 600px; margin-bottom: 25px; }
+
+        /* Menu de Navegação por Botões */
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            max-width: 900px;
+            margin-bottom: 20px;
+        }
+
+        .btn-nav {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(8px);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-nav:hover {
+            background: #d63447;
+            border-color: #d63447;
+            transform: translateY(-2px);
+        }
+
+        /* Contador */
+        .countdown { display: flex; gap: 15px; margin-top: 10px; }
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            padding: 10px 16px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .countdown-item span { display: block; font-size: 1.5rem; font-weight: 600; }
+
+        /* Container Principal */
+        section { padding: 50px 20px; max-width: 1000px; margin: 0 auto; }
+        .section-title { text-align: center; font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: #d63447; margin-bottom: 30px; }
+
+        /* Cards das Fotos com Legendas */
+        .photo-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            margin-bottom: 45px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card:hover { transform: translateY(-5px); }
+
+        .photo-card img {
+            width: 100%;
+            max-height: 550px;
+            object-fit: cover;
+        }
+
+        .photo-card .card-body {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .photo-card h3 {
+            color: #d63447;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .photo-card p {
+            color: #555;
+            font-size: 1rem;
+        }
+
+        /* Carta de Amor */
+        .love-letter {
+            background: #fff0f3;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid #ffccd5;
+            margin-top: 20px;
+        }
+
+        footer { text-align: center; padding: 25px; background: #222; color: #aaa; font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3.2rem; }
+            .hero h2 { font-size: 1.2rem; }
+            .photo-card img { max-height: 400px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Capa Principal -->
+    <div class="hero">
+        <h1>14 Anos de Amor</h1>
+        <h2>Feliz Dia 16!</h2>
+        <p>Uma história construída dia após dia, repleta de companheirismo, conquistas e a nossa linda família.</p>
+
+        <!-- Botões de Atalho para Ir Direto à Foto -->
+        <div class="nav-buttons">
+            <a href="#foto1" class="btn-nav">1. Passeio em Família</a>
+            <a href="#foto2" class="btn-nav">2. Dia no Kart</a>
+            <a href="#foto3" class="btn-nav">3. Teleférico</a>
+            <a href="#foto4" class="btn-nav">4. A Chegada</a>
+            <a href="#foto5" class="btn-nav">5. Shopping</a>
+            <a href="#foto6" class="btn-nav">6. Niver 3 Anos</a>
+            <a href="#foto7" class="btn-nav">7. Ensaio Fardados</a>
+            <a href="#foto8" class="btn-nav">8. Viagem Aparecida</a>
+        </div>
+
+        <div class="countdown" id="countdown">
+            <div class="countdown-item"><span id="days">00</span>Dias</div>
+            <div class="countdown-item"><span id="hours">00</span>Horas</div>
+            <div class="countdown-item"><span id="minutes">00</span>Min</div>
+            <div class="countdown-item"><span id="seconds">00</span>Seg</div>
+        </div>
+    </div>
+
+    <!-- Feed de Memórias -->
+    <section>
+        <h2 class="section-title">Nossa Trajetória</h2>
+
+        <div class="photo-card" id="foto1">
+            <img src="foto1.jpg" alt="Passeio em Família">
+            <div class="card-body">
+                <h3>Momentos Simples e Especiais</h3>
+                <p>Cada passeio de carro com vocês vira uma memória guardada no coração. A alegria de estarmos juntos onde quer que a gente vá.</p>
+            </div>
+        </div>
+
+        <div class="photo-card" id="foto2">
+            <img src="foto2.jpg" alt="Dia no Kart">
+            <div class="card-body">
+                <h3>Parceria em Todas as Aventuras</h3>
+                <p>Dia de pista, adrenalina e muita diversão! Apoiar os sonhos um do outro e viver novos momentos em família é o que nos move.</p>
+            </div>
+        </div>
+
+        <div class="photo-card" id="foto3">
+            <img src="foto3.jpg" alt="Passeio no Teleférico">
+            <div class="card-body">
+                <h3>Colecionando Vistas e Sorrisos</h3>
+                <p>Lá do alto, vendo a paisagem e lembrando do quanto a nossa própria história é bonita de se admirar. Amo viajar com vocês.</p>
+            </div>
+        </div>
+
+        <div class="photo-card" id="foto4">
+            <img src="foto4.jpg" alt="A Chegada do Bebê">
+            <div class="card-body">
+                <h3>O Amor que Só Se Multiplica</h3>
+                <p>Mais um pedacinho nosso chegando ao mundo. Esse carinho entre as irmãs e o aconchego da nossa casa não têm preço.</p>
+            </div>
+        </div>
+
+        <div class="photo-card" id="foto5">
+            <img src="foto5.jpg" alt="Passeio no Shopping">
+            <div class="card-body">
+                <h3>Nossa Rotina Cheia de Vida</h3>
+                <p>Um passeio num dia comum que se torna inesquecível só por ter vocês ao meu lado. Minhas três princesas!</p>
+            </div>
+        </div>
+
+        <div class="photo-card" id="foto6">
+            <img src="foto6.jpg" alt="Aniversário de 3 Anos">
+            <div class="card-body">
+                <h3>Comemorando Cada Vitórias</h3>
+                <p>Festa, docinhos, balões e a felicidade de ver nossas filhas crescendo com saúde e cercadas de muito amor.</p>
+            </div>
+        </div>
+
+        <div class="photo-card" id="foto7">
+            <img src="foto7.jpg" alt="Ensaio Fardados">
+            <div class="card-body">
+                <h3>Orgulho e Propósito</h3>
+                <p>Lado a lado na missão e na vida. Um ensaio que representa nossa força, nossa dedicação e a proteção da nossa família.</p>
+            </div>
+        </div>
+
+        <div class="photo-card" id="foto8">
+            <img src="foto8.jpg" alt="Viagem para Aparecida">
+            <div class="card-body">
+                <h3>Agradecendo por Tudo</h3>
+                <p>Noite especial abençoada. Olhar para trás e ver esses 14 anos de história nos dá a certeza de que Deus sempre esteve guiando cada passo.</p>
+            </div>
+        </div>
+
+        <!-- Mensagem de Fechamento -->
+        <div class="love-letter">
+            <h2 class="section-title" style="margin-bottom: 15px;">14 Anos Guardados no Coração</h2>
+            <p>Nenhum texto é capaz de resumir tudo o que vivemos até aqui. São 14 anos de cumplicidade, aprendizado, conquistas e a construção da família mais linda do mundo.</p>
+            <p style="margin-top: 10px;">Obrigado por ser minha parceira de vida, minha melhor amiga e a mãe incrível das nossas meninas.</p>
+            <p style="font-weight: bold; color: #d63447; margin-top: 20px; font-size: 1.2rem;">Feliz Dia 16! Te amo para sempre. ❤️</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>14 Anos de História — Comemoração do Nosso Dia 16 ❤️</p>
+    </footer>
+
+    <script>
+        function updateCountdown() {
+            const now = new Date();
+            let targetDate = new Date(now.getFullYear(), now.getMonth(), 16);
+            if (now.getDate() >= 16) {
+                targetDate.setMonth(targetDate.getMonth() + 1);
+            }
+            const diff = targetDate - now;
+
+            document.getElementById('days').innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+            document.getElementById('hours').innerText = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(Math.floor((diff / 1000 / 60) % 60)).padStart(2, '0');
+            document.getElementById('seconds').innerText = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
+
