@@ -20,25 +20,27 @@ body{
     color:#333;
     overflow-x:hidden;
 }
+/* =========================
+   CORAÇÕES
+========================= */
 .heart{
     position:fixed;
-    bottom:-30px;
-    font-size:20px;
-    animation:subir 8s linear forwards;
-    opacity:.7;
-    z-index:999;
+    bottom:-40px;
+    z-index:9999;
     pointer-events:none;
+    animation:subir linear forwards;
+    opacity:0;
 }
 @keyframes subir{
     0%{
-        transform:translateY(0) rotate(0deg);
+        transform:translateY(0) rotate(0deg) scale(.7);
         opacity:0;
     }
-    20%{
-        opacity:.8;
+    15%{
+        opacity:.9;
     }
     100%{
-        transform:translateY(-110vh) rotate(360deg);
+        transform:translateY(-115vh) rotate(360deg) scale(1.2);
         opacity:0;
     }
 }
@@ -46,41 +48,53 @@ body{
    CAPA
 ========================= */
 .hero{
-    min-height:100vh;
+    min-height:100svh;
     background:
     linear-gradient(
-        rgba(0,0,0,.08),
-        rgba(0,0,0,.18)
+        rgba(0,0,0,.10),
+        rgba(0,0,0,.28)
     ),
     url("IMG_3285.png")
-    center center/cover no-repeat;
+    center/cover no-repeat;
     display:flex;
-    flex-direction:column;
     justify-content:center;
     align-items:center;
     text-align:center;
     color:white;
     padding:30px 20px;
     position:relative;
+    overflow:hidden;
+}
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+    radial-gradient(
+        circle at center,
+        transparent 20%,
+        rgba(0,0,0,.25) 100%
+    );
+    pointer-events:none;
 }
 .hero-content{
+    position:relative;
+    z-index:2;
     max-width:900px;
-    animation:aparecer 2s ease;
-    text-shadow:
-    0 2px 8px rgba(0,0,0,.45);
+    animation:entrada 2s ease;
 }
-@keyframes aparecer{
+@keyframes entrada{
     from{
         opacity:0;
-        transform:translateY(30px);
+        transform:translateY(40px);
     }
     to{
         opacity:1;
         transform:translateY(0);
     }
 }
-.hero .small-title{
-    font-size:1rem;
+.small-title{
+    font-size:.9rem;
     letter-spacing:4px;
     text-transform:uppercase;
     margin-bottom:15px;
@@ -88,22 +102,23 @@ body{
 .hero h1{
     font-family:'Great Vibes',cursive;
     font-size:
-    clamp(4rem,12vw,8rem);
-    color:#fff0f3;
+    clamp(4.5rem,14vw,9rem);
+    color:#fff;
     text-shadow:
-    0 5px 25px rgba(0,0,0,.45);
+    0 4px 25px rgba(0,0,0,.55);
+    line-height:1;
 }
 .hero h2{
     font-size:
     clamp(1.3rem,4vw,2rem);
     font-weight:400;
-    margin-bottom:15px;
+    margin:15px 0;
 }
 .hero p{
     max-width:650px;
     margin:auto;
-    font-size:1rem;
     line-height:1.8;
+    font-size:1rem;
 }
 /* =========================
    BOTÃO
@@ -111,18 +126,18 @@ body{
 .main-button{
     display:inline-block;
     margin-top:30px;
-    padding:14px 28px;
-    border-radius:40px;
+    padding:15px 30px;
+    border-radius:50px;
     background:#d63447;
     color:white;
     text-decoration:none;
     font-weight:600;
-    transition:.3s;
     box-shadow:
-    0 8px 25px rgba(214,52,71,.4);
+    0 10px 30px rgba(214,52,71,.45);
+    transition:.3s;
 }
 .main-button:hover{
-    transform:translateY(-4px);
+    transform:translateY(-5px) scale(1.03);
     background:#b91f35;
 }
 /* =========================
@@ -137,20 +152,20 @@ body{
 }
 .countdown-item{
     min-width:75px;
-    padding:12px 10px;
-    background:rgba(255,255,255,.2);
-    backdrop-filter:blur(10px);
+    padding:13px 10px;
+    background:rgba(255,255,255,.18);
+    backdrop-filter:blur(12px);
     border:
     1px solid rgba(255,255,255,.4);
-    border-radius:15px;
+    border-radius:16px;
 }
 .countdown-item span{
     display:block;
-    font-size:1.7rem;
+    font-size:1.6rem;
     font-weight:700;
 }
 .countdown-item small{
-    font-size:.7rem;
+    font-size:.65rem;
     text-transform:uppercase;
 }
 /* =========================
@@ -159,20 +174,39 @@ body{
 section{
     max-width:1100px;
     margin:auto;
-    padding:80px 20px;
+    padding:90px 20px;
 }
 .section-title{
     text-align:center;
     font-family:'Great Vibes',cursive;
     font-size:
-    clamp(3rem,8vw,5rem);
+    clamp(3.2rem,8vw,5.5rem);
     color:#d63447;
-    margin-bottom:15px;
+    margin-bottom:10px;
 }
 .section-subtitle{
     text-align:center;
     color:#777;
-    margin-bottom:50px;
+    margin-bottom:55px;
+}
+/* =========================
+   INTRO 14 ANOS
+========================= */
+.years{
+    text-align:center;
+    padding:70px 20px 30px;
+}
+.years-number{
+    font-family:'Great Vibes',cursive;
+    font-size:
+    clamp(5rem,18vw,10rem);
+    color:#d63447;
+    line-height:1;
+}
+.years-text{
+    font-size:1.1rem;
+    color:#777;
+    margin-top:10px;
 }
 /* =========================
    MEMÓRIAS
@@ -185,17 +219,22 @@ section{
 }
 .memory-card{
     background:white;
-    border-radius:20px;
+    border-radius:25px;
     overflow:hidden;
     box-shadow:
-    0 10px 35px rgba(0,0,0,.08);
-    transition:.4s;
-    height:100%;
+    0 12px 40px rgba(0,0,0,.08);
+    transition:.5s;
+    opacity:0;
+    transform:translateY(40px);
+}
+.memory-card.visible{
+    opacity:1;
+    transform:translateY(0);
 }
 .memory-card:hover{
-    transform:translateY(-8px);
+    transform:translateY(-10px);
     box-shadow:
-    0 18px 40px rgba(0,0,0,.13);
+    0 20px 50px rgba(0,0,0,.15);
 }
 .memory-card img{
     width:100%;
@@ -209,11 +248,34 @@ section{
 .memory-text h3{
     color:#d63447;
     font-size:1.3rem;
-    margin-bottom:8px;
+    margin-bottom:10px;
 }
 .memory-text p{
     color:#666;
     line-height:1.7;
+}
+/* =========================
+   LINHA DO TEMPO
+========================= */
+.story-line{
+    margin:30px auto 70px;
+    max-width:700px;
+    text-align:center;
+}
+.story-item{
+    padding:25px;
+    margin:20px 0;
+    border-radius:20px;
+    background:white;
+    box-shadow:
+    0 8px 30px rgba(0,0,0,.06);
+}
+.story-item strong{
+    display:block;
+    font-family:'Great Vibes',cursive;
+    color:#d63447;
+    font-size:2.4rem;
+    margin-bottom:5px;
 }
 /* =========================
    GALERIA
@@ -228,14 +290,14 @@ section{
     width:100%;
     height:300px;
     object-fit:cover;
-    border-radius:15px;
+    border-radius:18px;
     cursor:pointer;
     transition:.4s;
     box-shadow:
-    0 5px 20px rgba(0,0,0,.08);
+    0 6px 25px rgba(0,0,0,.08);
 }
 .gallery img:hover{
-    transform:scale(1.03);
+    transform:scale(1.04);
 }
 /* =========================
    CARTA
@@ -248,53 +310,66 @@ section{
         #fff9fa
     );
     border:1px solid #ffd0d8;
-    border-radius:25px;
+    border-radius:30px;
     padding:
-    clamp(30px,6vw,60px);
+    clamp(30px,6vw,65px);
     text-align:center;
     box-shadow:
-    0 10px 35px rgba(0,0,0,.05);
+    0 15px 45px rgba(0,0,0,.07);
+    position:relative;
+}
+.letter::before{
+    content:"❤️";
+    position:absolute;
+    top:20px;
+    left:25px;
+    opacity:.5;
+}
+.letter::after{
+    content:"❤️";
+    position:absolute;
+    bottom:20px;
+    right:25px;
+    opacity:.5;
 }
 .letter p{
     max-width:750px;
-    margin:15px auto;
+    margin:17px auto;
     line-height:1.9;
     color:#555;
 }
 .signature{
     font-family:'Great Vibes',cursive;
-    font-size:3rem;
+    font-size:3.2rem;
     color:#d63447;
-    margin-top:25px;
+    margin-top:30px;
 }
 /* =========================
    SURPRESA
 ========================= */
 .surprise{
     text-align:center;
-    padding-top:40px;
-    padding-bottom:100px;
+    padding-bottom:110px;
 }
 .surprise-button{
     border:none;
     background:#d63447;
     color:white;
-    padding:17px 35px;
+    padding:18px 35px;
     border-radius:50px;
     font-size:1rem;
     font-weight:600;
     cursor:pointer;
     box-shadow:
-    0 8px 25px rgba(214,52,71,.35);
+    0 10px 30px rgba(214,52,71,.4);
     transition:.3s;
 }
 .surprise-button:hover{
-    transform:scale(1.05);
-    background:#b91f35;
+    transform:scale(1.07);
 }
 .hidden-message{
     display:none;
-    margin-top:40px;
+    margin-top:45px;
     animation:surpresa 1.5s ease;
 }
 @keyframes surpresa{
@@ -310,32 +385,33 @@ section{
 .hidden-message h3{
     font-family:'Great Vibes',cursive;
     font-size:
-    clamp(4rem,12vw,7rem);
+    clamp(4.5rem,15vw,8rem);
     color:#d63447;
+    line-height:1;
 }
 .hidden-message p{
+    max-width:700px;
+    margin:18px auto;
     font-size:1.1rem;
     line-height:1.8;
-    max-width:700px;
-    margin:15px auto;
 }
 /* =========================
    MÚSICA
 ========================= */
 .music-box{
     max-width:650px;
-    margin:40px auto 0;
+    margin:45px auto 0;
     padding:25px;
     background:white;
-    border-radius:22px;
+    border-radius:25px;
     box-shadow:
-    0 10px 35px rgba(0,0,0,.10);
+    0 12px 40px rgba(0,0,0,.10);
     border:1px solid #ffd5dc;
 }
 .music-title{
     font-family:'Great Vibes',cursive;
     color:#d63447;
-    font-size:2.6rem;
+    font-size:2.8rem;
 }
 .music-subtitle{
     color:#777;
@@ -346,12 +422,6 @@ audio{
     width:100%;
     height:50px;
 }
-.music-error{
-    display:none;
-    margin-top:15px;
-    color:#c62828;
-    font-size:.85rem;
-}
 /* =========================
    RODAPÉ
 ========================= */
@@ -359,7 +429,7 @@ footer{
     background:#24191b;
     color:#bbb;
     text-align:center;
-    padding:30px 20px;
+    padding:35px 20px;
 }
 footer span{
     color:#ff7588;
@@ -368,20 +438,8 @@ footer span{
    CELULAR
 ========================= */
 @media(max-width:700px){
-    .hero{
-        min-height:100svh;
-    }
     .hero h1{
-        font-size:4rem;
-    }
-    .countdown{
-        gap:6px;
-    }
-    .countdown-item{
-        min-width:65px;
-    }
-    .countdown-item span{
-        font-size:1.3rem;
+        font-size:4.5rem;
     }
     .timeline{
         grid-template-columns:1fr;
@@ -397,9 +455,25 @@ footer span{
     .gallery img{
         height:220px;
     }
-    .music-box{
-        padding:15px;
-    }
+}
+/* =========================
+   TELA CHEIA DA FOTO
+========================= */
+.photo-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.94);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:20000;
+    padding:20px;
+}
+.photo-overlay img{
+    max-width:95%;
+    max-height:90%;
+    object-fit:contain;
+    border-radius:18px;
 }
 </style>
 </head>
@@ -408,502 +482,527 @@ footer span{
      CAPA
 ========================= -->
 <div class="hero">
-    <div class="hero-content">
-        <div class="small-title">
-            Uma história que começou há 14 anos
-        </div>
-        <h1>
-            Nosso Amor
-        </h1>
-        <h2>
-            Feliz Dia 16 ❤️
-        </h2>
-        <p>
-            14 anos de histórias, aventuras,
-            desafios, conquistas, sorrisos e,
-            acima de tudo, amor.
-        </p>
-        <a
-            href="#historia"
-            class="main-button">
-            ❤️ Reviver nossa história
-        </a>
-        <div class="countdown">
-            <div class="countdown-item">
-                <span id="days">00</span>
-                <small>Dias</small>
-            </div>
-            <div class="countdown-item">
-                <span id="hours">00</span>
-                <small>Horas</small>
-            </div>
-            <div class="countdown-item">
-                <span id="minutes">00</span>
-                <small>Minutos</small>
-            </div>
-            <div class="countdown-item">
-                <span id="seconds">00</span>
-                <small>Segundos</small>
-            </div>
-        </div>
-    </div>
+<div class="hero-content">
+<div class="small-title">
+Uma história que começou há 14 anos
+</div>
+<h1>
+Nosso Amor
+</h1>
+<h2>
+Feliz Dia 16 ❤️
+</h2>
+<p>
+14 anos de histórias, aventuras,
+desafios, conquistas, sorrisos e,
+acima de tudo, amor.
+</p>
+<a href="#historia" class="main-button">
+❤️ Reviver nossa história
+</a>
+<div class="countdown">
+<div class="countdown-item">
+<span id="days">00</span>
+<small>Dias</small>
+</div>
+<div class="countdown-item">
+<span id="hours">00</span>
+<small>Horas</small>
+</div>
+<div class="countdown-item">
+<span id="minutes">00</span>
+<small>Minutos</small>
+</div>
+<div class="countdown-item">
+<span id="seconds">00</span>
+<small>Segundos</small>
+</div>
+</div>
+</div>
 </div>
 <!-- =========================
-     TRAJETÓRIA
+     14 ANOS
+========================= -->
+<div class="years">
+<div class="years-number">
+14
+</div>
+<div class="years-text">
+anos de uma história que ainda está sendo escrita ❤️
+</div>
+</div>
+<!-- =========================
+     HISTÓRIA
 ========================= -->
 <section id="historia">
-    <h2 class="section-title">
-        Nossa Trajetória
-    </h2>
-    <p class="section-subtitle">
-        Cada fotografia guarda um pedacinho da nossa história.
-    </p>
-    <div class="timeline">
-        <div class="memory-card">
-            <img src="IMG_3282.png" alt="Memória 3282">
-            <div class="memory-text">
-                <h3>
-                    O começo de mais uma lembrança ❤️
-                </h3>
-                <p>
-                    Cada momento ao seu lado merece ser guardado.
-                </p>
-            </div>
-        </div>
-        <div class="memory-card">
-            <img src="IMG_3283.png" alt="Memória 3283">
-            <div class="memory-text">
-                <h3>
-                    Momentos especiais
-                </h3>
-                <p>
-                    Porque juntos conseguimos transformar
-                    qualquer dia em uma lembrança inesquecível.
-                </p>
-            </div>
-        </div>
-        <div class="memory-card">
-            <img src="IMG_3284.png" alt="Memória 3284">
-            <div class="memory-text">
-                <h3>
-                    Nossa família ❤️
-                </h3>
-                <p>
-                    O maior presente que nossa história poderia nos dar.
-                </p>
-            </div>
-        </div>
-        <div class="memory-card">
-            <img src="IMG_3285.png" alt="Memória 3285">
-            <div class="memory-text">
-                <h3>
-                    Sorrisos
-                </h3>
-                <p>
-                    São esses pequenos momentos que fazem tudo valer a pena.
-                </p>
-            </div>
-        </div>
-        <div class="memory-card">
-            <img src="IMG_3286.png" alt="Memória 3286">
-            <div class="memory-text">
-                <h3>
-                    Ao seu lado
-                </h3>
-                <p>
-                    Onde quer que a vida nos leve,
-                    quero continuar caminhando com você.
-                </p>
-            </div>
-        </div>
-        <div class="memory-card">
-            <img src="IMG_3287.png" alt="Memória 3287">
-            <div class="memory-text">
-                <h3>
-                    Aventuras juntos
-                </h3>
-                <p>
-                    Mais uma página da nossa história.
-                </p>
-            </div>
-        </div>
-        <div class="memory-card">
-            <img src="IMG_3288.png" alt="Memória 3288">
-            <div class="memory-text">
-                <h3>
-                    14 anos de nós
-                </h3>
-                <p>
-                    Uma história construída dia após dia.
-                </p>
-            </div>
-        </div>
-        <div class="memory-card">
-            <img src="IMG_3289.png" alt="Memória 3289">
-            <div class="memory-text">
-                <h3>
-                    Para sempre ❤️
-                </h3>
-                <p>
-                    Depois de tantos anos, ainda escolheria você.
-                </p>
-            </div>
-        </div>
-    </div>
+<h2 class="section-title">
+Nossa Trajetória
+</h2>
+<p class="section-subtitle">
+Cada fotografia guarda um pedacinho da nossa história.
+</p>
+<div class="story-line">
+<div class="story-item">
+<strong>
+O começo
+</strong>
+Onde tudo começou e uma nova história nasceu. ❤️
+</div>
+<div class="story-item">
+<strong>
+Nossa caminhada
+</strong>
+Foram sonhos, desafios, conquistas,
+risadas e muitos momentos juntos.
+</div>
+<div class="story-item">
+<strong>
+Nossa família
+</strong>
+O maior presente que nossa história poderia nos dar.
+</div>
+<div class="story-item">
+<strong>
+Hoje
+</strong>
+14 anos depois, ainda seguimos escolhendo
+um ao outro.
+</div>
+</div>
+<div class="timeline">
+<div class="memory-card">
+<img src="IMG_3282.png">
+<div class="memory-text">
+<h3>
+O começo de mais uma lembrança ❤️
+</h3>
+<p>
+Cada momento ao seu lado merece ser guardado.
+</p>
+</div>
+</div>
+<div class="memory-card">
+<img src="IMG_3283.png">
+<div class="memory-text">
+<h3>
+Momentos especiais
+</h3>
+<p>
+Porque juntos conseguimos transformar
+qualquer dia em uma lembrança inesquecível.
+</p>
+</div>
+</div>
+<div class="memory-card">
+<img src="IMG_3284.png">
+<div class="memory-text">
+<h3>
+Nossa família ❤️
+</h3>
+<p>
+O maior presente que nossa história poderia nos dar.
+</p>
+</div>
+</div>
+<div class="memory-card">
+<img src="IMG_3285.png">
+<div class="memory-text">
+<h3>
+Sorrisos
+</h3>
+<p>
+São esses pequenos momentos que fazem tudo valer a pena.
+</p>
+</div>
+</div>
+<div class="memory-card">
+<img src="IMG_3286.png">
+<div class="memory-text">
+<h3>
+Ao seu lado
+</h3>
+<p>
+Onde quer que a vida nos leve,
+quero continuar caminhando com você.
+</p>
+</div>
+</div>
+<div class="memory-card">
+<img src="IMG_3287.png">
+<div class="memory-text">
+<h3>
+Aventuras juntos
+</h3>
+<p>
+Mais uma página da nossa história.
+</p>
+</div>
+</div>
+<div class="memory-card">
+<img src="IMG_3288.png">
+<div class="memory-text">
+<h3>
+14 anos de nós
+</h3>
+<p>
+Uma história construída dia após dia.
+</p>
+</div>
+</div>
+<div class="memory-card">
+<img src="IMG_3289.png">
+<div class="memory-text">
+<h3>
+Para sempre ❤️
+</h3>
+<p>
+Depois de tantos anos,
+ainda escolheria você.
+</p>
+</div>
+</div>
+</div>
 </section>
 <!-- =========================
      GALERIA
 ========================= -->
 <section>
-    <h2 class="section-title">
-        Nossas Memórias
-    </h2>
-    <p class="section-subtitle">
-        Mais momentos dos nossos 14 anos.
-    </p>
-    <div class="gallery">
-        <img src="IMG_3290.png" alt="Memória 3290">
-        <img src="IMG_3291.png" alt="Memória 3291">
-        <img src="IMG_3292.png" alt="Memória 3292">
-        <img src="IMG_3293.png" alt="Memória 3293">
-        <img src="IMG_3294.png" alt="Memória 3294">
-        <img src="IMG_3295.png" alt="Memória 3295">
-        <img src="IMG_3296.png" alt="Memória 3296">
-        <img src="IMG_3297.png" alt="Memória 3297">
-        <img src="IMG_3298.png" alt="Memória 3298">
-        <img src="IMG_3299.png" alt="Memória 3299">
-        <img src="IMG_3300.png" alt="Memória 3300">
-        <img src="IMG_3301.png" alt="Memória 3301">
-        <img src="IMG_3302.jpeg" alt="Memória 3302">
-        <img src="IMG_3303.jpeg" alt="Memória 3303">
-        <img src="IMG_3304.jpeg" alt="Memória 3304">
-        <!-- 3305 REMOVIDA -->
-        <img src="IMG_3306.jpeg" alt="Memória 3306">
-        <img src="IMG_3307.jpeg" alt="Memória 3307">
-        <img src="IMG_3308.jpeg" alt="Memória 3308">
-        <img src="IMG_3310.png" alt="Memória 3310">
-        <img src="IMG_3311.jpeg" alt="Memória 3311">
-    </div>
+<h2 class="section-title">
+Nossas Memórias
+</h2>
+<p class="section-subtitle">
+Mais momentos dos nossos 14 anos.
+</p>
+<div class="gallery">
+<img src="IMG_3290.png">
+<img src="IMG_3291.png">
+<img src="IMG_3292.png">
+<img src="IMG_3293.png">
+<img src="IMG_3294.png">
+<img src="IMG_3295.png">
+<img src="IMG_3296.png">
+<img src="IMG_3297.png">
+<img src="IMG_3298.png">
+<img src="IMG_3299.png">
+<img src="IMG_3300.png">
+<img src="IMG_3301.png">
+<img src="IMG_3302.jpeg">
+<img src="IMG_3303.jpeg">
+<img src="IMG_3304.jpeg">
+<!-- 3305 REMOVIDA -->
+<img src="IMG_3306.jpeg">
+<img src="IMG_3307.jpeg">
+<img src="IMG_3308.jpeg">
+<img src="IMG_3310.png">
+<img src="IMG_3311.jpeg">
+</div>
 </section>
 <!-- =========================
      CARTA
 ========================= -->
 <section>
-    <div class="letter">
-        <h2 class="section-title">
-            Uma Carta Para Você
-        </h2>
-        <p>
-            14 anos.
-        </p>
-        <p>
-            Quando olho para trás e penso em tudo que
-            vivemos, percebo que nossa história é muito
-            maior do que qualquer fotografia consegue mostrar.
-        </p>
-        <p>
-            Foram momentos felizes, momentos difíceis,
-            conquistas, mudanças, sonhos e tantos outros
-            momentos que fizeram parte da nossa caminhada.
-        </p>
-        <p>
-            E no meio de tudo isso construímos algo que
-            considero o maior presente da minha vida:
-            <strong>nossa família.</strong>
-        </p>
-        <p>
-            Obrigado por estar comigo, por dividir a vida,
-            os sonhos, as dificuldades e as alegrias.
-        </p>
-        <p>
-            Obrigado por ser minha parceira e por construir
-            comigo essa história que ainda está longe de terminar.
-        </p>
-        <p>
-            Que venham muitos outros anos,
-            muitas viagens, muitos sonhos realizados,
-            muitas risadas e muitos momentos ao seu lado.
-        </p>
-        <div class="signature">
-            Eu escolheria você novamente. ❤️
-        </div>
-    </div>
+<div class="letter">
+<h2 class="section-title">
+Uma Carta Para Você
+</h2>
+<p>
+14 anos.
+</p>
+<p>
+Quando olho para trás e penso em tudo que
+vivemos, percebo que nossa história é muito
+maior do que qualquer fotografia consegue mostrar.
+</p>
+<p>
+Foram momentos felizes, momentos difíceis,
+conquistas, mudanças, sonhos e tantos outros
+momentos que fizeram parte da nossa caminhada.
+</p>
+<p>
+E no meio de tudo isso construímos algo que
+considero o maior presente da minha vida:
+<strong>nossa família.</strong>
+</p>
+<p>
+Obrigado por estar comigo, por dividir a vida,
+os sonhos, as dificuldades e as alegrias.
+</p>
+<p>
+Obrigado por ser minha parceira e por construir
+comigo essa história que ainda está longe de terminar.
+</p>
+<p>
+Que venham muitos outros anos,
+muitas viagens, muitos sonhos realizados,
+muitas risadas e muitos momentos ao seu lado.
+</p>
+<div class="signature">
+Eu escolheria você novamente. ❤️
+</div>
+</div>
 </section>
 <!-- =========================
      SURPRESA
 ========================= -->
 <section class="surprise">
-    <h2 class="section-title">
-        E ainda tem uma surpresa...
-    </h2>
-    <p class="section-subtitle">
-        Você chegou até aqui. Agora clique.
-    </p>
-    <button
-        class="surprise-button"
-        onclick="abrirSurpresa()">
-        🎁 Abrir minha surpresa
-    </button>
-    <div
-        class="hidden-message"
-        id="surpriseMessage">
-        <h3>
-            Eu te amo! ❤️
-        </h3>
-        <p>
-            Se eu pudesse voltar no tempo e viver tudo
-            novamente, eu viveria cada momento ao seu lado.
-        </p>
-        <p>
-            E se a vida me desse a oportunidade de escolher
-            mais uma vez...
-        </p>
-        <p>
-            <strong>
-                Eu escolheria você.
-            </strong>
-        </p>
-        <p>
-            Feliz Dia 16.<br>
-            Feliz 14 anos de nós. ❤️
-        </p>
-        <div class="music-box">
-            <div class="music-title">
-                Nossa Música ❤️
-            </div>
-            <div class="music-subtitle">
-                O Que É Que Tem — Jorge & Mateus
-            </div>
-            <audio
-                id="musica"
-                controls
-                preload="metadata">
-                <source
-                    src="Jorge _ Mateus - O Que É Que Tem - [DVD Ao Vivo em Jurerê] - (Clipe Oficial)(MP3_160K).mp3"
-                    type="audio/mpeg">
-            </audio>
-            <div
-                id="musicError"
-                class="music-error">
-                ⚠️ Não foi possível carregar o arquivo de música.
-                Verifique se o nome do MP3 no GitHub está exatamente igual.
-            </div>
-        </div>
-    </div>
+<h2 class="section-title">
+E ainda tem uma surpresa...
+</h2>
+<p class="section-subtitle">
+Você chegou até aqui. Agora clique.
+</p>
+<button
+class="surprise-button"
+onclick="abrirSurpresa()">
+🎁 Abrir minha surpresa
+</button>
+<div
+class="hidden-message"
+id="surpriseMessage">
+<h3>
+Eu te amo! ❤️
+</h3>
+<p>
+Se eu pudesse voltar no tempo e viver tudo
+novamente, eu viveria cada momento ao seu lado.
+</p>
+<p>
+E se a vida me desse a oportunidade
+de escolher mais uma vez...
+</p>
+<p>
+<strong>
+Eu escolheria você.
+</strong>
+</p>
+<p>
+Feliz Dia 16.<br>
+Feliz 14 anos de nós. ❤️
+</p>
+<!-- =========================
+     MÚSICA
+========================= -->
+<div class="music-box">
+<div class="music-title">
+Nossa Música ❤️
+</div>
+<div class="music-subtitle">
+O Que É Que Tem — Jorge & Mateus
+</div>
+<audio
+id="musica"
+controls
+preload="auto">
+<source
+src="Musica.mp3.mp3"
+type="audio/mpeg">
+Seu navegador não suporta áudio.
+</audio>
+</div>
+</div>
 </section>
 <!-- =========================
      RODAPÉ
 ========================= -->
 <footer>
-    <p>
-        Feito com ❤️ para celebrar
-        <span>14 anos de história</span>.
-    </p>
-    <p style="margin-top:8px;">
-        Nosso Dia 16 ❤️
-    </p>
+<p>
+Feito com ❤️ para celebrar
+<span>14 anos de história</span>.
+</p>
+<p style="margin-top:8px;">
+Nosso Dia 16 ❤️
+</p>
 </footer>
 <script>
 /* =========================
    CONTADOR
 ========================= */
 function updateCountdown(){
-    const now = new Date();
-    let target = new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        16,
-        0,
-        0,
-        0
-    );
-    if(now.getDate() >= 16){
-        target.setMonth(
-            target.getMonth()+1
-        );
-    }
-    const diff =
-        target.getTime() -
-        now.getTime();
-    const days =
-        Math.floor(
-            diff/(1000*60*60*24)
-        );
-    const hours =
-        Math.floor(
-            (diff/(1000*60*60))%24
-        );
-    const minutes =
-        Math.floor(
-            (diff/(1000*60))%60
-        );
-    const seconds =
-        Math.floor(
-            (diff/1000)%60
-        );
-    document.getElementById("days")
-        .innerText =
-        String(days)
-        .padStart(2,"0");
-    document.getElementById("hours")
-        .innerText =
-        String(hours)
-        .padStart(2,"0");
-    document.getElementById("minutes")
-        .innerText =
-        String(minutes)
-        .padStart(2,"0");
-    document.getElementById("seconds")
-        .innerText =
-        String(seconds)
-        .padStart(2,"0");
-}
-setInterval(
-    updateCountdown,
-    1000
+const now = new Date();
+let target = new Date(
+now.getFullYear(),
+now.getMonth(),
+16,
+0,
+0,
+0
 );
+if(now.getDate() >= 16){
+target.setMonth(
+target.getMonth()+1
+);
+}
+const diff =
+target.getTime() -
+now.getTime();
+const days =
+Math.floor(
+diff/(1000*60*60*24)
+);
+const hours =
+Math.floor(
+(diff/(1000*60*60))%24
+);
+const minutes =
+Math.floor(
+(diff/(1000*60))%60
+);
+const seconds =
+Math.floor(
+(diff/1000)%60
+);
+document.getElementById("days")
+.innerText =
+String(days)
+.padStart(2,"0");
+document.getElementById("hours")
+.innerText =
+String(hours)
+.padStart(2,"0");
+document.getElementById("minutes")
+.innerText =
+String(minutes)
+.padStart(2,"0");
+document.getElementById("seconds")
+.innerText =
+String(seconds)
+.padStart(2,"0");
+}
+setInterval(updateCountdown,1000);
 updateCountdown();
 /* =========================
    CORAÇÕES
 ========================= */
 function criarCoracao(){
-    const heart =
-        document.createElement("div");
-    heart.className =
-        "heart";
-    heart.innerHTML =
-        Math.random() > .5
-        ? "❤️"
-        : "💕";
-    heart.style.left =
-        Math.random()*100+"vw";
-    heart.style.animationDuration =
-        (5+Math.random()*5)+"s";
-    heart.style.fontSize =
-        (12+Math.random()*18)+"px";
-    document.body.appendChild(
-        heart
-    );
-    setTimeout(
-        ()=>heart.remove(),
-        10000
-    );
+const heart =
+document.createElement("div");
+heart.className="heart";
+heart.innerHTML =
+Math.random() > .5
+? "❤️"
+: "💕";
+heart.style.left =
+Math.random()*100+"vw";
+heart.style.fontSize =
+(12+Math.random()*22)+"px";
+heart.style.animationDuration =
+(5+Math.random()*5)+"s";
+document.body.appendChild(heart);
+setTimeout(
+()=>heart.remove(),
+10000
+);
 }
 /* =========================
-   SURPRESA + MÚSICA
+   CORAÇÕES AUTOMÁTICOS
 ========================= */
-function abrirSurpresa(){
-    const message =
-        document.getElementById(
-            "surpriseMessage"
-        );
-    const button =
-        document.querySelector(
-            ".surprise-button"
-        );
-    const musica =
-        document.getElementById(
-            "musica"
-        );
-    message.style.display =
-        "block";
-    button.style.display =
-        "none";
-    musica.currentTime = 0;
-    musica.play().catch(
-        function(){
-            /*
-             O navegador pode impedir
-             o autoplay. Nesse caso,
-             o botão do próprio áudio
-             pode ser usado.
-            */
-        }
-    );
-    for(
-        let i=0;
-        i<40;
-        i++
-    ){
-        setTimeout(
-            criarCoracao,
-            i*100
-        );
-    }
-}
-/* =========================
-   ERRO DA MÚSICA
-========================= */
-document
-.getElementById("musica")
-.addEventListener(
-    "error",
-    function(){
-        document.getElementById(
-            "musicError"
-        ).style.display =
-        "block";
-    }
+setInterval(
+criarCoracao,
+1800
 );
 /* =========================
-   GALERIA EM TELA CHEIA
+   SURPRESA
+========================= */
+function abrirSurpresa(){
+const message =
+document.getElementById(
+"surpriseMessage"
+);
+const button =
+document.querySelector(
+".surprise-button"
+);
+const musica =
+document.getElementById(
+"musica"
+);
+message.style.display="block";
+button.style.display="none";
+/*
+   Música começa do início.
+*/
+musica.currentTime=0;
+musica.play().catch(
+function(){
+console.log(
+"Reprodução automática bloqueada."
+);
+}
+);
+/*
+   Chuva especial.
+*/
+for(
+let i=0;
+i<60;
+i++
+){
+setTimeout(
+criarCoracao,
+i*80
+);
+}
+}
+/* =========================
+   ANIMAÇÃO DOS CARDS
+========================= */
+const cards =
+document.querySelectorAll(
+".memory-card"
+);
+const observer =
+new IntersectionObserver(
+entries=>{
+entries.forEach(
+entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add(
+"visible"
+);
+}
+}
+);
+},
+{
+threshold:.15
+}
+);
+cards.forEach(
+card=>{
+observer.observe(card);
+}
+);
+/* =========================
+   GALERIA
 ========================= */
 document.querySelectorAll(
-    ".gallery img"
+".gallery img"
 ).forEach(
-    img=>{
-        img.addEventListener(
-            "click",
-            ()=>{
-                const overlay =
-                    document.createElement(
-                        "div"
-                    );
-                overlay.style.position =
-                    "fixed";
-                overlay.style.inset =
-                    "0";
-                overlay.style.background =
-                    "rgba(0,0,0,.92)";
-                overlay.style.display =
-                    "flex";
-                overlay.style.alignItems =
-                    "center";
-                overlay.style.justifyContent =
-                    "center";
-                overlay.style.zIndex =
-                    "2000";
-                overlay.style.padding =
-                    "20px";
-                const image =
-                    document.createElement(
-                        "img"
-                    );
-                image.src =
-                    img.src;
-                image.style.maxWidth =
-                    "95%";
-                image.style.maxHeight =
-                    "90%";
-                image.style.objectFit =
-                    "contain";
-                image.style.borderRadius =
-                    "15px";
-                overlay.appendChild(
-                    image
-                );
-                overlay.addEventListener(
-                    "click",
-                    ()=>{
-                        overlay.remove();
-                    }
-                );
-                document.body.appendChild(
-                    overlay
-                );
-            }
-        );
-    }
+img=>{
+img.addEventListener(
+"click",
+()=>{
+const overlay =
+document.createElement("div");
+overlay.className =
+"photo-overlay";
+const image =
+document.createElement("img");
+image.src =
+img.src;
+overlay.appendChild(image);
+overlay.addEventListener(
+"click",
+()=>{
+overlay.remove();
+}
+);
+document.body.appendChild(
+overlay
+);
+}
+);
+}
 );
 </script>
 </body>
