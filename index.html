@@ -21,7 +21,7 @@ body{
     overflow-x:hidden;
 }
 /* =========================
-   CORAÇÕES FLUTUANTES
+   CORAÇÕES
 ========================= */
 .heart{
     position:fixed;
@@ -67,8 +67,7 @@ body{
 }
 .hero-content{
     max-width:900px;
-    animation:
-    aparecer 2s ease;
+    animation:aparecer 2s ease;
 }
 @keyframes aparecer{
     from{
@@ -107,7 +106,7 @@ body{
     line-height:1.8;
 }
 /* =========================
-   BOTÃO
+   BOTÃO PRINCIPAL
 ========================= */
 .main-button{
     display:inline-block;
@@ -175,7 +174,7 @@ section{
     margin-bottom:50px;
 }
 /* =========================
-   LINHA DO TEMPO
+   TIMELINE
 ========================= */
 .timeline{
     position:relative;
@@ -290,6 +289,7 @@ section{
 .surprise{
     text-align:center;
     padding-top:40px;
+    padding-bottom:100px;
 }
 .surprise-button{
     border:none;
@@ -306,41 +306,48 @@ section{
 }
 .surprise-button:hover{
     transform:scale(1.05);
+    background:#b91f35;
 }
 .hidden-message{
     display:none;
-    margin-top:30px;
-    animation:aparecer 1s ease;
+    margin-top:40px;
+    animation:surpresa 1.5s ease;
+}
+@keyframes surpresa{
+    from{
+        opacity:0;
+        transform:scale(.7);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
 }
 .hidden-message h3{
     font-family:'Great Vibes',cursive;
-    font-size:4rem;
+    font-size:
+    clamp(4rem,12vw,7rem);
     color:#d63447;
+    text-shadow:
+    0 5px 20px rgba(214,52,71,.2);
 }
 .hidden-message p{
     font-size:1.1rem;
     line-height:1.8;
     max-width:700px;
-    margin:auto;
+    margin:15px auto;
 }
 /* =========================
-   MÚSICA
+   PLAYER DA MÚSICA
 ========================= */
-.music-button{
+.music-player{
     position:fixed;
-    right:18px;
-    bottom:18px;
-    width:52px;
-    height:52px;
-    border-radius:50%;
-    border:none;
-    background:#d63447;
-    color:white;
-    font-size:20px;
-    cursor:pointer;
-    z-index:1000;
-    box-shadow:
-    0 5px 20px rgba(0,0,0,.25);
+    width:1px;
+    height:1px;
+    opacity:0;
+    pointer-events:none;
+    left:-9999px;
+    top:-9999px;
 }
 /* =========================
    RODAPÉ
@@ -353,6 +360,20 @@ footer{
 }
 footer span{
     color:#ff7588;
+}
+/* =========================
+   ANIMAÇÃO
+========================= */
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:
+    opacity .8s ease,
+    transform .8s ease;
+}
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
 }
 /* =========================
    CELULAR
@@ -395,20 +416,6 @@ footer span{
         height:220px;
     }
 }
-/* =========================
-   ANIMAÇÃO AO ROLAR
-========================= */
-.reveal{
-    opacity:0;
-    transform:translateY(40px);
-    transition:
-    opacity .8s ease,
-    transform .8s ease;
-}
-.reveal.active{
-    opacity:1;
-    transform:translateY(0);
-}
 </style>
 </head>
 <body>
@@ -437,20 +444,36 @@ footer span{
         <!-- CONTADOR -->
         <div class="countdown">
             <div class="countdown-item">
-                <span id="days">00</span>
-                <small>Dias</small>
+                <span id="days">
+                    00
+                </span>
+                <small>
+                    Dias
+                </small>
             </div>
             <div class="countdown-item">
-                <span id="hours">00</span>
-                <small>Horas</small>
+                <span id="hours">
+                    00
+                </span>
+                <small>
+                    Horas
+                </small>
             </div>
             <div class="countdown-item">
-                <span id="minutes">00</span>
-                <small>Minutos</small>
+                <span id="minutes">
+                    00
+                </span>
+                <small>
+                    Minutos
+                </small>
             </div>
             <div class="countdown-item">
-                <span id="seconds">00</span>
-                <small>Segundos</small>
+                <span id="seconds">
+                    00
+                </span>
+                <small>
+                    Segundos
+                </small>
             </div>
         </div>
     </div>
@@ -466,7 +489,6 @@ footer span{
         Algumas das milhares de lembranças que construímos juntos.
     </p>
     <div class="timeline">
-        <!-- FOTO 3282 -->
         <div class="memory reveal">
             <div class="memory-card">
                 <img src="IMG_3282.jpg"
@@ -483,7 +505,6 @@ footer span{
                 </div>
             </div>
         </div>
-        <!-- FOTO 3283 -->
         <div class="memory reveal">
             <div class="memory-card">
                 <img src="IMG_3283.jpg"
@@ -499,7 +520,6 @@ footer span{
                 </div>
             </div>
         </div>
-        <!-- FOTO 3284 -->
         <div class="memory reveal">
             <div class="memory-card">
                 <img src="IMG_3284.jpg"
@@ -515,7 +535,6 @@ footer span{
                 </div>
             </div>
         </div>
-        <!-- FOTO 3285 -->
         <div class="memory reveal">
             <div class="memory-card">
                 <img src="IMG_3285.jpg"
@@ -531,7 +550,6 @@ footer span{
                 </div>
             </div>
         </div>
-        <!-- FOTO 3286 -->
         <div class="memory reveal">
             <div class="memory-card">
                 <img src="IMG_3286.jpg"
@@ -547,7 +565,6 @@ footer span{
                 </div>
             </div>
         </div>
-        <!-- FOTO 3287 -->
         <div class="memory reveal">
             <div class="memory-card">
                 <img src="IMG_3287.jpg"
@@ -563,7 +580,6 @@ footer span{
                 </div>
             </div>
         </div>
-        <!-- FOTO 3288 -->
         <div class="memory reveal">
             <div class="memory-card">
                 <img src="IMG_3288.jpg"
@@ -579,14 +595,13 @@ footer span{
                 </div>
             </div>
         </div>
-        <!-- FOTO 3289 -->
         <div class="memory reveal">
             <div class="memory-card">
                 <img src="IMG_3289.jpg"
                      alt="Nossa memória">
                 <div class="memory-text">
                     <h3>
-                        Juntos
+                        Juntos ❤️
                     </h3>
                     <p>
                         Depois de tantos anos,
@@ -674,7 +689,7 @@ footer span{
     </div>
 </section>
 <!-- =========================
-     SURPRESA FINAL
+     SURPRESA
 ========================= -->
 <section class="surprise">
     <h2 class="section-title">
@@ -685,7 +700,7 @@ footer span{
     </p>
     <button
         class="surprise-button"
-        onclick="mostrarSurpresa()">
+        onclick="abrirSurpresa()">
         🎁 Abrir minha surpresa
     </button>
     <div
@@ -715,6 +730,20 @@ footer span{
     </div>
 </section>
 <!-- =========================
+     PLAYER YOUTUBE
+========================= -->
+<div class="music-player">
+    <iframe
+        id="youtubePlayer"
+        width="1"
+        height="1"
+        src=""
+        title="Música"
+        frameborder="0"
+        allow="autoplay; encrypted-media">
+    </iframe>
+</div>
+<!-- =========================
      RODAPÉ
 ========================= -->
 <footer>
@@ -726,26 +755,9 @@ footer span{
         Nosso Dia 16 ❤️
     </p>
 </footer>
-<!-- =========================
-     MÚSICA
-========================= -->
-<audio id="music" loop>
-    <!--
-    COLOQUE SUA MÚSICA COM O NOME:
-    musica.mp3
-    na mesma pasta do index.html.
-    -->
-    <source src="musica.mp3" type="audio/mpeg">
-</audio>
-<button
-    class="music-button"
-    onclick="toggleMusic()"
-    id="musicButton">
-    🎵
-</button>
 <script>
 /* =========================
-   CONTADOR PARA O PRÓXIMO DIA 16
+   CONTADOR
 ========================= */
 function updateCountdown(){
     const now = new Date();
@@ -764,7 +776,8 @@ function updateCountdown(){
         );
     }
     const diff =
-        target.getTime()-now.getTime();
+        target.getTime() -
+        now.getTime();
     const days =
         Math.floor(
             diff/(1000*60*60*24)
@@ -794,7 +807,10 @@ function updateCountdown(){
         .innerText =
         String(seconds).padStart(2,"0");
 }
-setInterval(updateCountdown,1000);
+setInterval(
+    updateCountdown,
+    1000
+);
 updateCountdown();
 /* =========================
    CORAÇÕES
@@ -813,29 +829,44 @@ function criarCoracao(){
         (5+Math.random()*5)+"s";
     heart.style.fontSize =
         (12+Math.random()*18)+"px";
-    document.body.appendChild(heart);
+    document.body.appendChild(
+        heart
+    );
     setTimeout(
         ()=>heart.remove(),
         10000
     );
 }
-setInterval(criarCoracao,1200);
+setInterval(
+    criarCoracao,
+    1200
+);
 /* =========================
    ANIMAÇÃO AO ROLAR
 ========================= */
 function revealOnScroll(){
     const elements =
-        document.querySelectorAll(".reveal");
+        document.querySelectorAll(
+            ".reveal"
+        );
     const windowHeight =
         window.innerHeight;
-    elements.forEach(element=>{
-        const position =
-            element.getBoundingClientRect().top;
-        if(position <
-           windowHeight-80){
-            element.classList.add("active");
+    elements.forEach(
+        element=>{
+            const position =
+                element
+                .getBoundingClientRect()
+                .top;
+            if(
+                position <
+                windowHeight-80
+            ){
+                element.classList.add(
+                    "active"
+                );
+            }
         }
-    });
+    );
 }
 window.addEventListener(
     "scroll",
@@ -843,41 +874,45 @@ window.addEventListener(
 );
 revealOnScroll();
 /* =========================
-   SURPRESA
+   SURPRESA + MÚSICA
 ========================= */
-function mostrarSurpresa(){
+function abrirSurpresa(){
     const message =
         document.getElementById(
             "surpriseMessage"
         );
-    message.style.display="block";
-    document.querySelector(
-        ".surprise-button"
-    ).style.display="none";
-}
-/* =========================
-   MÚSICA
-========================= */
-const music =
-    document.getElementById("music");
-const musicButton =
-    document.getElementById(
-        "musicButton"
-    );
-function toggleMusic(){
-    if(music.paused){
-        music.play()
-        .then(()=>{
-            musicButton.innerHTML="🔊";
-        })
-        .catch(()=>{
-            alert(
-                "Coloque o arquivo musica.mp3 na mesma pasta do site."
-            );
-        });
-    }else{
-        music.pause();
-        musicButton.innerHTML="🎵";
+    const button =
+        document.querySelector(
+            ".surprise-button"
+        );
+    /* Revela a mensagem */
+    message.style.display =
+        "block";
+    button.style.display =
+        "none";
+    /*
+       IMPORTANTE:
+       Este é o vídeo oficial
+       do YouTube da música.
+       A música começa somente
+       depois do clique.
+    */
+    const player =
+        document.getElementById(
+            "youtubePlayer"
+        );
+    player.src =
+        "https://www.youtube.com/embed/QoXlyT4A0Ks?autoplay=1&loop=1&playlist=QoXlyT4A0Ks";
+    /* Cria uma chuva especial de corações */
+    for(
+        let i=0;
+        i<25;
+        i++
+    ){
+        setTimeout(
+            criarCoracao,
+            i*120
+        );
     }
 }
 /* =========================
@@ -885,48 +920,60 @@ function toggleMusic(){
 ========================= */
 document.querySelectorAll(
     ".gallery img"
-).forEach(img=>{
-    img.addEventListener(
-        "click",
-        ()=>{
-            const overlay =
-                document.createElement(
-                    "div"
+).forEach(
+    img=>{
+        img.addEventListener(
+            "click",
+            ()=>{
+                const overlay =
+                    document.createElement(
+                        "div"
+                    );
+                overlay.style.position=
+                    "fixed";
+                overlay.style.inset="0";
+                overlay.style.background=
+                    "rgba(0,0,0,.92)";
+                overlay.style.display=
+                    "flex";
+                overlay.style.alignItems=
+                    "center";
+                overlay.style.justifyContent=
+                    "center";
+                overlay.style.zIndex=
+                    "2000";
+                overlay.style.padding=
+                    "20px";
+                const image =
+                    document.createElement(
+                        "img"
+                    );
+                image.src =
+                    img.src;
+                image.style.maxWidth=
+                    "95%";
+                image.style.maxHeight=
+                    "90%";
+                image.style.objectFit=
+                    "contain";
+                image.style.borderRadius=
+                    "15px";
+                overlay.appendChild(
+                    image
                 );
-            overlay.style.position="fixed";
-            overlay.style.inset="0";
-            overlay.style.background=
-                "rgba(0,0,0,.92)";
-            overlay.style.display=
-                "flex";
-            overlay.style.alignItems=
-                "center";
-            overlay.style.justifyContent=
-                "center";
-            overlay.style.zIndex="2000";
-            overlay.style.padding="20px";
-            const image =
-                document.createElement(
-                    "img"
+                overlay.addEventListener(
+                    "click",
+                    ()=>{
+                        overlay.remove();
+                    }
                 );
-            image.src=img.src;
-            image.style.maxWidth="95%";
-            image.style.maxHeight="90%";
-            image.style.objectFit="contain";
-            image.style.borderRadius="15px";
-            overlay.appendChild(image);
-            overlay.addEventListener(
-                "click",
-                ()=>{
-                    overlay.remove();
-                }
-            );
-            document.body.appendChild(
-                overlay
-            );
-        }
-    );
-});
+                document.body.appendChild(
+                    overlay
+                );
+            }
+        );
+    }
+);
 </script>
 </body>
 </html>
