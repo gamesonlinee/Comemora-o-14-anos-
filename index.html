@@ -2,16 +2,10 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>14 Anos de Amor ❤️</title>
-<link
-href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap"
-rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* =========================
-   CONFIGURAÇÕES GERAIS
-========================= */
 *{
     margin:0;
     padding:0;
@@ -615,7 +609,7 @@ footer span{
         <img src="IMG_3302.jpeg" alt="Memória 3302">
         <img src="IMG_3303.jpeg" alt="Memória 3303">
         <img src="IMG_3304.jpeg" alt="Memória 3304">
-        <!-- IMG_3305 FOI SUBSTITUÍDA -->
+        <!-- FOTO 3305 SUBSTITUÍDA PELA 3313 -->
         <img src="IMG_3313.jpeg" alt="Memória 3313">
         <img src="IMG_3306.jpeg" alt="Memória 3306">
         <img src="IMG_3307.jpeg" alt="Memória 3307">
@@ -718,8 +712,7 @@ footer span{
             </div>
             <audio
                 id="musica"
-                controls
-                loop>
+                controls>
                 <source
                     src="nossa-musica.mp3"
                     type="audio/mpeg">
@@ -847,10 +840,10 @@ function abrirSurpresa(){
     button.style.display =
         "none";
     /*
-       A música começa
-       após o clique.
+       COMEÇA A MÚSICA
+       EXATAMENTE EM 1 MINUTO
     */
-    musica.currentTime = 0;
+    musica.currentTime = 60;
     const tocar =
         musica.play();
     if(tocar !== undefined){
@@ -863,8 +856,7 @@ function abrirSurpresa(){
         );
     }
     /*
-       Chuva especial
-       de corações.
+       CHUVA DE CORAÇÕES
     */
     for(
         let i=0;
@@ -877,6 +869,19 @@ function abrirSurpresa(){
         );
     }
 }
+/* =========================
+   REPETIR MÚSICA A PARTIR
+   DE 1 MINUTO
+========================= */
+const musica =
+    document.getElementById("musica");
+musica.addEventListener(
+    "ended",
+    function(){
+        musica.currentTime = 60;
+        musica.play();
+    }
+);
 /* =========================
    GALERIA EM TELA CHEIA
 ========================= */
