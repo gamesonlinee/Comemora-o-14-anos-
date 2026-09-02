@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#d63447">
 <title>14 Anos de Amor ❤️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{
@@ -22,7 +24,7 @@ body{
     overflow-x:hidden;
 }
 /* ==================================================
-   CORAÇÕES VOANDO
+   CORAÇÕES
 ================================================== */
 .heart{
     position:fixed;
@@ -31,13 +33,14 @@ body{
     pointer-events:none;
     animation:subir linear forwards;
     opacity:0;
+    will-change:transform,opacity;
 }
 @keyframes subir{
     0%{
         transform:
-        translateY(0)
-        rotate(0deg)
-        scale(.7);
+            translateY(0)
+            rotate(0deg)
+            scale(.7);
         opacity:0;
     }
     15%{
@@ -45,179 +48,9 @@ body{
     }
     100%{
         transform:
-        translateY(-115vh)
-        rotate(360deg)
-        scale(1.2);
-        opacity:0;
-    }
-}
-/* ==================================================
-   BORBOLETAS VOANDO
-   DESENHADAS EM CSS — SEM EMOJI
-================================================== */
-.flying-butterfly{
-    position:fixed;
-    bottom:-80px;
-    left:0;
-    width:42px;
-    height:34px;
-    z-index:9998;
-    pointer-events:none;
-    opacity:0;
-    animation:
-        butterflyFly linear forwards;
-    filter:
-        drop-shadow(
-            0 3px 4px rgba(0,0,0,.15)
-        );
-}
-/* corpo da borboleta */
-.flying-butterfly .butterfly-body{
-    position:absolute;
-    left:19px;
-    top:6px;
-    width:5px;
-    height:23px;
-    border-radius:50%;
-    background:#513434;
-    z-index:3;
-}
-/* antenas */
-.flying-butterfly .antenna-left,
-.flying-butterfly .antenna-right{
-    position:absolute;
-    top:0;
-    width:9px;
-    height:9px;
-    border-top:1.5px solid #513434;
-    border-radius:50%;
-    z-index:3;
-}
-.flying-butterfly .antenna-left{
-    left:14px;
-    transform:
-        rotate(-30deg);
-}
-.flying-butterfly .antenna-right{
-    left:20px;
-    transform:
-        rotate(30deg);
-}
-/* asas */
-.flying-butterfly .wing{
-    position:absolute;
-    top:4px;
-    width:20px;
-    height:25px;
-    z-index:2;
-    border-radius:
-        70% 30% 65% 35%;
-    animation:
-        baterAsas .35s ease-in-out infinite alternate;
-}
-/* asa esquerda */
-.flying-butterfly .wing-left{
-    left:0;
-    transform-origin:
-        right center;
-    background:
-        radial-gradient(
-            circle at 60% 40%,
-            #ffd1dc 0 10%,
-            #ff8fab 11% 55%,
-            #e85d7c 56% 100%
-        );
-    transform:
-        rotate(-25deg);
-}
-/* asa direita */
-.flying-butterfly .wing-right{
-    right:0;
-    transform-origin:
-        left center;
-    background:
-        radial-gradient(
-            circle at 40% 40%,
-            #ffd1dc 0 10%,
-            #ff8fab 11% 55%,
-            #e85d7c 56% 100%
-        );
-    border-radius:
-        30% 70% 35% 65%;
-    transform:
-        rotate(25deg);
-}
-@keyframes baterAsas{
-    from{
-        transform:
-            scaleX(.55)
-            rotate(-18deg);
-    }
-    to{
-        transform:
-            scaleX(1)
-            rotate(18deg);
-    }
-}
-/* movimento da borboleta */
-@keyframes butterflyFly{
-    0%{
-        transform:
-            translate(
-                0,
-                0
-            )
-            rotate(-8deg)
-            scale(.7);
-        opacity:0;
-    }
-    10%{
-        opacity:.95;
-    }
-    25%{
-        transform:
-            translate(
-                18vw,
-                -24vh
-            )
-            rotate(12deg)
-            scale(1);
-    }
-    45%{
-        transform:
-            translate(
-                -8vw,
-                -48vh
-            )
-            rotate(-10deg)
-            scale(1.05);
-    }
-    65%{
-        transform:
-            translate(
-                22vw,
-                -70vh
-            )
-            rotate(10deg)
-            scale(1.1);
-    }
-    82%{
-        transform:
-            translate(
-                5vw,
-                -95vh
-            )
-            rotate(-8deg)
-            scale(.95);
-    }
-    100%{
-        transform:
-            translate(
-                -12vw,
-                -125vh
-            )
-            rotate(8deg)
-            scale(.8);
+            translateY(-115vh)
+            rotate(360deg)
+            scale(1.2);
         opacity:0;
     }
 }
@@ -229,13 +62,13 @@ body{
     height:88vh;
     max-height:900px;
     background:
-    linear-gradient(
-        rgba(0,0,0,.15),
-        rgba(0,0,0,.38)
-    ),
-    url("IMG_3285.png")
-    center center/
-    cover no-repeat;
+        linear-gradient(
+            rgba(0,0,0,.15),
+            rgba(0,0,0,.38)
+        ),
+        url("IMG_3285.png")
+        center center/
+        cover no-repeat;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -250,11 +83,11 @@ body{
     position:absolute;
     inset:0;
     background:
-    radial-gradient(
-        circle at center,
-        transparent 15%,
-        rgba(0,0,0,.35) 100%
-    );
+        radial-gradient(
+            circle at center,
+            transparent 15%,
+            rgba(0,0,0,.35) 100%
+        );
     pointer-events:none;
 }
 .hero-content{
@@ -262,18 +95,16 @@ body{
     z-index:2;
     max-width:900px;
     animation:
-        entrada 2s ease;
+        entrada 1.2s ease;
 }
 @keyframes entrada{
     from{
         opacity:0;
-        transform:
-            translateY(40px);
+        transform:translateY(40px);
     }
     to{
         opacity:1;
-        transform:
-            translateY(0);
+        transform:translateY(0);
     }
 }
 .small-title{
@@ -383,11 +214,11 @@ section{
     padding:
         90px 20px 60px;
     background:
-    linear-gradient(
-        180deg,
-        #fff7f8,
-        #fff
-    );
+        linear-gradient(
+            180deg,
+            #fff7f8,
+            #fff
+        );
 }
 .years-number{
     font-family:'Great Vibes',cursive;
@@ -459,17 +290,14 @@ section{
         0 12px 40px rgba(0,0,0,.08);
     transition:.5s;
     opacity:0;
-    transform:
-        translateY(40px);
+    transform:translateY(40px);
 }
 .memory-card.visible{
     opacity:1;
-    transform:
-        translateY(0);
+    transform:translateY(0);
 }
 .memory-card:hover{
-    transform:
-        translateY(-10px);
+    transform:translateY(-10px);
     box-shadow:
         0 20px 50px rgba(0,0,0,.15);
 }
@@ -478,6 +306,7 @@ section{
     height:360px;
     object-fit:cover;
     display:block;
+    loading:lazy;
 }
 .memory-text{
     padding:25px;
@@ -490,38 +319,6 @@ section{
 .memory-text p{
     color:#666;
     line-height:1.7;
-}
-/* ==================================================
-   BORBOLETA DA HISTÓRIA
-================================================== */
-.butterfly-section{
-    text-align:center;
-    padding:
-        40px 20px 90px;
-}
-.butterfly{
-    font-size:4rem;
-    display:inline-block;
-    animation:
-        voar 3s ease-in-out infinite;
-}
-@keyframes voar{
-    0%,100%{
-        transform:
-            translateY(0)
-            rotate(-5deg);
-    }
-    50%{
-        transform:
-            translateY(-15px)
-            rotate(5deg);
-    }
-}
-.butterfly-text{
-    max-width:700px;
-    margin:20px auto 0;
-    color:#777;
-    line-height:1.8;
 }
 /* ==================================================
    GALERIA
@@ -541,21 +338,22 @@ section{
     transition:.4s;
     box-shadow:
         0 6px 25px rgba(0,0,0,.08);
+    content-visibility:auto;
+    contain-intrinsic-size:300px;
 }
 .gallery img:hover{
-    transform:
-        scale(1.04);
+    transform:scale(1.04);
 }
 /* ==================================================
    CARTA
 ================================================== */
 .letter{
     background:
-    linear-gradient(
-        135deg,
-        #fff0f3,
-        #fff9fa
-    );
+        linear-gradient(
+            135deg,
+            #fff0f3,
+            #fff9fa
+        );
     border:
         1px solid #ffd0d8;
     border-radius:30px;
@@ -634,8 +432,7 @@ section{
     transition:.3s;
 }
 .surprise-button:hover{
-    transform:
-        scale(1.07);
+    transform:scale(1.07);
 }
 .hidden-message{
     display:none;
@@ -646,13 +443,11 @@ section{
 @keyframes surpresa{
     from{
         opacity:0;
-        transform:
-            scale(.7);
+        transform:scale(.7);
     }
     to{
         opacity:1;
-        transform:
-            scale(1);
+        transform:scale(1);
     }
 }
 .hidden-message h3{
@@ -717,13 +512,12 @@ footer span{
     color:#ff7588;
 }
 /* ==================================================
-   TELA CHEIA DA FOTO
+   FOTO EM TELA CHEIA
 ================================================== */
 .photo-overlay{
     position:fixed;
     inset:0;
-    background:
-        rgba(0,0,0,.94);
+    background:rgba(0,0,0,.94);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -741,13 +535,11 @@ footer span{
 }
 @keyframes zoomFoto{
     from{
-        transform:
-            scale(.8);
+        transform:scale(.8);
         opacity:0;
     }
     to{
-        transform:
-            scale(1);
+        transform:scale(1);
         opacity:1;
     }
 }
@@ -784,8 +576,7 @@ footer span{
         min-height:100svh;
         height:100svh;
         max-height:none;
-        background-position:
-            center center;
+        background-position:center center;
     }
     .hero h1{
         font-size:4.5rem;
@@ -808,32 +599,17 @@ footer span{
         padding:
             25px 20px;
     }
-    .butterfly{
-        font-size:3.5rem;
-    }
-    .flying-butterfly{
-        width:34px;
-        height:28px;
-        transform:scale(.85);
-    }
 }
 /* ==================================================
    PC
 ================================================== */
 @media(min-width:701px){
-    /*
-       A capa fica um pouco menor no computador
-       para mostrar mais da foto.
-    */
     .hero{
         min-height:700px;
         height:86vh;
         max-height:850px;
     }
 }
-/* ==================================================
-   ANIMAÇÃO DE ENTRADA DOS CARDS
-================================================== */
 </style>
 </head>
 <body>
@@ -866,36 +642,20 @@ class="main-button">
 </a>
 <div class="countdown">
 <div class="countdown-item">
-<span id="days">
-00
-</span>
-<small>
-Dias
-</small>
+<span id="days">00</span>
+<small>Dias</small>
 </div>
 <div class="countdown-item">
-<span id="hours">
-00
-</span>
-<small>
-Horas
-</small>
+<span id="hours">00</span>
+<small>Horas</small>
 </div>
 <div class="countdown-item">
-<span id="minutes">
-00
-</span>
-<small>
-Minutos
-</small>
+<span id="minutes">00</span>
+<small>Minutos</small>
 </div>
 <div class="countdown-item">
-<span id="seconds">
-00
-</span>
-<small>
-Segundos
-</small>
+<span id="seconds">00</span>
+<small>Segundos</small>
 </div>
 </div>
 </div>
@@ -977,7 +737,11 @@ E escolheria novamente.
 </div>
 <div class="timeline">
 <div class="memory-card">
-<img src="IMG_3282.png">
+<img
+src="IMG_3282.png"
+alt="Nossa lembrança"
+loading="lazy"
+decoding="async">
 <div class="memory-text">
 <h3>
 O começo de mais uma lembrança ❤️
@@ -988,7 +752,11 @@ Cada momento ao seu lado merece ser guardado.
 </div>
 </div>
 <div class="memory-card">
-<img src="IMG_3283.png">
+<img
+src="IMG_3283.png"
+alt="Momento especial"
+loading="lazy"
+decoding="async">
 <div class="memory-text">
 <h3>
 Momentos especiais
@@ -1000,7 +768,11 @@ qualquer dia em uma lembrança inesquecível.
 </div>
 </div>
 <div class="memory-card">
-<img src="IMG_3284.png">
+<img
+src="IMG_3284.png"
+alt="Nossa família"
+loading="lazy"
+decoding="async">
 <div class="memory-text">
 <h3>
 Nossa família ❤️
@@ -1012,7 +784,11 @@ poderia nos dar.
 </div>
 </div>
 <div class="memory-card">
-<img src="IMG_3285.png">
+<img
+src="IMG_3285.png"
+alt="Sorrisos"
+loading="lazy"
+decoding="async">
 <div class="memory-text">
 <h3>
 Sorrisos
@@ -1024,7 +800,11 @@ que fazem tudo valer a pena.
 </div>
 </div>
 <div class="memory-card">
-<img src="IMG_3286.png">
+<img
+src="IMG_3286.png"
+alt="Ao seu lado"
+loading="lazy"
+decoding="async">
 <div class="memory-text">
 <h3>
 Ao seu lado
@@ -1036,7 +816,11 @@ quero continuar caminhando com você.
 </div>
 </div>
 <div class="memory-card">
-<img src="IMG_3287.png">
+<img
+src="IMG_3287.png"
+alt="Aventuras juntos"
+loading="lazy"
+decoding="async">
 <div class="memory-text">
 <h3>
 Aventuras juntos
@@ -1047,7 +831,11 @@ Mais uma página da nossa história.
 </div>
 </div>
 <div class="memory-card">
-<img src="IMG_3288.png">
+<img
+src="IMG_3288.png"
+alt="14 anos"
+loading="lazy"
+decoding="async">
 <div class="memory-text">
 <h3>
 14 anos de nós
@@ -1058,7 +846,11 @@ Uma história construída dia após dia.
 </div>
 </div>
 <div class="memory-card">
-<img src="IMG_3289.png">
+<img
+src="IMG_3289.png"
+alt="Para sempre"
+loading="lazy"
+decoding="async">
 <div class="memory-text">
 <h3>
 Para sempre ❤️
@@ -1072,29 +864,6 @@ ainda escolheria você.
 </div>
 </section>
 <!-- ==================================================
-     BORBOLETA
-================================================== -->
-<section class="butterfly-section">
-<div class="butterfly">
-🦋
-</div>
-<h2 class="section-title">
-E até vestida de borboleta...
-</h2>
-<p class="butterfly-text">
-Porque em 14 anos de história
-não poderiam faltar as nossas brincadeiras,
-as nossas lembranças e aqueles momentos
-que só nós dois entendemos. 😂❤️
-</p>
-<p class="butterfly-text">
-E sim...
-<strong>
-eu ainda lembro de você vestida de borboleta. 🦋😂
-</strong>
-</p>
-</section>
-<!-- ==================================================
      GALERIA
 ================================================== -->
 <section>
@@ -1105,26 +874,41 @@ Nossas Memórias
 Mais momentos dos nossos 14 anos.
 </p>
 <div class="gallery">
-<img src="IMG_3290.png">
-<img src="IMG_3291.png">
-<img src="IMG_3292.png">
-<img src="IMG_3293.png">
-<img src="IMG_3294.png">
-<img src="IMG_3295.png">
-<img src="IMG_3296.png">
-<img src="IMG_3297.png">
-<img src="IMG_3298.png">
-<img src="IMG_3299.png">
-<img src="IMG_3300.png">
-<img src="IMG_3301.png">
-<img src="IMG_3302.jpeg">
-<img src="IMG_3303.jpeg">
-<img src="IMG_3304.jpeg">
-<img src="IMG_3306.jpeg">
-<img src="IMG_3307.jpeg">
-<img src="IMG_3308.jpeg">
-<img src="IMG_3310.png">
-<img src="IMG_3311.jpeg">
+<img src="IMG_3290.png" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3291.png" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3292.png" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3293.png" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3294.png" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3295.png" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3296.png" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3297.png" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3298.png" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3299.png" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3300.png" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3301.png" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3302.jpeg" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3303.jpeg" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3304.jpeg" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3306.jpeg" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3307.jpeg" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3308.jpeg" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3310.png" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3311.jpeg" loading="lazy" decoding="async" alt="Memória">
+<!-- NOVAS FOTOS -->
+<img src="IMG_3400.jpeg" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3401.jpeg" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3402.jpeg" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3403.jpeg" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3405.jpeg" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3406.jpeg" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3407.jpeg" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3408.jpeg" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3409.jpeg" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3410.jpeg" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3411.jpeg" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3412.jpeg" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3413.png" loading="lazy" decoding="async" alt="Memória">
+<img src="IMG_3414.jpeg" loading="lazy" decoding="async" alt="Memória">
 </div>
 </section>
 <!-- ==================================================
@@ -1225,9 +1009,6 @@ onclick="abrirSurpresa()">
 <div
 class="hidden-message"
 id="surpriseMessage">
-<div class="butterfly">
-🦋
-</div>
 <h3>
 Eu te amo! ❤️
 </h3>
@@ -1254,14 +1035,6 @@ todos os momentos bons
 e até os difíceis.
 </p>
 <p>
-E sim...
-</p>
-<p>
-<strong>
-Eu escolheria até você vestida de borboleta. 🦋😂❤️
-</strong>
-</p>
-<p>
 Porque depois de 14 anos,
 eu continuo tendo certeza
 da mesma coisa.
@@ -1285,7 +1058,7 @@ O Que É Que Tem — Jorge & Mateus
 <audio
 id="musica"
 controls
-preload="auto">
+preload="metadata">
 <source
 src="Musica.mp3.mp3"
 type="audio/mpeg">
@@ -1327,18 +1100,10 @@ function updateCountdown(){
         -
         now.getTime();
     if(diff < 0){
-        document.getElementById(
-            "days"
-        ).innerText="14";
-        document.getElementById(
-            "hours"
-        ).innerText="00";
-        document.getElementById(
-            "minutes"
-        ).innerText="00";
-        document.getElementById(
-            "seconds"
-        ).innerText="00";
+        document.getElementById("days").innerText="14";
+        document.getElementById("hours").innerText="00";
+        document.getElementById("minutes").innerText="00";
+        document.getElementById("seconds").innerText="00";
         return;
     }
     const days =
@@ -1363,60 +1128,35 @@ function updateCountdown(){
             (diff/1000)
             %60
         );
-    document.getElementById(
-        "days"
-    ).innerText =
-        String(days)
-        .padStart(2,"0");
-    document.getElementById(
-        "hours"
-    ).innerText =
-        String(hours)
-        .padStart(2,"0");
-    document.getElementById(
-        "minutes"
-    ).innerText =
-        String(minutes)
-        .padStart(2,"0");
-    document.getElementById(
-        "seconds"
-    ).innerText =
-        String(seconds)
-        .padStart(2,"0");
+    document.getElementById("days").innerText =
+        String(days).padStart(2,"0");
+    document.getElementById("hours").innerText =
+        String(hours).padStart(2,"0");
+    document.getElementById("minutes").innerText =
+        String(minutes).padStart(2,"0");
+    document.getElementById("seconds").innerText =
+        String(seconds).padStart(2,"0");
 }
-setInterval(
-    updateCountdown,
-    1000
-);
+setInterval(updateCountdown,1000);
 updateCountdown();
 /* ==================================================
-   CRIAR CORAÇÃO
+   CORAÇÃO
 ================================================== */
 function criarCoracao(){
     const heart =
-        document.createElement(
-            "div"
-        );
-    heart.className =
-        "heart";
+        document.createElement("div");
+    heart.className="heart";
     heart.innerHTML =
         Math.random() > .5
         ? "❤️"
         : "💕";
     heart.style.left =
-        Math.random()*100
-        +"vw";
+        Math.random()*100+"vw";
     heart.style.fontSize =
-        (12+
-        Math.random()*22)
-        +"px";
+        (12+Math.random()*22)+"px";
     heart.style.animationDuration =
-        (5+
-        Math.random()*5)
-        +"s";
-    document.body.appendChild(
-        heart
-    );
+        (5+Math.random()*5)+"s";
+    document.body.appendChild(heart);
     setTimeout(
         ()=>{
             heart.remove();
@@ -1425,119 +1165,11 @@ function criarCoracao(){
     );
 }
 /* ==================================================
-   CRIAR BORBOLETA
-================================================== */
-function criarBorboleta(){
-    const butterfly =
-        document.createElement(
-            "div"
-        );
-    butterfly.className =
-        "flying-butterfly";
-    /*
-       Corpo
-    */
-    const body =
-        document.createElement(
-            "div"
-        );
-    body.className =
-        "butterfly-body";
-    /*
-       Asa esquerda
-    */
-    const leftWing =
-        document.createElement(
-            "div"
-        );
-    leftWing.className =
-        "wing wing-left";
-    /*
-       Asa direita
-    */
-    const rightWing =
-        document.createElement(
-            "div"
-        );
-    rightWing.className =
-        "wing wing-right";
-    /*
-       Antenas
-    */
-    const antennaLeft =
-        document.createElement(
-            "div"
-        );
-    antennaLeft.className =
-        "antenna-left";
-    const antennaRight =
-        document.createElement(
-            "div"
-        );
-    antennaRight.className =
-        "antenna-right";
-    butterfly.appendChild(
-        leftWing
-    );
-    butterfly.appendChild(
-        rightWing
-    );
-    butterfly.appendChild(
-        body
-    );
-    butterfly.appendChild(
-        antennaLeft
-    );
-    butterfly.appendChild(
-        antennaRight
-    );
-    butterfly.style.left =
-        Math.random()*100
-        +"vw";
-    butterfly.style.animationDuration =
-        (8+
-        Math.random()*7)
-        +"s";
-    /*
-       Varia levemente o tamanho
-    */
-    butterfly.style.scale =
-        (0.75+
-        Math.random()*.5);
-    document.body.appendChild(
-        butterfly
-    );
-    setTimeout(
-        ()=>{
-            butterfly.remove();
-        },
-        16000
-    );
-}
-/* ==================================================
-   CORAÇÕES AUTOMÁTICOS
+   CORAÇÕES NORMAIS
 ================================================== */
 setInterval(
     criarCoracao,
-    1800
-);
-/* ==================================================
-   BORBOLETAS AUTOMÁTICAS
-================================================== */
-setInterval(
-    criarBorboleta,
-    6500
-);
-/*
-   Primeiras borboletas
-*/
-setTimeout(
-    criarBorboleta,
     1500
-);
-setTimeout(
-    criarBorboleta,
-    4500
 );
 /* ==================================================
    SURPRESA
@@ -1555,10 +1187,8 @@ function abrirSurpresa(){
         document.getElementById(
             "musica"
         );
-    message.style.display =
-        "block";
-    button.style.display =
-        "none";
+    message.style.display="block";
+    button.style.display="none";
     setTimeout(
         function(){
             message.scrollIntoView({
@@ -1568,46 +1198,32 @@ function abrirSurpresa(){
         },
         150
     );
-    /*
-       Tenta iniciar a música
-    */
+    /* Música */
     musica.currentTime=0;
     musica.play().catch(
         function(){
             console.log(
-                "O navegador bloqueou o autoplay."
+                "Autoplay bloqueado pelo navegador."
             );
         }
     );
-    /*
-       Chuva de corações
-    */
+    /* ==================================================
+       CHUVA DE CORAÇÕES ❤️
+       80 CORAÇÕES
+    ================================================== */
     for(
         let i=0;
-        i<60;
+        i<80;
         i++
     ){
         setTimeout(
             criarCoracao,
-            i*80
-        );
-    }
-    /*
-       Muitas borboletas
-    */
-    for(
-        let i=0;
-        i<18;
-        i++
-    ){
-        setTimeout(
-            criarBorboleta,
-            i*220
+            i*70
         );
     }
 }
 /* ==================================================
-   ANIMAÇÃO DOS CARDS
+   CARDS
 ================================================== */
 const cards =
     document.querySelectorAll(
@@ -1623,9 +1239,7 @@ const observer =
                     ){
                         entry.target
                             .classList
-                            .add(
-                                "visible"
-                            );
+                            .add("visible");
                     }
                 }
             );
@@ -1636,9 +1250,7 @@ const observer =
     );
 cards.forEach(
     card=>{
-        observer.observe(
-            card
-        );
+        observer.observe(card);
     }
 );
 /* ==================================================
@@ -1664,20 +1276,15 @@ document.querySelectorAll(
                     );
                 close.className =
                     "photo-close";
-                close.innerHTML =
-                    "×";
+                close.innerHTML="×";
                 const image =
                     document.createElement(
                         "img"
                     );
-                image.src =
-                    img.src;
-                overlay.appendChild(
-                    image
-                );
-                overlay.appendChild(
-                    close
-                );
+                image.src=img.src;
+                image.alt=img.alt;
+                overlay.appendChild(image);
+                overlay.appendChild(close);
                 overlay.addEventListener(
                     "click",
                     ()=>{
@@ -1704,7 +1311,7 @@ document.querySelectorAll(
     }
 );
 /* ==================================================
-   ESC FECHA FOTO
+   ESC
 ================================================== */
 document.addEventListener(
     "keydown",
