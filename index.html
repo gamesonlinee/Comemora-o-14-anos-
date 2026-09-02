@@ -3,1332 +3,1388 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#d63447">
+
+<meta name="theme-color" content="#080808">
+<meta name="description" content="14 Anos de Amor ❤️">
+
 <title>14 Anos de Amor ❤️</title>
+
+<!-- Carrega a imagem principal primeiro -->
+<link rel="preload" as="image" href="IMG_3285.png" fetchpriority="high">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
+
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
+
 html{
     scroll-behavior:smooth;
 }
+
 body{
-    font-family:'Montserrat',sans-serif;
-    background:#fff7f8;
-    color:#333;
+    font-family:'Poppins',sans-serif;
+    background:#080808;
+    color:white;
     overflow-x:hidden;
 }
-/* ==================================================
+
+/* =========================
    CORAÇÕES
-================================================== */
+========================= */
+
 .heart{
     position:fixed;
-    bottom:-50px;
-    z-index:9999;
+    bottom:-40px;
+    font-size:20px;
     pointer-events:none;
+    z-index:9999;
     animation:subir linear forwards;
-    opacity:0;
     will-change:transform,opacity;
+    text-shadow:0 0 10px rgba(255,80,120,.5);
 }
+
 @keyframes subir{
     0%{
-        transform:
-            translateY(0)
-            rotate(0deg)
-            scale(.7);
+        transform:translateY(0) translateX(0) rotate(0deg) scale(.7);
         opacity:0;
     }
-    15%{
+
+    10%{
+        opacity:1;
+    }
+
+    50%{
+        transform:translateY(-50vh) translateX(var(--x)) rotate(180deg) scale(1);
         opacity:.9;
     }
+
     100%{
-        transform:
-            translateY(-115vh)
-            rotate(360deg)
-            scale(1.2);
+        transform:translateY(-115vh) translateX(calc(var(--x) * 1.5)) rotate(360deg) scale(.5);
         opacity:0;
     }
 }
-/* ==================================================
-   CAPA
-================================================== */
+
+/* =========================
+   HERO
+========================= */
+
 .hero{
-    min-height:760px;
-    height:88vh;
-    max-height:900px;
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 20px;
+    overflow:hidden;
+
     background:
         linear-gradient(
-            rgba(0,0,0,.15),
-            rgba(0,0,0,.38)
+            rgba(0,0,0,.48),
+            rgba(0,0,0,.75)
         ),
-        url("IMG_3285.png")
-        center center/
-        cover no-repeat;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    color:white;
-    padding:30px 20px;
-    position:relative;
-    overflow:hidden;
+        url("IMG_3285.png") center/cover no-repeat;
 }
-.hero::after{
+
+.hero::before{
     content:"";
     position:absolute;
     inset:0;
-    background:
-        radial-gradient(
-            circle at center,
-            transparent 15%,
-            rgba(0,0,0,.35) 100%
-        );
-    pointer-events:none;
+    background:radial-gradient(
+        circle at center,
+        rgba(255,60,120,.15),
+        transparent 60%
+    );
 }
+
 .hero-content{
     position:relative;
     z-index:2;
     max-width:900px;
-    animation:
-        entrada 1.2s ease;
 }
-@keyframes entrada{
+
+.hero-small{
+    font-size:18px;
+    letter-spacing:3px;
+    margin-bottom:15px;
+    opacity:.9;
+}
+
+.hero h1{
+    font-family:'Dancing Script',cursive;
+    font-size:clamp(60px,12vw,120px);
+    line-height:.95;
+    margin-bottom:20px;
+    text-shadow:0 5px 30px rgba(0,0,0,.8);
+}
+
+.hero-date{
+    display:inline-block;
+    padding:10px 24px;
+    border-radius:30px;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.3);
+    backdrop-filter:blur(10px);
+    font-size:15px;
+    margin:15px 0 25px;
+}
+
+.hero-text{
+    max-width:700px;
+    margin:auto;
+    font-size:18px;
+    line-height:1.8;
+    color:#eee;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:15px 28px;
+    border:none;
+    border-radius:40px;
+    background:#fff;
+    color:#111;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 10px 35px rgba(255,255,255,.15);
+}
+
+.btn:hover{
+    transform:translateY(-4px) scale(1.03);
+}
+
+/* =========================
+   CONTADOR
+========================= */
+
+.countdown{
+    margin-top:35px;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.time-box{
+    min-width:80px;
+    padding:14px 10px;
+    border-radius:15px;
+    background:rgba(0,0,0,.45);
+    border:1px solid rgba(255,255,255,.15);
+    backdrop-filter:blur(8px);
+}
+
+.time-box strong{
+    display:block;
+    font-size:25px;
+}
+
+.time-box span{
+    font-size:11px;
+    opacity:.7;
+}
+
+/* =========================
+   SEÇÕES
+========================= */
+
+section{
+    padding:90px 20px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:55px;
+}
+
+.section-title h2{
+    font-family:'Dancing Script',cursive;
+    font-size:55px;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#aaa;
+}
+
+/* =========================
+   14 ANOS
+========================= */
+
+.years{
+    text-align:center;
+}
+
+.years-number{
+    font-family:'Dancing Script',cursive;
+    font-size:110px;
+    line-height:1;
+}
+
+.years h3{
+    font-size:28px;
+    margin:10px 0 20px;
+}
+
+.years p{
+    max-width:750px;
+    margin:auto;
+    color:#bbb;
+    line-height:1.8;
+}
+
+/* =========================
+   MEMÓRIAS
+========================= */
+
+.memory-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.memory-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:20px;
+    background:#151515;
+    min-height:300px;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.memory-card img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+    display:block;
+    loading:lazy;
+}
+
+.memory-card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        transparent 55%,
+        rgba(0,0,0,.8)
+    );
+    pointer-events:none;
+}
+
+.memory-card-content{
+    position:absolute;
+    left:20px;
+    right:20px;
+    bottom:20px;
+    z-index:2;
+}
+
+.memory-card-content h3{
+    font-size:20px;
+    margin-bottom:5px;
+}
+
+.memory-card-content p{
+    font-size:13px;
+    color:#ddd;
+}
+
+/* =========================
+   GALERIA
+========================= */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:15px;
+
+    content-visibility:auto;
+    contain-intrinsic-size:1000px;
+}
+
+.gallery img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    border-radius:16px;
+    cursor:pointer;
+    display:block;
+
+    loading:lazy;
+    decoding:async;
+
+    transition:
+        transform .3s ease,
+        filter .3s ease;
+}
+
+.gallery img:hover{
+    transform:scale(1.03);
+    filter:brightness(1.1);
+}
+
+/* =========================
+   CARTA
+========================= */
+
+.letter{
+    max-width:850px;
+    margin:auto;
+    padding:45px 35px;
+    border-radius:25px;
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.08),
+        rgba(255,255,255,.025)
+    );
+    border:1px solid rgba(255,255,255,.1);
+    box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
+
+.letter p{
+    color:#ddd;
+    line-height:2;
+    margin-bottom:20px;
+}
+
+.signature{
+    text-align:right;
+    font-family:'Dancing Script',cursive;
+    font-size:35px;
+    margin-top:30px;
+}
+
+/* =========================
+   FRASE
+========================= */
+
+.love-phrase{
+    text-align:center;
+    padding:100px 20px;
+}
+
+.love-phrase h2{
+    font-family:'Dancing Script',cursive;
+    font-size:clamp(45px,8vw,80px);
+    line-height:1.1;
+}
+
+.love-phrase p{
+    margin-top:25px;
+    color:#aaa;
+}
+
+/* =========================
+   SURPRESA
+========================= */
+
+.surprise{
+    text-align:center;
+}
+
+.surprise-box{
+    max-width:700px;
+    margin:auto;
+}
+
+.surprise-message{
+    display:none;
+    margin-top:35px;
+    padding:40px 30px;
+    border-radius:25px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+    animation:aparecer .8s ease;
+}
+
+.surprise-message.show{
+    display:block;
+}
+
+.surprise-message h3{
+    font-family:'Dancing Script',cursive;
+    font-size:48px;
+    margin-bottom:20px;
+}
+
+.surprise-message p{
+    color:#ddd;
+    line-height:2;
+}
+
+@keyframes aparecer{
     from{
         opacity:0;
-        transform:translateY(40px);
+        transform:translateY(25px);
     }
     to{
         opacity:1;
         transform:translateY(0);
     }
 }
-.small-title{
-    font-size:.9rem;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    margin-bottom:15px;
-}
-.hero h1{
-    font-family:'Great Vibes',cursive;
-    font-size:
-        clamp(4.5rem,14vw,9rem);
-    color:#fff;
-    text-shadow:
-        0 4px 25px rgba(0,0,0,.65);
-    line-height:1;
-}
-.hero h2{
-    font-size:
-        clamp(1.3rem,4vw,2rem);
-    font-weight:400;
-    margin:15px 0;
-}
-.hero p{
-    max-width:700px;
-    margin:auto;
-    line-height:1.8;
-    font-size:1rem;
-}
-/* ==================================================
-   BOTÃO
-================================================== */
-.main-button{
-    display:inline-block;
-    margin-top:30px;
-    padding:15px 30px;
-    border-radius:50px;
-    background:#d63447;
-    color:white;
-    text-decoration:none;
-    font-weight:600;
-    box-shadow:
-        0 10px 30px rgba(214,52,71,.45);
-    transition:.3s;
-}
-.main-button:hover{
-    transform:
-        translateY(-5px)
-        scale(1.03);
-    background:#b91f35;
-}
-/* ==================================================
-   CONTADOR
-================================================== */
-.countdown{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:35px;
-}
-.countdown-item{
-    min-width:75px;
-    padding:13px 10px;
-    background:
-        rgba(255,255,255,.18);
-    backdrop-filter:blur(12px);
-    border:
-        1px solid rgba(255,255,255,.4);
-    border-radius:16px;
-}
-.countdown-item span{
-    display:block;
-    font-size:1.6rem;
-    font-weight:700;
-}
-.countdown-item small{
-    font-size:.65rem;
-    text-transform:uppercase;
-}
-/* ==================================================
-   SEÇÕES
-================================================== */
-section{
-    max-width:1100px;
-    margin:auto;
-    padding:90px 20px;
-}
-.section-title{
-    text-align:center;
-    font-family:'Great Vibes',cursive;
-    font-size:
-        clamp(3.2rem,8vw,5.5rem);
-    color:#d63447;
-    margin-bottom:10px;
-}
-.section-subtitle{
-    text-align:center;
-    color:#777;
-    margin-bottom:55px;
-}
-/* ==================================================
-   14 ANOS
-================================================== */
-.years{
-    text-align:center;
-    padding:
-        90px 20px 60px;
-    background:
-        linear-gradient(
-            180deg,
-            #fff7f8,
-            #fff
-        );
-}
-.years-number{
-    font-family:'Great Vibes',cursive;
-    font-size:
-        clamp(5rem,18vw,10rem);
-    color:#d63447;
-    line-height:1;
-}
-.years-text{
-    font-size:1.1rem;
-    color:#777;
-    margin-top:10px;
-}
-.date-story{
-    margin-top:25px;
-    font-weight:600;
-    color:#d63447;
-    font-size:1rem;
-}
-/* ==================================================
-   HISTÓRIA
-================================================== */
-.story-line{
-    margin:
-        30px auto 70px;
-    max-width:750px;
-    text-align:center;
-}
-.story-item{
-    padding:30px 25px;
-    margin:22px 0;
-    border-radius:20px;
-    background:white;
-    box-shadow:
-        0 8px 30px rgba(0,0,0,.06);
-    transition:.3s;
-}
-.story-item:hover{
-    transform:
-        translateY(-5px);
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.10);
-}
-.story-item strong{
-    display:block;
-    font-family:'Great Vibes',cursive;
-    color:#d63447;
-    font-size:2.7rem;
-    margin-bottom:10px;
-}
-.story-item p{
-    line-height:1.8;
-    color:#666;
-}
-/* ==================================================
-   MEMÓRIAS
-================================================== */
-.timeline{
-    display:grid;
-    grid-template-columns:
-        repeat(2,1fr);
-    gap:35px;
-}
-.memory-card{
-    background:white;
-    border-radius:25px;
-    overflow:hidden;
-    box-shadow:
-        0 12px 40px rgba(0,0,0,.08);
-    transition:.5s;
-    opacity:0;
-    transform:translateY(40px);
-}
-.memory-card.visible{
-    opacity:1;
-    transform:translateY(0);
-}
-.memory-card:hover{
-    transform:translateY(-10px);
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.15);
-}
-.memory-card img{
-    width:100%;
-    height:360px;
-    object-fit:cover;
-    display:block;
-    loading:lazy;
-}
-.memory-text{
-    padding:25px;
-}
-.memory-text h3{
-    color:#d63447;
-    font-size:1.3rem;
-    margin-bottom:10px;
-}
-.memory-text p{
-    color:#666;
-    line-height:1.7;
-}
-/* ==================================================
-   GALERIA
-================================================== */
-.gallery{
-    display:grid;
-    grid-template-columns:
-        repeat(3,1fr);
-    gap:15px;
-}
-.gallery img{
-    width:100%;
-    height:300px;
-    object-fit:cover;
-    border-radius:18px;
-    cursor:pointer;
-    transition:.4s;
-    box-shadow:
-        0 6px 25px rgba(0,0,0,.08);
-    content-visibility:auto;
-    contain-intrinsic-size:300px;
-}
-.gallery img:hover{
-    transform:scale(1.04);
-}
-/* ==================================================
-   CARTA
-================================================== */
-.letter{
-    background:
-        linear-gradient(
-            135deg,
-            #fff0f3,
-            #fff9fa
-        );
-    border:
-        1px solid #ffd0d8;
-    border-radius:30px;
-    padding:
-        clamp(30px,6vw,65px);
-    text-align:center;
-    box-shadow:
-        0 15px 45px rgba(0,0,0,.07);
-    position:relative;
-}
-.letter::before{
-    content:"❤️";
-    position:absolute;
-    top:20px;
-    left:25px;
-    opacity:.5;
-}
-.letter::after{
-    content:"❤️";
-    position:absolute;
-    bottom:20px;
-    right:25px;
-    opacity:.5;
-}
-.letter p{
-    max-width:750px;
-    margin:17px auto;
-    line-height:1.9;
-    color:#555;
-}
-.signature{
-    font-family:'Great Vibes',cursive;
-    font-size:3.2rem;
-    color:#d63447;
-    margin-top:30px;
-}
-/* ==================================================
-   FRASE ESPECIAL
-================================================== */
-.special-love{
-    text-align:center;
-    padding:
-        40px 20px 100px;
-}
-.special-love .love-small{
-    color:#777;
-    margin-bottom:15px;
-}
-.special-love .love-big{
-    font-family:'Great Vibes',cursive;
-    font-size:
-        clamp(3.5rem,10vw,7rem);
-    color:#d63447;
-    line-height:1.1;
-    text-shadow:
-        0 8px 25px rgba(214,52,71,.15);
-}
-/* ==================================================
-   SURPRESA
-================================================== */
-.surprise{
-    text-align:center;
-    padding-bottom:110px;
-}
-.surprise-button{
-    border:none;
-    background:#d63447;
-    color:white;
-    padding:18px 35px;
-    border-radius:50px;
-    font-size:1rem;
-    font-weight:600;
-    cursor:pointer;
-    box-shadow:
-        0 10px 30px rgba(214,52,71,.4);
-    transition:.3s;
-}
-.surprise-button:hover{
-    transform:scale(1.07);
-}
-.hidden-message{
-    display:none;
-    margin-top:45px;
-    animation:
-        surpresa 1.5s ease;
-}
-@keyframes surpresa{
-    from{
-        opacity:0;
-        transform:scale(.7);
-    }
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
-}
-.hidden-message h3{
-    font-family:'Great Vibes',cursive;
-    font-size:
-        clamp(4rem,15vw,8rem);
-    color:#d63447;
-    line-height:1;
-}
-.hidden-message p{
-    max-width:700px;
-    margin:18px auto;
-    font-size:1.1rem;
-    line-height:1.8;
-}
-.final-love{
-    margin-top:35px;
-    font-family:'Great Vibes',cursive;
-    font-size:
-        clamp(3rem,9vw,5.5rem);
-    color:#d63447;
-}
-/* ==================================================
+
+/* =========================
    MÚSICA
-================================================== */
+========================= */
+
 .music-box{
-    max-width:650px;
-    margin:
-        45px auto 0;
-    padding:25px;
-    background:white;
-    border-radius:25px;
-    box-shadow:
-        0 12px 40px rgba(0,0,0,.10);
-    border:
-        1px solid #ffd5dc;
-}
-.music-title{
-    font-family:'Great Vibes',cursive;
-    color:#d63447;
-    font-size:2.8rem;
-}
-.music-subtitle{
-    color:#777;
-    margin-bottom:20px;
-    font-size:.9rem;
-}
-audio{
-    width:100%;
-    height:50px;
-}
-/* ==================================================
-   RODAPÉ
-================================================== */
-footer{
-    background:#24191b;
-    color:#bbb;
     text-align:center;
-    padding:35px 20px;
+    margin-top:35px;
 }
-footer span{
-    color:#ff7588;
+
+audio{
+    width:min(100%,500px);
 }
-/* ==================================================
-   FOTO EM TELA CHEIA
-================================================== */
-.photo-overlay{
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+    padding:50px 20px;
+    border-top:1px solid rgba(255,255,255,.08);
+    color:#888;
+}
+
+footer strong{
+    color:#ddd;
+}
+
+/* =========================
+   TELA DA FOTO
+========================= */
+
+.photo-viewer{
     position:fixed;
     inset:0;
+    z-index:10000;
     background:rgba(0,0,0,.94);
-    display:flex;
+    display:none;
     align-items:center;
     justify-content:center;
-    z-index:20000;
     padding:20px;
-    cursor:pointer;
 }
-.photo-overlay img{
-    max-width:95%;
-    max-height:90%;
+
+.photo-viewer.show{
+    display:flex;
+}
+
+.photo-viewer img{
+    max-width:95vw;
+    max-height:90vh;
     object-fit:contain;
-    border-radius:18px;
-    animation:
-        zoomFoto .3s ease;
+    border-radius:12px;
+    box-shadow:0 20px 80px rgba(0,0,0,.8);
 }
-@keyframes zoomFoto{
-    from{
-        transform:scale(.8);
-        opacity:0;
-    }
-    to{
-        transform:scale(1);
-        opacity:1;
-    }
-}
-.photo-close{
+
+.close-viewer{
     position:absolute;
     top:20px;
     right:25px;
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,.12);
     color:white;
-    font-size:2rem;
-    font-weight:300;
+    font-size:25px;
     cursor:pointer;
 }
-/* ==================================================
-   DATA
-================================================== */
-.date-badge{
-    display:inline-block;
-    margin-top:20px;
-    padding:10px 18px;
-    border-radius:50px;
-    background:
-        rgba(255,255,255,.15);
-    border:
-        1px solid rgba(255,255,255,.35);
-    backdrop-filter:blur(10px);
-    font-size:.9rem;
-    letter-spacing:1px;
-}
-/* ==================================================
+
+/* =========================
    CELULAR
-================================================== */
-@media(max-width:700px){
+========================= */
+
+@media(max-width:600px){
+
+    section{
+        padding:70px 15px;
+    }
+
     .hero{
-        min-height:100svh;
-        height:100svh;
-        max-height:none;
-        background-position:center center;
+        padding:30px 18px;
     }
-    .hero h1{
-        font-size:4.5rem;
+
+    .hero-small{
+        font-size:14px;
+        letter-spacing:2px;
     }
-    .timeline{
-        grid-template-columns:1fr;
+
+    .hero-text{
+        font-size:15px;
+        line-height:1.7;
     }
-    .memory-card img{
-        height:300px;
+
+    .countdown{
+        gap:7px;
     }
+
+    .time-box{
+        min-width:65px;
+        padding:10px 7px;
+    }
+
+    .time-box strong{
+        font-size:20px;
+    }
+
+    .section-title h2{
+        font-size:45px;
+    }
+
+    .years-number{
+        font-size:90px;
+    }
+
+    .letter{
+        padding:30px 22px;
+    }
+
     .gallery{
-        grid-template-columns:
-            repeat(2,1fr);
-        gap:8px;
+        grid-template-columns:repeat(2,1fr);
+        gap:9px;
     }
+
     .gallery img{
         height:220px;
     }
-    .story-item{
-        padding:
-            25px 20px;
+
+    .memory-grid{
+        grid-template-columns:1fr;
+    }
+
+    .memory-card img{
+        height:400px;
+    }
+
+    .surprise-message h3{
+        font-size:40px;
     }
 }
-/* ==================================================
-   PC
-================================================== */
-@media(min-width:701px){
-    .hero{
-        min-height:700px;
-        height:86vh;
-        max-height:850px;
-    }
-}
+
 </style>
 </head>
+
 <body>
-<!-- ==================================================
-     CAPA
-================================================== -->
-<div class="hero">
-<div class="hero-content">
-<div class="small-title">
-Uma história que começou em
-</div>
-<h1>
-16/09/2012
-</h1>
-<h2>
-E continua para todo sempre ❤️
-</h2>
-<p>
-14 anos de histórias, aventuras,
-desafios, conquistas, sorrisos,
-amor e uma família construída juntos.
-</p>
-<div class="date-badge">
-16 de setembro de 2012 → 16 de setembro de 2026
-</div>
-<a
-href="#historia"
-class="main-button">
-❤️ Reviver nossa história
-</a>
-<div class="countdown">
-<div class="countdown-item">
-<span id="days">00</span>
-<small>Dias</small>
-</div>
-<div class="countdown-item">
-<span id="hours">00</span>
-<small>Horas</small>
-</div>
-<div class="countdown-item">
-<span id="minutes">00</span>
-<small>Minutos</small>
-</div>
-<div class="countdown-item">
-<span id="seconds">00</span>
-<small>Segundos</small>
-</div>
-</div>
-</div>
-</div>
-<!-- ==================================================
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            Uma história que começou em
+        </div>
+
+        <h1>16/09/2012</h1>
+
+        <div class="hero-date">
+            16/09/2012 → 16/09/2026 ❤️
+        </div>
+
+        <p class="hero-text">
+            E continua para todo sempre ❤️
+            <br><br>
+            14 anos de histórias, aventuras, desafios,
+            conquistas, sorrisos, amor e uma família
+            construída juntos.
+        </p>
+
+        <button class="btn" onclick="reviverHistoria()">
+            ❤️ Reviver nossa história
+        </button>
+
+        <div class="countdown">
+
+            <div class="time-box">
+                <strong id="dias">0</strong>
+                <span>DIAS</span>
+            </div>
+
+            <div class="time-box">
+                <strong id="horas">0</strong>
+                <span>HORAS</span>
+            </div>
+
+            <div class="time-box">
+                <strong id="minutos">0</strong>
+                <span>MINUTOS</span>
+            </div>
+
+            <div class="time-box">
+                <strong id="segundos">0</strong>
+                <span>SEGUNDOS</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
      14 ANOS
-================================================== -->
-<div class="years">
-<div class="years-number">
-14
-</div>
-<div class="years-text">
-anos de uma história que ainda está sendo escrita ❤️
-</div>
-<div class="date-story">
-16/09/2012 ❤️ 16/09/2026
-</div>
-</div>
-<!-- ==================================================
-     HISTÓRIA
-================================================== -->
-<section id="historia">
-<h2 class="section-title">
-Nossa Trajetória
-</h2>
-<p class="section-subtitle">
-Uma história que começou naquele 16 de setembro de 2012.
-</p>
-<div class="story-line">
-<div class="story-item">
-<strong>
-16 de setembro de 2012
-</strong>
-<p>
-O dia em que nossas vidas se encontraram
-e uma nova história começou. ❤️
-</p>
-</div>
-<div class="story-item">
-<strong>
-Nossa caminhada
-</strong>
-<p>
-Vieram os sonhos, os desafios,
-as conquistas, as risadas,
-as dificuldades e incontáveis momentos juntos.
-</p>
-</div>
-<div class="story-item">
-<strong>
-Nossa família
-</strong>
-<p>
-E no meio dessa caminhada construímos
-o nosso maior presente:
-nossa família. ❤️
-</p>
-</div>
-<div class="story-item">
-<strong>
-14 anos depois...
-</strong>
-<p>
-Em 16 de setembro de 2026,
-olhamos para trás e percebemos
-quantas páginas já escrevemos juntos.
-</p>
-</div>
-<div class="story-item">
-<strong>
-E hoje
-</strong>
-<p>
-Depois de tudo que vivemos,
-eu ainda escolheria você.
-E escolheria novamente.
-</p>
-</div>
-</div>
-<div class="timeline">
-<div class="memory-card">
-<img
-src="IMG_3282.png"
-alt="Nossa lembrança"
-loading="lazy"
-decoding="async">
-<div class="memory-text">
-<h3>
-O começo de mais uma lembrança ❤️
-</h3>
-<p>
-Cada momento ao seu lado merece ser guardado.
-</p>
-</div>
-</div>
-<div class="memory-card">
-<img
-src="IMG_3283.png"
-alt="Momento especial"
-loading="lazy"
-decoding="async">
-<div class="memory-text">
-<h3>
-Momentos especiais
-</h3>
-<p>
-Porque juntos conseguimos transformar
-qualquer dia em uma lembrança inesquecível.
-</p>
-</div>
-</div>
-<div class="memory-card">
-<img
-src="IMG_3284.png"
-alt="Nossa família"
-loading="lazy"
-decoding="async">
-<div class="memory-text">
-<h3>
-Nossa família ❤️
-</h3>
-<p>
-O maior presente que nossa história
-poderia nos dar.
-</p>
-</div>
-</div>
-<div class="memory-card">
-<img
-src="IMG_3285.png"
-alt="Sorrisos"
-loading="lazy"
-decoding="async">
-<div class="memory-text">
-<h3>
-Sorrisos
-</h3>
-<p>
-São esses pequenos momentos
-que fazem tudo valer a pena.
-</p>
-</div>
-</div>
-<div class="memory-card">
-<img
-src="IMG_3286.png"
-alt="Ao seu lado"
-loading="lazy"
-decoding="async">
-<div class="memory-text">
-<h3>
-Ao seu lado
-</h3>
-<p>
-Onde quer que a vida nos leve,
-quero continuar caminhando com você.
-</p>
-</div>
-</div>
-<div class="memory-card">
-<img
-src="IMG_3287.png"
-alt="Aventuras juntos"
-loading="lazy"
-decoding="async">
-<div class="memory-text">
-<h3>
-Aventuras juntos
-</h3>
-<p>
-Mais uma página da nossa história.
-</p>
-</div>
-</div>
-<div class="memory-card">
-<img
-src="IMG_3288.png"
-alt="14 anos"
-loading="lazy"
-decoding="async">
-<div class="memory-text">
-<h3>
-14 anos de nós
-</h3>
-<p>
-Uma história construída dia após dia.
-</p>
-</div>
-</div>
-<div class="memory-card">
-<img
-src="IMG_3289.png"
-alt="Para sempre"
-loading="lazy"
-decoding="async">
-<div class="memory-text">
-<h3>
-Para sempre ❤️
-</h3>
-<p>
-Depois de tantos anos,
-ainda escolheria você.
-</p>
-</div>
-</div>
-</div>
+========================= -->
+
+<section class="years">
+
+    <div class="section-title">
+        <h2>Nosso Amor</h2>
+        <p>14 anos escrevendo a nossa história</p>
+    </div>
+
+    <div class="years-number">
+        14
+    </div>
+
+    <h3>anos de amor ❤️</h3>
+
+    <p>
+        Foram 14 anos de momentos que ficaram para sempre
+        na memória. Dias bons, dias difíceis, sonhos,
+        conquistas e principalmente muito amor.
+        <br><br>
+        E se pudéssemos voltar no tempo, escolheríamos
+        viver tudo novamente.
+    </p>
+
 </section>
-<!-- ==================================================
+
+
+<!-- =========================
+     TRAJETÓRIA
+========================= -->
+
+<section>
+
+    <div class="section-title">
+        <h2>Nossa Trajetória</h2>
+        <p>Alguns dos capítulos da nossa história</p>
+    </div>
+
+    <div class="memory-grid">
+
+        <div class="memory-card">
+            <img
+                src="IMG_3282.png"
+                alt="Nossa memória"
+                loading="eager"
+                decoding="async"
+            >
+
+            <div class="memory-card-content">
+                <h3>O começo ❤️</h3>
+                <p>Onde tudo começou.</p>
+            </div>
+        </div>
+
+
+        <div class="memory-card">
+            <img
+                src="IMG_3283.png"
+                alt="Nossa memória"
+                loading="eager"
+                decoding="async"
+            >
+
+            <div class="memory-card-content">
+                <h3>Momentos</h3>
+                <p>Momentos que ficaram para sempre.</p>
+            </div>
+        </div>
+
+
+        <div class="memory-card">
+            <img
+                src="IMG_3284.png"
+                alt="Nossa memória"
+                loading="eager"
+                decoding="async"
+            >
+
+            <div class="memory-card-content">
+                <h3>Nosso caminho</h3>
+                <p>Uma história construída juntos.</p>
+            </div>
+        </div>
+
+
+        <div class="memory-card">
+            <img
+                src="IMG_3285.png"
+                alt="Nossa memória"
+                loading="eager"
+                decoding="async"
+            >
+
+            <div class="memory-card-content">
+                <h3>Nosso amor</h3>
+                <p>Que continua crescendo.</p>
+            </div>
+        </div>
+
+
+        <div class="memory-card">
+            <img
+                src="IMG_3286.png"
+                alt="Nossa memória"
+                loading="eager"
+                decoding="async"
+            >
+
+            <div class="memory-card-content">
+                <h3>Família ❤️</h3>
+                <p>O maior presente da nossa história.</p>
+            </div>
+        </div>
+
+
+        <div class="memory-card">
+            <img
+                src="IMG_3287.png"
+                alt="Nossa memória"
+                loading="eager"
+                decoding="async"
+            >
+
+            <div class="memory-card-content">
+                <h3>Felicidade</h3>
+                <p>Milhares de momentos juntos.</p>
+            </div>
+        </div>
+
+
+        <div class="memory-card">
+            <img
+                src="IMG_3288.png"
+                alt="Nossa memória"
+                loading="eager"
+                decoding="async"
+            >
+
+            <div class="memory-card-content">
+                <h3>Companheirismo</h3>
+                <p>Juntos em todos os momentos.</p>
+            </div>
+        </div>
+
+
+        <div class="memory-card">
+            <img
+                src="IMG_3289.png"
+                alt="Nossa memória"
+                loading="eager"
+                decoding="async"
+            >
+
+            <div class="memory-card-content">
+                <h3>Para sempre ❤️</h3>
+                <p>Esse é só mais um capítulo.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
      GALERIA
-================================================== -->
+========================= -->
+
 <section>
-<h2 class="section-title">
-Nossas Memórias
-</h2>
-<p class="section-subtitle">
-Mais momentos dos nossos 14 anos.
-</p>
-<div class="gallery">
-<img src="IMG_3290.png" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3291.png" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3292.png" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3293.png" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3294.png" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3295.png" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3296.png" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3297.png" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3298.png" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3299.png" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3300.png" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3301.png" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3302.jpeg" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3303.jpeg" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3304.jpeg" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3306.jpeg" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3307.jpeg" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3308.jpeg" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3310.png" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3311.jpeg" loading="lazy" decoding="async" alt="Memória">
-<!-- NOVAS FOTOS -->
-<img src="IMG_3400.jpeg" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3401.jpeg" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3402.jpeg" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3403.jpeg" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3405.jpeg" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3406.jpeg" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3407.jpeg" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3408.jpeg" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3409.jpeg" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3410.jpeg" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3411.jpeg" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3412.jpeg" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3413.png" loading="lazy" decoding="async" alt="Memória">
-<img src="IMG_3414.jpeg" loading="lazy" decoding="async" alt="Memória">
-</div>
+
+    <div class="section-title">
+        <h2>Nossas Memórias</h2>
+        <p>Cada foto guarda um pedacinho da nossa história ❤️</p>
+    </div>
+
+    <div class="gallery">
+
+        <img src="IMG_3290.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3291.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3292.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3293.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3294.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3295.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3296.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3297.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3298.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3299.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3300.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3301.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+
+        <img src="IMG_3302.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3303.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3304.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3306.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3307.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3308.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3310.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3311.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+
+        <img src="IMG_3400.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3401.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3402.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3403.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3405.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3406.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3407.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3408.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3409.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3410.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3411.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3412.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3413.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+        <img src="IMG_3414.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
+
+    </div>
+
 </section>
-<!-- ==================================================
+
+
+<!-- =========================
      CARTA
-================================================== -->
+========================= -->
+
 <section>
-<div class="letter">
-<h2 class="section-title">
-Uma Carta Para Você
-</h2>
-<p>
-14 anos.
-</p>
-<p>
-Quando penso naquele
-<strong>16 de setembro de 2012</strong>,
-talvez nenhum de nós imaginasse
-tudo o que ainda viveríamos juntos.
-</p>
-<p>
-De lá para cá foram tantos momentos...
-Dias felizes, dias difíceis,
-conquistas, mudanças, sonhos,
-risadas e desafios.
-</p>
-<p>
-E no meio de tudo isso,
-construímos algo que considero
-o maior presente da minha vida:
-<strong>nossa família.</strong>
-</p>
-<p>
-Hoje, olhando para tudo que vivemos,
-eu percebo que não trocaria
-a nossa história por nenhuma outra.
-</p>
-<p>
-Obrigado por estar comigo,
-por dividir a vida,
-os sonhos, as dificuldades
-e as alegrias.
-</p>
-<p>
-Obrigado por ser minha parceira
-e por continuar caminhando comigo.
-</p>
-<p>
-E mesmo depois de 14 anos,
-eu ainda quero viver
-muita coisa ao seu lado.
-</p>
-<p>
-Mais viagens.
-Mais sonhos.
-Mais risadas.
-Mais histórias.
-Mais momentos juntos.
-</p>
-<p>
-E até as coisas mais engraçadas...
-</p>
-<p>
-Como você vestida de borboleta. 🦋😂❤️
-</p>
-<div class="signature">
-Eu escolheria você novamente. ❤️
-</div>
-</div>
+
+    <div class="section-title">
+        <h2>Uma Carta Para Você</h2>
+        <p>De mim para você ❤️</p>
+    </div>
+
+    <div class="letter">
+
+        <p>
+            Meu amor,
+        </p>
+
+        <p>
+            Hoje completamos 14 anos de uma história que começou
+            lá em 16 de setembro de 2012.
+        </p>
+
+        <p>
+            Quando olho para trás, vejo quantas coisas vivemos
+            juntos. Foram momentos de alegria, dificuldades,
+            mudanças, conquistas e muitos sonhos realizados.
+        </p>
+
+        <p>
+            Construímos uma família, compartilhamos momentos
+            inesquecíveis e seguimos lado a lado mesmo quando
+            as coisas não foram fáceis.
+        </p>
+
+        <p>
+            Você é uma das pessoas mais importantes da minha vida.
+            E eu sou muito grato por tudo que construímos juntos.
+        </p>
+
+        <p>
+            Quero continuar vivendo muitos anos ao seu lado,
+            criando novas lembranças, viajando, sorrindo,
+            vencendo desafios e aproveitando cada momento.
+        </p>
+
+        <p>
+            Que venham mais 14, 20, 30, 40 anos...
+            e que nossa história continue sendo escrita
+            juntos.
+        </p>
+
+        <p>
+            Eu te amo. ❤️
+        </p>
+
+        <div class="signature">
+            Para sempre, nós.
+        </div>
+
+    </div>
+
 </section>
-<!-- ==================================================
-     FRASE ESPECIAL
-================================================== -->
-<section class="special-love">
-<div class="love-small">
-E existe uma frase que eu sempre te falei...
-</div>
-<div class="love-big">
-Te amooo muitooo<br>
-de verdade<br>
-e para todo sempre. ❤️
-</div>
+
+
+<!-- =========================
+     FRASE
+========================= -->
+
+<section class="love-phrase">
+
+    <h2>
+        “O melhor lugar do mundo<br>
+        é ao seu lado.” ❤️
+    </h2>
+
+    <p>
+        16/09/2012 → para todo sempre
+    </p>
+
 </section>
-<!-- ==================================================
+
+
+<!-- =========================
      SURPRESA
-================================================== -->
+========================= -->
+
 <section class="surprise">
-<h2 class="section-title">
-E ainda tem uma surpresa...
-</h2>
-<p class="section-subtitle">
-Você chegou até aqui. Agora clique.
-</p>
-<button
-class="surprise-button"
-onclick="abrirSurpresa()">
-🎁 Abrir minha surpresa
-</button>
-<div
-class="hidden-message"
-id="surpriseMessage">
-<h3>
-Eu te amo! ❤️
-</h3>
-<p>
-Se eu pudesse voltar no tempo
-e viver tudo novamente,
-eu viveria cada momento ao seu lado.
-</p>
-<p>
-Voltaria para aquele
-<strong>16 de setembro de 2012</strong>
-e escolheria você novamente.
-</p>
-<p>
-Escolheria nossa história.
-</p>
-<p>
-Escolheria nossa família.
-</p>
-<p>
-Escolheria todas as nossas risadas,
-todas as nossas aventuras,
-todos os momentos bons
-e até os difíceis.
-</p>
-<p>
-Porque depois de 14 anos,
-eu continuo tendo certeza
-da mesma coisa.
-</p>
-<div class="final-love">
-Te amooo muitooo de verdade
-e para todo sempre. ❤️
-</div>
-<p style="margin-top:30px;">
-Feliz 14 anos de nós.<br>
-Feliz nosso Dia 16.<br>
-Feliz nossa história.
-</p>
-<div class="music-box">
-<div class="music-title">
-Nossa Música ❤️
-</div>
-<div class="music-subtitle">
-O Que É Que Tem — Jorge & Mateus
-</div>
-<audio
-id="musica"
-controls
-preload="metadata">
-<source
-src="Musica.mp3.mp3"
-type="audio/mpeg">
-Seu navegador não suporta áudio.
-</audio>
-</div>
-</div>
+
+    <div class="section-title">
+        <h2>Tenho uma surpresa para você...</h2>
+        <p>Mas você precisa apertar o botão ❤️</p>
+    </div>
+
+    <div class="surprise-box">
+
+        <button class="btn" onclick="mostrarSurpresa()">
+            ❤️ Abrir minha surpresa
+        </button>
+
+        <div id="surpresa" class="surprise-message">
+
+            <h3>Eu escolheria você novamente. ❤️</h3>
+
+            <p>
+                Se eu pudesse voltar para aquele
+                16 de setembro de 2012, eu faria
+                exatamente a mesma escolha.
+            </p>
+
+            <p>
+                Escolheria você.
+                Escolheria nossa história.
+                Escolheria nossa família.
+                Escolheria todos os momentos que
+                ainda vamos viver.
+            </p>
+
+            <p>
+                Porque depois de 14 anos,
+                eu ainda olho para você e penso:
+            </p>
+
+            <p>
+                <strong>
+                    Foi a melhor escolha da minha vida.
+                </strong>
+            </p>
+
+            <p>
+                Te amo hoje, amanhã e para sempre. ❤️
+            </p>
+
+        </div>
+
+    </div>
+
 </section>
-<!-- ==================================================
-     RODAPÉ
-================================================== -->
+
+
+<!-- =========================
+     MÚSICA
+========================= -->
+
+<section>
+
+    <div class="section-title">
+        <h2>Uma música para nós ❤️</h2>
+        <p>A Hora É Agora — Jorge & Mateus</p>
+    </div>
+
+    <div class="music-box">
+
+        <audio
+            id="musica"
+            controls
+            preload="metadata"
+        >
+            <source src="Musica.mp3.mp3" type="audio/mpeg">
+            Seu navegador não suporta áudio.
+        </audio>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
-<p>
-Feito com ❤️ para celebrar
-<span>14 anos de história</span>.
-</p>
-<p style="margin-top:8px;">
-16/09/2012 → para todo sempre ❤️
-</p>
+
+    <p>
+        Feito com ❤️ para celebrar
+    </p>
+
+    <p>
+        <strong>14 anos de amor</strong>
+    </p>
+
+    <p>
+        16/09/2012 → 16/09/2026
+    </p>
+
 </footer>
+
+
+<!-- VISUALIZADOR DE FOTOS -->
+
+<div id="photoViewer" class="photo-viewer">
+
+    <button
+        class="close-viewer"
+        onclick="fecharFoto()"
+        aria-label="Fechar"
+    >
+        ×
+    </button>
+
+    <img id="photoViewerImg" src="" alt="Foto ampliada">
+
+</div>
+
+
 <script>
-/* ==================================================
+
+/* =========================
    CONTADOR
-================================================== */
-function updateCountdown(){
-    const now =
-        new Date();
-    const target =
-        new Date(
-            2026,
-            8,
-            16,
-            0,
-            0,
-            0
-        );
-    let diff =
-        target.getTime()
-        -
-        now.getTime();
-    if(diff < 0){
-        document.getElementById("days").innerText="14";
-        document.getElementById("hours").innerText="00";
-        document.getElementById("minutes").innerText="00";
-        document.getElementById("seconds").innerText="00";
+========================= */
+
+function atualizarContador(){
+
+    const dataFinal = new Date("2026-09-16T00:00:00").getTime();
+    const agora = new Date().getTime();
+
+    const distancia = dataFinal - agora;
+
+    if(distancia <= 0){
+
+        document.getElementById("dias").textContent = "❤️";
+        document.getElementById("horas").textContent = "❤️";
+        document.getElementById("minutos").textContent = "❤️";
+        document.getElementById("segundos").textContent = "❤️";
+
         return;
     }
-    const days =
-        Math.floor(
-            diff /
-            (1000*60*60*24)
-        );
-    const hours =
-        Math.floor(
-            (diff /
-            (1000*60*60))
-            %24
-        );
-    const minutes =
-        Math.floor(
-            (diff /
-            (1000*60))
-            %60
-        );
-    const seconds =
-        Math.floor(
-            (diff/1000)
-            %60
-        );
-    document.getElementById("days").innerText =
-        String(days).padStart(2,"0");
-    document.getElementById("hours").innerText =
-        String(hours).padStart(2,"0");
-    document.getElementById("minutes").innerText =
-        String(minutes).padStart(2,"0");
-    document.getElementById("seconds").innerText =
-        String(seconds).padStart(2,"0");
+
+    const dias = Math.floor(
+        distancia / (1000 * 60 * 60 * 24)
+    );
+
+    const horas = Math.floor(
+        (distancia % (1000 * 60 * 60 * 24)) /
+        (1000 * 60 * 60)
+    );
+
+    const minutos = Math.floor(
+        (distancia % (1000 * 60 * 60)) /
+        (1000 * 60)
+    );
+
+    const segundos = Math.floor(
+        (distancia % (1000 * 60)) /
+        1000
+    );
+
+    document.getElementById("dias").textContent = dias;
+    document.getElementById("horas").textContent =
+        String(horas).padStart(2,"0");
+    document.getElementById("minutos").textContent =
+        String(minutos).padStart(2,"0");
+    document.getElementById("segundos").textContent =
+        String(segundos).padStart(2,"0");
 }
-setInterval(updateCountdown,1000);
-updateCountdown();
-/* ==================================================
-   CORAÇÃO
-================================================== */
+
+atualizarContador();
+
+setInterval(atualizarContador,1000);
+
+
+/* =========================
+   CORAÇÕES
+========================= */
+
 function criarCoracao(){
-    const heart =
-        document.createElement("div");
-    heart.className="heart";
-    heart.innerHTML =
-        Math.random() > .5
-        ? "❤️"
-        : "💕";
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    const tipos = [
+        "❤️",
+        "❤️",
+        "💕",
+        "💗",
+        "💖",
+        "❤️"
+    ];
+
+    heart.textContent =
+        tipos[Math.floor(Math.random() * tipos.length)];
+
     heart.style.left =
-        Math.random()*100+"vw";
+        Math.random() * 100 + "vw";
+
     heart.style.fontSize =
-        (12+Math.random()*22)+"px";
+        (16 + Math.random() * 22) + "px";
+
+    heart.style.setProperty(
+        "--x",
+        (-80 + Math.random() * 160) + "px"
+    );
+
+    const duracao =
+        4.5 + Math.random() * 3;
+
     heart.style.animationDuration =
-        (5+Math.random()*5)+"s";
+        duracao + "s";
+
     document.body.appendChild(heart);
-    setTimeout(
-        ()=>{
-            heart.remove();
-        },
-        10000
-    );
+
+    setTimeout(function(){
+
+        heart.remove();
+
+    },(duracao * 1000) + 500);
 }
-/* ==================================================
-   CORAÇÕES NORMAIS
-================================================== */
-setInterval(
-    criarCoracao,
-    1500
-);
-/* ==================================================
-   SURPRESA
-================================================== */
-function abrirSurpresa(){
-    const message =
-        document.getElementById(
-            "surpriseMessage"
-        );
-    const button =
-        document.querySelector(
-            ".surprise-button"
-        );
-    const musica =
-        document.getElementById(
-            "musica"
-        );
-    message.style.display="block";
-    button.style.display="none";
-    setTimeout(
-        function(){
-            message.scrollIntoView({
-                behavior:"smooth",
-                block:"center"
-            });
-        },
-        150
-    );
-    /* Música */
-    musica.currentTime=0;
-    musica.play().catch(
-        function(){
-            console.log(
-                "Autoplay bloqueado pelo navegador."
-            );
-        }
-    );
-    /* ==================================================
-       CHUVA DE CORAÇÕES ❤️
-       80 CORAÇÕES
-    ================================================== */
-    for(
-        let i=0;
-        i<80;
-        i++
-    ){
+
+
+/* Mais corações durante a navegação */
+
+setInterval(criarCoracao,1200);
+
+
+/* =========================
+   BOTÃO REVIVER
+========================= */
+
+function reviverHistoria(){
+
+    window.scrollTo({
+        top:window.innerHeight,
+        behavior:"smooth"
+    });
+
+    for(let i = 0; i < 18; i++){
+
         setTimeout(
             criarCoracao,
-            i*70
+            i * 90
         );
+
     }
 }
-/* ==================================================
-   CARDS
-================================================== */
-const cards =
-    document.querySelectorAll(
-        ".memory-card"
-    );
-const observer =
-    new IntersectionObserver(
-        entries=>{
-            entries.forEach(
-                entry=>{
-                    if(
-                        entry.isIntersecting
-                    ){
-                        entry.target
-                            .classList
-                            .add("visible");
-                    }
-                }
-            );
-        },
-        {
-            threshold:.15
-        }
-    );
-cards.forEach(
-    card=>{
-        observer.observe(card);
-    }
-);
-/* ==================================================
-   GALERIA
-================================================== */
-document.querySelectorAll(
-    ".gallery img"
-)
-.forEach(
-    img=>{
-        img.addEventListener(
-            "click",
-            ()=>{
-                const overlay =
-                    document.createElement(
-                        "div"
-                    );
-                overlay.className =
-                    "photo-overlay";
-                const close =
-                    document.createElement(
-                        "div"
-                    );
-                close.className =
-                    "photo-close";
-                close.innerHTML="×";
-                const image =
-                    document.createElement(
-                        "img"
-                    );
-                image.src=img.src;
-                image.alt=img.alt;
-                overlay.appendChild(image);
-                overlay.appendChild(close);
-                overlay.addEventListener(
-                    "click",
-                    ()=>{
-                        overlay.remove();
-                    }
-                );
-                image.addEventListener(
-                    "click",
-                    event=>{
-                        event.stopPropagation();
-                    }
-                );
-                close.addEventListener(
-                    "click",
-                    ()=>{
-                        overlay.remove();
-                    }
-                );
-                document.body.appendChild(
-                    overlay
-                );
-            }
+
+
+/* =========================
+   SURPRESA
+========================= */
+
+function mostrarSurpresa(){
+
+    const surpresa =
+        document.getElementById("surpresa");
+
+    surpresa.classList.add("show");
+
+    const musica =
+        document.getElementById("musica");
+
+    musica.play().catch(function(){
+
+        console.log(
+            "O navegador bloqueou o autoplay."
         );
+
+    });
+
+
+    /*
+       CHUVA DE CORAÇÕES ❤️
+
+       Agora são MUITO mais corações
+       do que antes.
+    */
+
+    for(let i = 0; i < 120; i++){
+
+        setTimeout(function(){
+
+            criarCoracao();
+
+        },i * 55);
+
     }
-);
-/* ==================================================
-   ESC
-================================================== */
-document.addEventListener(
-    "keydown",
-    event=>{
-        if(
-            event.key==="Escape"
-        ){
-            const overlay =
-                document.querySelector(
-                    ".photo-overlay"
-                );
-            if(overlay){
-                overlay.remove();
+
+}
+
+
+/* =========================
+   GALERIA / FOTO AMPLIADA
+========================= */
+
+const viewer =
+    document.getElementById("photoViewer");
+
+const viewerImg =
+    document.getElementById("photoViewerImg");
+
+
+document.querySelectorAll(
+    ".gallery img, .memory-card img"
+).forEach(function(img){
+
+    img.addEventListener("click",function(){
+
+        viewerImg.src = img.currentSrc || img.src;
+
+        viewer.classList.add("show");
+
+        document.body.style.overflow = "hidden";
+
+    });
+
+});
+
+
+function fecharFoto(){
+
+    viewer.classList.remove("show");
+
+    viewerImg.src = "";
+
+    document.body.style.overflow = "";
+
+}
+
+
+viewer.addEventListener("click",function(event){
+
+    if(event.target === viewer){
+
+        fecharFoto();
+
+    }
+
+});
+
+
+document.addEventListener("keydown",function(event){
+
+    if(event.key === "Escape"){
+
+        fecharFoto();
+
+    }
+
+});
+
+
+/* =========================
+   CARREGAMENTO ANTECIPADO
+========================= */
+
+/*
+   O navegador já recebe loading="eager"
+   nas fotos.
+
+   Além disso, damos um pequeno tempo para
+   o navegador começar a carregar a galeria
+   depois dos elementos principais.
+
+   Isso faz com que as fotos estejam sendo
+   baixadas antes da pessoa chegar nelas.
+*/
+
+window.addEventListener("load",function(){
+
+    const fotos =
+        document.querySelectorAll(".gallery img");
+
+    fotos.forEach(function(img,index){
+
+        setTimeout(function(){
+
+            /*
+               Garante que o navegador priorize
+               a decodificação da imagem.
+            */
+
+            if(img.complete){
+
+                img.decode?.().catch(function(){});
+
             }
-        }
-    }
-);
+
+        },index * 40);
+
+    });
+
+});
+
+
+/* =========================
+   MEMÓRIAS
+========================= */
+
+const cards =
+    document.querySelectorAll(".memory-card");
+
+const observer =
+    new IntersectionObserver(function(entries){
+
+        entries.forEach(function(entry){
+
+            if(entry.isIntersecting){
+
+                entry.target.style.opacity = "1";
+                entry.target.style.transform =
+                    "translateY(0)";
+
+                observer.unobserve(entry.target);
+
+            }
+
+        });
+
+    },{
+        threshold:.08
+    });
+
+
+cards.forEach(function(card){
+
+    card.style.opacity = "0";
+    card.style.transform = "translateY(20px)";
+    card.style.transition =
+        "opacity .7s ease, transform .7s ease";
+
+    observer.observe(card);
+
+});
+
 </script>
+
 </body>
 </html>
