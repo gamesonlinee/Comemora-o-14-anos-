@@ -2,44 +2,232 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#080808">
 <meta name="description" content="14 Anos de Amor ❤️">
-
 <title>14 Anos de Amor ❤️</title>
-
 <!-- Carrega a imagem principal primeiro -->
 <link rel="preload" as="image" href="IMG_3285.png" fetchpriority="high">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
-
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
 }
-
 html{
     scroll-behavior:smooth;
 }
-
 body{
     font-family:'Poppins',sans-serif;
     background:#080808;
     color:white;
     overflow-x:hidden;
 }
-
-/* =========================
+/* =========================================================
+   TELA INICIAL - RASPADINHA
+========================================================= */
+.scratch-screen{
+    position:fixed;
+    inset:0;
+    z-index:50000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(255,70,120,.16),
+            transparent 45%
+        ),
+        #080808;
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+.scratch-screen.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+.scratch-content{
+    width:min(100%,520px);
+    text-align:center;
+}
+.scratch-top-heart{
+    font-size:48px;
+    margin-bottom:8px;
+    animation:
+        pulsar 1.5s ease-in-out infinite;
+}
+.scratch-content h1{
+    font-family:'Dancing Script',cursive;
+    font-size:clamp(48px,12vw,72px);
+    line-height:1;
+    margin-bottom:12px;
+}
+.scratch-subtitle{
+    color:#ccc;
+    font-size:15px;
+    line-height:1.7;
+    margin-bottom:28px;
+}
+.scratch-subtitle strong{
+    color:white;
+}
+.scratch-card{
+    position:relative;
+    width:100%;
+    max-width:420px;
+    height:250px;
+    margin:0 auto;
+    border-radius:28px;
+    overflow:hidden;
+    background:
+        linear-gradient(
+            145deg,
+            #191919,
+            #0d0d0d
+        );
+    border:1px solid rgba(255,255,255,.15);
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.7),
+        0 0 50px rgba(255,60,120,.08);
+    touch-action:none;
+    user-select:none;
+    -webkit-user-select:none;
+}
+.scratch-message{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    padding:25px;
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,60,120,.20),
+            transparent 65%
+        );
+}
+.scratch-message .gift{
+    font-size:48px;
+    margin-bottom:8px;
+}
+.scratch-message h2{
+    font-family:'Dancing Script',cursive;
+    font-size:42px;
+    line-height:1.1;
+    margin-bottom:12px;
+}
+.scratch-message p{
+    color:#ddd;
+    font-size:14px;
+    line-height:1.7;
+}
+.scratch-message strong{
+    color:white;
+}
+#scratchCanvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    cursor:pointer;
+    touch-action:none;
+}
+.scratch-instruction{
+    margin-top:20px;
+    font-size:14px;
+    color:#aaa;
+    animation:
+        piscar 1.7s ease-in-out infinite;
+}
+.scratch-progress{
+    width:min(100%,300px);
+    height:5px;
+    margin:15px auto 0;
+    border-radius:10px;
+    background:rgba(255,255,255,.08);
+    overflow:hidden;
+}
+.scratch-progress-bar{
+    width:0%;
+    height:100%;
+    border-radius:10px;
+    background:linear-gradient(
+        90deg,
+        #ff3b70,
+        #ff8fab
+    );
+    transition:width .2s ease;
+}
+.scratch-hint{
+    margin-top:15px;
+    font-size:11px;
+    color:#666;
+}
+@keyframes pulsar{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.12);
+    }
+}
+@keyframes piscar{
+    0%,100%{
+        opacity:.5;
+    }
+    50%{
+        opacity:1;
+    }
+}
+/* =========================================================
+   ANIMAÇÃO DE ABERTURA
+========================================================= */
+body.locked{
+    overflow:hidden;
+}
+body.site-hidden > *:not(.scratch-screen){
+    visibility:hidden;
+}
+.unlock-flash{
+    position:fixed;
+    inset:0;
+    z-index:49999;
+    pointer-events:none;
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.95),
+            rgba(255,60,120,.35),
+            transparent 70%
+        );
+    opacity:0;
+    animation:flashAbrir 1s ease forwards;
+}
+@keyframes flashAbrir{
+    0%{
+        opacity:0;
+        transform:scale(.7);
+    }
+    40%{
+        opacity:.9;
+    }
+    100%{
+        opacity:0;
+        transform:scale(1.5);
+    }
+}
+/* =========================================================
    CORAÇÕES
-========================= */
-
+========================================================= */
 .heart{
     position:fixed;
     bottom:-40px;
@@ -48,34 +236,41 @@ body{
     z-index:9999;
     animation:subir linear forwards;
     will-change:transform,opacity;
-    text-shadow:0 0 10px rgba(255,80,120,.5);
+    text-shadow:
+        0 0 10px rgba(255,80,120,.5);
 }
-
 @keyframes subir{
     0%{
-        transform:translateY(0) translateX(0) rotate(0deg) scale(.7);
+        transform:
+            translateY(0)
+            translateX(0)
+            rotate(0deg)
+            scale(.7);
         opacity:0;
     }
-
     10%{
         opacity:1;
     }
-
     50%{
-        transform:translateY(-50vh) translateX(var(--x)) rotate(180deg) scale(1);
+        transform:
+            translateY(-50vh)
+            translateX(var(--x))
+            rotate(180deg)
+            scale(1);
         opacity:.9;
     }
-
     100%{
-        transform:translateY(-115vh) translateX(calc(var(--x) * 1.5)) rotate(360deg) scale(.5);
+        transform:
+            translateY(-115vh)
+            translateX(calc(var(--x) * 1.5))
+            rotate(360deg)
+            scale(.5);
         opacity:0;
     }
 }
-
-/* =========================
+/* =========================================================
    HERO
-========================= */
-
+========================================================= */
 .hero{
     min-height:100vh;
     position:relative;
@@ -85,7 +280,6 @@ body{
     text-align:center;
     padding:40px 20px;
     overflow:hidden;
-
     background:
         linear-gradient(
             rgba(0,0,0,.48),
@@ -93,39 +287,36 @@ body{
         ),
         url("IMG_3285.png") center/cover no-repeat;
 }
-
 .hero::before{
     content:"";
     position:absolute;
     inset:0;
-    background:radial-gradient(
-        circle at center,
-        rgba(255,60,120,.15),
-        transparent 60%
-    );
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,60,120,.15),
+            transparent 60%
+        );
 }
-
 .hero-content{
     position:relative;
     z-index:2;
     max-width:900px;
 }
-
 .hero-small{
     font-size:18px;
     letter-spacing:3px;
     margin-bottom:15px;
     opacity:.9;
 }
-
 .hero h1{
     font-family:'Dancing Script',cursive;
     font-size:clamp(60px,12vw,120px);
     line-height:.95;
     margin-bottom:20px;
-    text-shadow:0 5px 30px rgba(0,0,0,.8);
+    text-shadow:
+        0 5px 30px rgba(0,0,0,.8);
 }
-
 .hero-date{
     display:inline-block;
     padding:10px 24px;
@@ -136,7 +327,6 @@ body{
     font-size:15px;
     margin:15px 0 25px;
 }
-
 .hero-text{
     max-width:700px;
     margin:auto;
@@ -144,7 +334,6 @@ body{
     line-height:1.8;
     color:#eee;
 }
-
 .btn{
     display:inline-block;
     margin-top:30px;
@@ -157,17 +346,17 @@ body{
     font-weight:600;
     cursor:pointer;
     transition:.3s;
-    box-shadow:0 10px 35px rgba(255,255,255,.15);
+    box-shadow:
+        0 10px 35px rgba(255,255,255,.15);
 }
-
 .btn:hover{
-    transform:translateY(-4px) scale(1.03);
+    transform:
+        translateY(-4px)
+        scale(1.03);
 }
-
-/* =========================
+/* =========================================================
    CONTADOR
-========================= */
-
+========================================================= */
 .countdown{
     margin-top:35px;
     display:flex;
@@ -175,7 +364,6 @@ body{
     gap:12px;
     flex-wrap:wrap;
 }
-
 .time-box{
     min-width:80px;
     padding:14px 10px;
@@ -184,106 +372,90 @@ body{
     border:1px solid rgba(255,255,255,.15);
     backdrop-filter:blur(8px);
 }
-
 .time-box strong{
     display:block;
     font-size:25px;
 }
-
 .time-box span{
     font-size:11px;
     opacity:.7;
 }
-
-/* =========================
+/* =========================================================
    SEÇÕES
-========================= */
-
+========================================================= */
 section{
     padding:90px 20px;
     max-width:1200px;
     margin:auto;
 }
-
 .section-title{
     text-align:center;
     margin-bottom:55px;
 }
-
 .section-title h2{
     font-family:'Dancing Script',cursive;
     font-size:55px;
     margin-bottom:10px;
 }
-
 .section-title p{
     color:#aaa;
 }
-
-/* =========================
+/* =========================================================
    14 ANOS
-========================= */
-
+========================================================= */
 .years{
     text-align:center;
 }
-
 .years-number{
     font-family:'Dancing Script',cursive;
     font-size:110px;
     line-height:1;
 }
-
 .years h3{
     font-size:28px;
     margin:10px 0 20px;
 }
-
 .years p{
     max-width:750px;
     margin:auto;
     color:#bbb;
     line-height:1.8;
 }
-
-/* =========================
+/* =========================================================
    MEMÓRIAS
-========================= */
-
+========================================================= */
 .memory-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns:
+        repeat(auto-fit,minmax(220px,1fr));
     gap:20px;
 }
-
 .memory-card{
     position:relative;
     overflow:hidden;
     border-radius:20px;
     background:#151515;
     min-height:300px;
-    box-shadow:0 10px 30px rgba(0,0,0,.3);
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.3);
 }
-
 .memory-card img{
     width:100%;
     height:350px;
     object-fit:cover;
     display:block;
-    loading:lazy;
 }
-
 .memory-card::after{
     content:"";
     position:absolute;
     inset:0;
-    background:linear-gradient(
-        transparent 55%,
-        rgba(0,0,0,.8)
-    );
+    background:
+        linear-gradient(
+            transparent 55%,
+            rgba(0,0,0,.8)
+        );
     pointer-events:none;
 }
-
 .memory-card-content{
     position:absolute;
     left:20px;
@@ -291,30 +463,25 @@ section{
     bottom:20px;
     z-index:2;
 }
-
 .memory-card-content h3{
     font-size:20px;
     margin-bottom:5px;
 }
-
 .memory-card-content p{
     font-size:13px;
     color:#ddd;
 }
-
-/* =========================
+/* =========================================================
    GALERIA
-========================= */
-
+========================================================= */
 .gallery{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    grid-template-columns:
+        repeat(auto-fit,minmax(210px,1fr));
     gap:15px;
-
     content-visibility:auto;
     contain-intrinsic-size:1000px;
 }
-
 .gallery img{
     width:100%;
     height:280px;
@@ -322,84 +489,70 @@ section{
     border-radius:16px;
     cursor:pointer;
     display:block;
-
-    loading:lazy;
-    decoding:async;
-
     transition:
         transform .3s ease,
         filter .3s ease;
 }
-
 .gallery img:hover{
     transform:scale(1.03);
     filter:brightness(1.1);
 }
-
-/* =========================
+/* =========================================================
    CARTA
-========================= */
-
+========================================================= */
 .letter{
     max-width:850px;
     margin:auto;
     padding:45px 35px;
     border-radius:25px;
-    background:linear-gradient(
-        145deg,
-        rgba(255,255,255,.08),
-        rgba(255,255,255,.025)
-    );
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.025)
+        );
     border:1px solid rgba(255,255,255,.1);
-    box-shadow:0 20px 60px rgba(0,0,0,.3);
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.3);
 }
-
 .letter p{
     color:#ddd;
     line-height:2;
     margin-bottom:20px;
 }
-
 .signature{
     text-align:right;
     font-family:'Dancing Script',cursive;
     font-size:35px;
     margin-top:30px;
 }
-
-/* =========================
+/* =========================================================
    FRASE
-========================= */
-
+========================================================= */
 .love-phrase{
     text-align:center;
     padding:100px 20px;
 }
-
 .love-phrase h2{
     font-family:'Dancing Script',cursive;
-    font-size:clamp(45px,8vw,80px);
+    font-size:
+        clamp(45px,8vw,80px);
     line-height:1.1;
 }
-
 .love-phrase p{
     margin-top:25px;
     color:#aaa;
 }
-
-/* =========================
+/* =========================================================
    SURPRESA
-========================= */
-
+========================================================= */
 .surprise{
     text-align:center;
 }
-
 .surprise-box{
     max-width:700px;
     margin:auto;
 }
-
 .surprise-message{
     display:none;
     margin-top:35px;
@@ -407,24 +560,21 @@ section{
     border-radius:25px;
     background:rgba(255,255,255,.06);
     border:1px solid rgba(255,255,255,.12);
-    animation:aparecer .8s ease;
+    animation:
+        aparecer .8s ease;
 }
-
 .surprise-message.show{
     display:block;
 }
-
 .surprise-message h3{
     font-family:'Dancing Script',cursive;
     font-size:48px;
     margin-bottom:20px;
 }
-
 .surprise-message p{
     color:#ddd;
     line-height:2;
 }
-
 @keyframes aparecer{
     from{
         opacity:0;
@@ -435,39 +585,32 @@ section{
         transform:translateY(0);
     }
 }
-
-/* =========================
+/* =========================================================
    MÚSICA
-========================= */
-
+========================================================= */
 .music-box{
     text-align:center;
     margin-top:35px;
 }
-
 audio{
     width:min(100%,500px);
 }
-
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
-
+========================================================= */
 footer{
     text-align:center;
     padding:50px 20px;
-    border-top:1px solid rgba(255,255,255,.08);
+    border-top:
+        1px solid rgba(255,255,255,.08);
     color:#888;
 }
-
 footer strong{
     color:#ddd;
 }
-
-/* =========================
-   TELA DA FOTO
-========================= */
-
+/* =========================================================
+   VISUALIZADOR DE FOTOS
+========================================================= */
 .photo-viewer{
     position:fixed;
     inset:0;
@@ -478,19 +621,17 @@ footer strong{
     justify-content:center;
     padding:20px;
 }
-
 .photo-viewer.show{
     display:flex;
 }
-
 .photo-viewer img{
     max-width:95vw;
     max-height:90vh;
     object-fit:contain;
     border-radius:12px;
-    box-shadow:0 20px 80px rgba(0,0,0,.8);
+    box-shadow:
+        0 20px 80px rgba(0,0,0,.8);
 }
-
 .close-viewer{
     position:absolute;
     top:20px;
@@ -504,101 +645,161 @@ footer strong{
     font-size:25px;
     cursor:pointer;
 }
-
-/* =========================
+/* =========================================================
    CELULAR
-========================= */
-
+========================================================= */
 @media(max-width:600px){
-
     section{
         padding:70px 15px;
     }
-
     .hero{
         padding:30px 18px;
     }
-
     .hero-small{
         font-size:14px;
         letter-spacing:2px;
     }
-
     .hero-text{
         font-size:15px;
         line-height:1.7;
     }
-
     .countdown{
         gap:7px;
     }
-
     .time-box{
         min-width:65px;
         padding:10px 7px;
     }
-
     .time-box strong{
         font-size:20px;
     }
-
     .section-title h2{
         font-size:45px;
     }
-
     .years-number{
         font-size:90px;
     }
-
     .letter{
         padding:30px 22px;
     }
-
     .gallery{
         grid-template-columns:repeat(2,1fr);
         gap:9px;
     }
-
     .gallery img{
         height:220px;
     }
-
     .memory-grid{
         grid-template-columns:1fr;
     }
-
     .memory-card img{
         height:400px;
     }
-
     .surprise-message h3{
         font-size:40px;
     }
+    .scratch-screen{
+        padding:
+            20px
+            18px
+            calc(20px + env(safe-area-inset-bottom));
+    }
+    .scratch-top-heart{
+        font-size:42px;
+    }
+    .scratch-content h1{
+        font-size:54px;
+    }
+    .scratch-subtitle{
+        font-size:14px;
+        margin-bottom:22px;
+    }
+    .scratch-card{
+        height:235px;
+        border-radius:24px;
+    }
+    .scratch-message h2{
+        font-size:38px;
+    }
 }
-
+/* =========================================================
+   REDUÇÃO DE MOVIMENTO
+========================================================= */
+@media(prefers-reduced-motion:reduce){
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        scroll-behavior:auto !important;
+    }
+}
 </style>
 </head>
-
-<body>
-
-<!-- =========================
+<body class="locked site-hidden">
+<!-- =========================================================
+     TELA DA RASPADINHA
+========================================================= -->
+<div id="scratchScreen" class="scratch-screen">
+    <div class="scratch-content">
+        <div class="scratch-top-heart">
+            🎁
+        </div>
+        <h1>
+            Um presente para você
+        </h1>
+        <p class="scratch-subtitle">
+            Depois de <strong>14 anos</strong> juntos,
+            preparei uma pequena surpresa...
+            <br>
+            <strong>Raspe para descobrir. ❤️</strong>
+        </p>
+        <div id="scratchCard" class="scratch-card">
+            <!-- MENSAGEM ESCONDIDA -->
+            <div class="scratch-message">
+                <div class="gift">
+                    ❤️
+                </div>
+                <h2>
+                    Eu escolheria você novamente.
+                </h2>
+                <p>
+                    Agora vem comigo reviver
+                    <br>
+                    a nossa história...
+                </p>
+            </div>
+            <!-- CAMADA DA RASPADINHA -->
+            <canvas id="scratchCanvas"></canvas>
+        </div>
+        <div class="scratch-instruction">
+            ☝️ Passe o dedo sobre a raspadinha
+        </div>
+        <div class="scratch-progress">
+            <div
+                id="scratchProgressBar"
+                class="scratch-progress-bar">
+            </div>
+        </div>
+        <div class="scratch-hint">
+            Continue raspando para revelar sua surpresa ❤️
+        </div>
+    </div>
+</div>
+<!-- =========================================================
      HERO
-========================= -->
-
+========================================================= -->
 <header class="hero">
-
     <div class="hero-content">
-
         <div class="hero-small">
             Uma história que começou em
         </div>
-
-        <h1>16/09/2012</h1>
-
+        <h1>
+            16/09/2012
+        </h1>
         <div class="hero-date">
             16/09/2012 → 16/09/2026 ❤️
         </div>
-
         <p class="hero-text">
             E continua para todo sempre ❤️
             <br><br>
@@ -606,57 +807,65 @@ footer strong{
             conquistas, sorrisos, amor e uma família
             construída juntos.
         </p>
-
-        <button class="btn" onclick="reviverHistoria()">
+        <button
+            class="btn"
+            onclick="reviverHistoria()">
             ❤️ Reviver nossa história
         </button>
-
         <div class="countdown">
-
             <div class="time-box">
-                <strong id="dias">0</strong>
-                <span>DIAS</span>
+                <strong id="dias">
+                    0
+                </strong>
+                <span>
+                    DIAS
+                </span>
             </div>
-
             <div class="time-box">
-                <strong id="horas">0</strong>
-                <span>HORAS</span>
+                <strong id="horas">
+                    0
+                </strong>
+                <span>
+                    HORAS
+                </span>
             </div>
-
             <div class="time-box">
-                <strong id="minutos">0</strong>
-                <span>MINUTOS</span>
+                <strong id="minutos">
+                    0
+                </strong>
+                <span>
+                    MINUTOS
+                </span>
             </div>
-
             <div class="time-box">
-                <strong id="segundos">0</strong>
-                <span>SEGUNDOS</span>
+                <strong id="segundos">
+                    0
+                </strong>
+                <span>
+                    SEGUNDOS
+                </span>
             </div>
-
         </div>
-
     </div>
-
 </header>
-
-
-<!-- =========================
+<!-- =========================================================
      14 ANOS
-========================= -->
-
+========================================================= -->
 <section class="years">
-
     <div class="section-title">
-        <h2>Nosso Amor</h2>
-        <p>14 anos escrevendo a nossa história</p>
+        <h2>
+            Nosso Amor
+        </h2>
+        <p>
+            14 anos escrevendo a nossa história
+        </p>
     </div>
-
     <div class="years-number">
         14
     </div>
-
-    <h3>anos de amor ❤️</h3>
-
+    <h3>
+        anos de amor ❤️
+    </h3>
     <p>
         Foram 14 anos de momentos que ficaram para sempre
         na memória. Dias bons, dias difíceis, sonhos,
@@ -665,311 +874,284 @@ footer strong{
         E se pudéssemos voltar no tempo, escolheríamos
         viver tudo novamente.
     </p>
-
 </section>
-
-
-<!-- =========================
+<!-- =========================================================
      TRAJETÓRIA
-========================= -->
-
+========================================================= -->
 <section>
-
     <div class="section-title">
-        <h2>Nossa Trajetória</h2>
-        <p>Alguns dos capítulos da nossa história</p>
+        <h2>
+            Nossa Trajetória
+        </h2>
+        <p>
+            Alguns dos capítulos da nossa história
+        </p>
     </div>
-
     <div class="memory-grid">
-
         <div class="memory-card">
             <img
                 src="IMG_3282.png"
                 alt="Nossa memória"
                 loading="eager"
-                decoding="async"
-            >
-
+                decoding="async">
             <div class="memory-card-content">
-                <h3>O começo ❤️</h3>
-                <p>Onde tudo começou.</p>
+                <h3>
+                    O começo ❤️
+                </h3>
+                <p>
+                    Onde tudo começou.
+                </p>
             </div>
         </div>
-
-
         <div class="memory-card">
             <img
                 src="IMG_3283.png"
                 alt="Nossa memória"
                 loading="eager"
-                decoding="async"
-            >
-
+                decoding="async">
             <div class="memory-card-content">
-                <h3>Momentos</h3>
-                <p>Momentos que ficaram para sempre.</p>
+                <h3>
+                    Momentos
+                </h3>
+                <p>
+                    Momentos que ficaram para sempre.
+                </p>
             </div>
         </div>
-
-
         <div class="memory-card">
             <img
                 src="IMG_3284.png"
                 alt="Nossa memória"
                 loading="eager"
-                decoding="async"
-            >
-
+                decoding="async">
             <div class="memory-card-content">
-                <h3>Nosso caminho</h3>
-                <p>Uma história construída juntos.</p>
+                <h3>
+                    Nosso caminho
+                </h3>
+                <p>
+                    Uma história construída juntos.
+                </p>
             </div>
         </div>
-
-
         <div class="memory-card">
             <img
                 src="IMG_3285.png"
                 alt="Nossa memória"
                 loading="eager"
-                decoding="async"
-            >
-
+                decoding="async">
             <div class="memory-card-content">
-                <h3>Nosso amor</h3>
-                <p>Que continua crescendo.</p>
+                <h3>
+                    Nosso amor
+                </h3>
+                <p>
+                    Que continua crescendo.
+                </p>
             </div>
         </div>
-
-
         <div class="memory-card">
             <img
                 src="IMG_3286.png"
                 alt="Nossa memória"
                 loading="eager"
-                decoding="async"
-            >
-
+                decoding="async">
             <div class="memory-card-content">
-                <h3>Família ❤️</h3>
-                <p>O maior presente da nossa história.</p>
+                <h3>
+                    Família ❤️
+                </h3>
+                <p>
+                    O maior presente da nossa história.
+                </p>
             </div>
         </div>
-
-
         <div class="memory-card">
             <img
                 src="IMG_3287.png"
                 alt="Nossa memória"
                 loading="eager"
-                decoding="async"
-            >
-
+                decoding="async">
             <div class="memory-card-content">
-                <h3>Felicidade</h3>
-                <p>Milhares de momentos juntos.</p>
+                <h3>
+                    Felicidade
+                </h3>
+                <p>
+                    Milhares de momentos juntos.
+                </p>
             </div>
         </div>
-
-
         <div class="memory-card">
             <img
                 src="IMG_3288.png"
                 alt="Nossa memória"
                 loading="eager"
-                decoding="async"
-            >
-
+                decoding="async">
             <div class="memory-card-content">
-                <h3>Companheirismo</h3>
-                <p>Juntos em todos os momentos.</p>
+                <h3>
+                    Companheirismo
+                </h3>
+                <p>
+                    Juntos em todos os momentos.
+                </p>
             </div>
         </div>
-
-
         <div class="memory-card">
             <img
                 src="IMG_3289.png"
                 alt="Nossa memória"
                 loading="eager"
-                decoding="async"
-            >
-
+                decoding="async">
             <div class="memory-card-content">
-                <h3>Para sempre ❤️</h3>
-                <p>Esse é só mais um capítulo.</p>
+                <h3>
+                    Para sempre ❤️
+                </h3>
+                <p>
+                    Esse é só mais um capítulo.
+                </p>
             </div>
         </div>
-
     </div>
-
 </section>
-
-
-<!-- =========================
+<!-- =========================================================
      GALERIA
-========================= -->
-
+========================================================= -->
 <section>
-
     <div class="section-title">
-        <h2>Nossas Memórias</h2>
-        <p>Cada foto guarda um pedacinho da nossa história ❤️</p>
+        <h2>
+            Nossas Memórias
+        </h2>
+        <p>
+            Cada foto guarda um pedacinho da nossa história ❤️
+        </p>
     </div>
-
     <div class="gallery">
-
-        <img src="IMG_3290.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3291.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3292.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3293.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3294.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3295.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3296.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3297.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3298.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3299.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3300.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3301.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-
-        <img src="IMG_3302.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3303.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3304.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3306.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3307.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3308.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3310.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3311.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-
-        <img src="IMG_3400.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3401.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3402.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3403.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3405.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3406.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3407.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3408.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3409.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3410.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3411.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3412.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3413.png" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-        <img src="IMG_3414.jpeg" alt="Memória" loading="eager" decoding="async" fetchpriority="low">
-
+        <img src="IMG_3290.png" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3291.png" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3292.png" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3293.png" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3294.png" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3295.png" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3296.png" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3297.png" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3298.png" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3299.png" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3300.png" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3301.png" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3302.jpeg" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3303.jpeg" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3304.jpeg" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3306.jpeg" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3307.jpeg" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3308.jpeg" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3310.png" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3311.jpeg" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3400.jpeg" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3401.jpeg" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3402.jpeg" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3403.jpeg" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3405.jpeg" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3406.jpeg" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3407.jpeg" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3408.jpeg" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3409.jpeg" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3410.jpeg" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3411.jpeg" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3412.jpeg" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3413.png" alt="Memória" loading="eager" decoding="async">
+        <img src="IMG_3414.jpeg" alt="Memória" loading="eager" decoding="async">
     </div>
-
 </section>
-
-
-<!-- =========================
+<!-- =========================================================
      CARTA
-========================= -->
-
+========================================================= -->
 <section>
-
     <div class="section-title">
-        <h2>Uma Carta Para Você</h2>
-        <p>De mim para você ❤️</p>
+        <h2>
+            Uma Carta Para Você
+        </h2>
+        <p>
+            De mim para você ❤️
+        </p>
     </div>
-
     <div class="letter">
-
         <p>
             Meu amor,
         </p>
-
         <p>
             Hoje completamos 14 anos de uma história que começou
             lá em 16 de setembro de 2012.
         </p>
-
         <p>
             Quando olho para trás, vejo quantas coisas vivemos
             juntos. Foram momentos de alegria, dificuldades,
             mudanças, conquistas e muitos sonhos realizados.
         </p>
-
         <p>
             Construímos uma família, compartilhamos momentos
             inesquecíveis e seguimos lado a lado mesmo quando
             as coisas não foram fáceis.
         </p>
-
         <p>
             Você é uma das pessoas mais importantes da minha vida.
             E eu sou muito grato por tudo que construímos juntos.
         </p>
-
         <p>
             Quero continuar vivendo muitos anos ao seu lado,
             criando novas lembranças, viajando, sorrindo,
             vencendo desafios e aproveitando cada momento.
         </p>
-
         <p>
             Que venham mais 14, 20, 30, 40 anos...
             e que nossa história continue sendo escrita
             juntos.
         </p>
-
         <p>
             Eu te amo. ❤️
         </p>
-
         <div class="signature">
             Para sempre, nós.
         </div>
-
     </div>
-
 </section>
-
-
-<!-- =========================
+<!-- =========================================================
      FRASE
-========================= -->
-
+========================================================= -->
 <section class="love-phrase">
-
     <h2>
         “O melhor lugar do mundo<br>
         é ao seu lado.” ❤️
     </h2>
-
     <p>
         16/09/2012 → para todo sempre
     </p>
-
 </section>
-
-
-<!-- =========================
+<!-- =========================================================
      SURPRESA
-========================= -->
-
+========================================================= -->
 <section class="surprise">
-
     <div class="section-title">
-        <h2>Tenho uma surpresa para você...</h2>
-        <p>Mas você precisa apertar o botão ❤️</p>
+        <h2>
+            Tenho uma surpresa para você...
+        </h2>
+        <p>
+            Mas você precisa apertar o botão ❤️
+        </p>
     </div>
-
     <div class="surprise-box">
-
-        <button class="btn" onclick="mostrarSurpresa()">
+        <button
+            class="btn"
+            onclick="mostrarSurpresa()">
             ❤️ Abrir minha surpresa
         </button>
-
-        <div id="surpresa" class="surprise-message">
-
-            <h3>Eu escolheria você novamente. ❤️</h3>
-
+        <div
+            id="surpresa"
+            class="surprise-message">
+            <h3>
+                Eu escolheria você novamente. ❤️
+            </h3>
             <p>
                 Se eu pudesse voltar para aquele
                 16 de setembro de 2012, eu faria
                 exatamente a mesma escolha.
             </p>
-
             <p>
                 Escolheria você.
                 Escolheria nossa história.
@@ -977,160 +1159,475 @@ footer strong{
                 Escolheria todos os momentos que
                 ainda vamos viver.
             </p>
-
             <p>
                 Porque depois de 14 anos,
                 eu ainda olho para você e penso:
             </p>
-
             <p>
                 <strong>
                     Foi a melhor escolha da minha vida.
                 </strong>
             </p>
-
             <p>
                 Te amo hoje, amanhã e para sempre. ❤️
             </p>
-
         </div>
-
     </div>
-
 </section>
-
-
-<!-- =========================
+<!-- =========================================================
      MÚSICA
-========================= -->
-
+========================================================= -->
 <section>
-
     <div class="section-title">
-        <h2>Uma música para nós ❤️</h2>
-        <p>A Hora É Agora — Jorge & Mateus</p>
+        <h2>
+            Uma música para nós ❤️
+        </h2>
+        <p>
+            A Hora É Agora — Jorge & Mateus
+        </p>
     </div>
-
     <div class="music-box">
-
         <audio
             id="musica"
             controls
-            preload="metadata"
-        >
-            <source src="Musica.mp3.mp3" type="audio/mpeg">
+            preload="metadata">
+            <source
+                src="Musica.mp3.mp3"
+                type="audio/mpeg">
             Seu navegador não suporta áudio.
         </audio>
-
     </div>
-
 </section>
-
-
-<!-- =========================
+<!-- =========================================================
      FOOTER
-========================= -->
-
+========================================================= -->
 <footer>
-
     <p>
         Feito com ❤️ para celebrar
     </p>
-
     <p>
-        <strong>14 anos de amor</strong>
+        <strong>
+            14 anos de amor
+        </strong>
     </p>
-
     <p>
         16/09/2012 → 16/09/2026
     </p>
-
 </footer>
-
-
-<!-- VISUALIZADOR DE FOTOS -->
-
-<div id="photoViewer" class="photo-viewer">
-
+<!-- =========================================================
+     VISUALIZADOR DE FOTOS
+========================================================= -->
+<div
+    id="photoViewer"
+    class="photo-viewer">
     <button
         class="close-viewer"
         onclick="fecharFoto()"
-        aria-label="Fechar"
-    >
+        aria-label="Fechar">
         ×
     </button>
-
-    <img id="photoViewerImg" src="" alt="Foto ampliada">
-
+    <img
+        id="photoViewerImg"
+        src=""
+        alt="Foto ampliada">
 </div>
-
-
 <script>
-
-/* =========================
-   CONTADOR
-========================= */
-
-function atualizarContador(){
-
-    const dataFinal = new Date("2026-09-16T00:00:00").getTime();
-    const agora = new Date().getTime();
-
-    const distancia = dataFinal - agora;
-
-    if(distancia <= 0){
-
-        document.getElementById("dias").textContent = "❤️";
-        document.getElementById("horas").textContent = "❤️";
-        document.getElementById("minutos").textContent = "❤️";
-        document.getElementById("segundos").textContent = "❤️";
-
+/* =========================================================
+   RASPADINHA
+========================================================= */
+const scratchCanvas =
+    document.getElementById("scratchCanvas");
+const scratchCard =
+    document.getElementById("scratchCard");
+const scratchScreen =
+    document.getElementById("scratchScreen");
+const progressBar =
+    document.getElementById("scratchProgressBar");
+const ctx =
+    scratchCanvas.getContext("2d");
+let raspando = false;
+let liberado = false;
+let scratchCount = 0;
+const totalRaspadas = 180;
+let canvasWidth = 0;
+let canvasHeight = 0;
+/* =========================================================
+   AJUSTA O CANVAS
+========================================================= */
+function configurarRaspadinha(){
+    const rect =
+        scratchCard.getBoundingClientRect();
+    const dpr =
+        window.devicePixelRatio || 1;
+    canvasWidth = rect.width;
+    canvasHeight = rect.height;
+    scratchCanvas.width =
+        canvasWidth * dpr;
+    scratchCanvas.height =
+        canvasHeight * dpr;
+    scratchCanvas.style.width =
+        canvasWidth + "px";
+    scratchCanvas.style.height =
+        canvasHeight + "px";
+    ctx.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+    );
+    /* Fundo da raspadinha */
+    const grad =
+        ctx.createLinearGradient(
+            0,
+            0,
+            canvasWidth,
+            canvasHeight
+        );
+    grad.addColorStop(
+        0,
+        "#cfcfcf"
+    );
+    grad.addColorStop(
+        .35,
+        "#8e8e8e"
+    );
+    grad.addColorStop(
+        .55,
+        "#d9d9d9"
+    );
+    grad.addColorStop(
+        1,
+        "#777"
+    );
+    ctx.fillStyle = grad;
+    ctx.fillRect(
+        0,
+        0,
+        canvasWidth,
+        canvasHeight
+    );
+    /* Textura */
+    for(let i = 0; i < 900; i++){
+        const x =
+            Math.random() * canvasWidth;
+        const y =
+            Math.random() * canvasHeight;
+        const tamanho =
+            Math.random() * 2 + .5;
+        ctx.fillStyle =
+            Math.random() > .5
+                ? "rgba(255,255,255,.22)"
+                : "rgba(0,0,0,.12)";
+        ctx.fillRect(
+            x,
+            y,
+            tamanho,
+            tamanho
+        );
+    }
+    /* Texto */
+    ctx.save();
+    ctx.fillStyle =
+        "rgba(40,40,40,.65)";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.font =
+        "600 24px Poppins";
+    ctx.fillText(
+        "RASPE AQUI ❤️",
+        canvasWidth / 2,
+        canvasHeight / 2 - 12
+    );
+    ctx.font =
+        "400 12px Poppins";
+    ctx.fillStyle =
+        "rgba(30,30,30,.55)";
+    ctx.fillText(
+        "Passe o dedo para descobrir",
+        canvasWidth / 2,
+        canvasHeight / 2 + 24
+    );
+    ctx.restore();
+}
+/* =========================================================
+   POSIÇÃO DO TOQUE
+========================================================= */
+function obterPosicao(event){
+    const rect =
+        scratchCanvas.getBoundingClientRect();
+    let clientX;
+    let clientY;
+    if(event.touches && event.touches.length){
+        clientX =
+            event.touches[0].clientX;
+        clientY =
+            event.touches[0].clientY;
+    }else{
+        clientX =
+            event.clientX;
+        clientY =
+            event.clientY;
+    }
+    return {
+        x:clientX - rect.left,
+        y:clientY - rect.top
+    };
+}
+/* =========================================================
+   RASPAGEM
+========================================================= */
+function raspar(event){
+    if(liberado){
         return;
     }
-
-    const dias = Math.floor(
-        distancia / (1000 * 60 * 60 * 24)
+    event.preventDefault();
+    const pos =
+        obterPosicao(event);
+    ctx.globalCompositeOperation =
+        "destination-out";
+    /* Tamanho da raspagem */
+    ctx.beginPath();
+    ctx.arc(
+        pos.x,
+        pos.y,
+        27,
+        0,
+        Math.PI * 2
     );
-
-    const horas = Math.floor(
-        (distancia % (1000 * 60 * 60 * 24)) /
-        (1000 * 60 * 60)
+    ctx.fill();
+    /* Pequenas raspadas extras */
+    for(let i = 0; i < 3; i++){
+        const angulo =
+            Math.random() * Math.PI * 2;
+        const distancia =
+            Math.random() * 20;
+        const x =
+            pos.x +
+            Math.cos(angulo) * distancia;
+        const y =
+            pos.y +
+            Math.sin(angulo) * distancia;
+        ctx.beginPath();
+        ctx.arc(
+            x,
+            y,
+            12,
+            0,
+            Math.PI * 2
+        );
+        ctx.fill();
+    }
+    scratchCount++;
+    const progresso =
+        Math.min(
+            (scratchCount / totalRaspadas) * 100,
+            100
+        );
+    progressBar.style.width =
+        progresso + "%";
+    /*
+       Libera automaticamente
+       quando atingir aproximadamente 65%.
+    */
+    if(progresso >= 65){
+        liberarSurpresa();
+    }
+}
+/* =========================================================
+   EVENTOS DE MOUSE
+========================================================= */
+scratchCanvas.addEventListener(
+    "mousedown",
+    function(event){
+        raspando = true;
+        raspar(event);
+    }
+);
+scratchCanvas.addEventListener(
+    "mousemove",
+    function(event){
+        if(raspando){
+            raspar(event);
+        }
+    }
+);
+window.addEventListener(
+    "mouseup",
+    function(){
+        raspando = false;
+    }
+);
+/* =========================================================
+   EVENTOS DE TOUCH - IPHONE
+========================================================= */
+scratchCanvas.addEventListener(
+    "touchstart",
+    function(event){
+        raspando = true;
+        raspar(event);
+    },
+    {passive:false}
+);
+scratchCanvas.addEventListener(
+    "touchmove",
+    function(event){
+        if(raspando){
+            raspar(event);
+        }
+    },
+    {passive:false}
+);
+scratchCanvas.addEventListener(
+    "touchend",
+    function(){
+        raspando = false;
+    },
+    {passive:false}
+);
+/* =========================================================
+   LIBERAR O SITE
+========================================================= */
+function liberarSurpresa(){
+    if(liberado){
+        return;
+    }
+    liberado = true;
+    /* Completa a barra */
+    progressBar.style.width =
+        "100%";
+    /*
+       Revela completamente
+       a mensagem da raspadinha.
+    */
+    ctx.globalCompositeOperation =
+        "destination-out";
+    ctx.clearRect(
+        0,
+        0,
+        canvasWidth,
+        canvasHeight
     );
-
-    const minutos = Math.floor(
-        (distancia % (1000 * 60 * 60)) /
-        (1000 * 60)
-    );
-
-    const segundos = Math.floor(
-        (distancia % (1000 * 60)) /
-        1000
-    );
-
-    document.getElementById("dias").textContent = dias;
-    document.getElementById("horas").textContent =
+    /* Pequeno atraso para ela ver a mensagem */
+    setTimeout(function(){
+        const flash =
+            document.createElement("div");
+        flash.className =
+            "unlock-flash";
+        document.body.appendChild(flash);
+        /* Chuva de corações */
+        for(let i = 0; i < 80; i++){
+            setTimeout(
+                criarCoracao,
+                i * 25
+            );
+        }
+        /* Fecha a raspadinha */
+        setTimeout(function(){
+            scratchScreen.classList.add("hide");
+            document.body.classList.remove(
+                "locked"
+            );
+            document.body.classList.remove(
+                "site-hidden"
+            );
+            /*
+               Depois da transição,
+               remove a tela da raspadinha
+               do documento.
+            */
+            setTimeout(function(){
+                scratchScreen.remove();
+            },1100);
+        },650);
+    },500);
+}
+/* =========================================================
+   CONTADOR
+========================================================= */
+function atualizarContador(){
+    const dataFinal =
+        new Date(
+            "2026-09-16T00:00:00"
+        ).getTime();
+    const agora =
+        new Date().getTime();
+    const distancia =
+        dataFinal - agora;
+    if(distancia <= 0){
+        document.getElementById(
+            "dias"
+        ).textContent = "❤️";
+        document.getElementById(
+            "horas"
+        ).textContent = "❤️";
+        document.getElementById(
+            "minutos"
+        ).textContent = "❤️";
+        document.getElementById(
+            "segundos"
+        ).textContent = "❤️";
+        return;
+    }
+    const dias =
+        Math.floor(
+            distancia /
+            (1000 * 60 * 60 * 24)
+        );
+    const horas =
+        Math.floor(
+            (
+                distancia %
+                (1000 * 60 * 60 * 24)
+            ) /
+            (1000 * 60 * 60)
+        );
+    const minutos =
+        Math.floor(
+            (
+                distancia %
+                (1000 * 60 * 60)
+            ) /
+            (1000 * 60)
+        );
+    const segundos =
+        Math.floor(
+            (
+                distancia %
+                (1000 * 60)
+            ) /
+            1000
+        );
+    document.getElementById(
+        "dias"
+    ).textContent = dias;
+    document.getElementById(
+        "horas"
+    ).textContent =
         String(horas).padStart(2,"0");
-    document.getElementById("minutos").textContent =
+    document.getElementById(
+        "minutos"
+    ).textContent =
         String(minutos).padStart(2,"0");
-    document.getElementById("segundos").textContent =
+    document.getElementById(
+        "segundos"
+    ).textContent =
         String(segundos).padStart(2,"0");
 }
-
 atualizarContador();
-
-setInterval(atualizarContador,1000);
-
-
-/* =========================
+setInterval(
+    atualizarContador,
+    1000
+);
+/* =========================================================
    CORAÇÕES
-========================= */
-
+========================================================= */
 function criarCoracao(){
-
-    const heart = document.createElement("div");
-
-    heart.className = "heart";
-
+    const heart =
+        document.createElement("div");
+    heart.className =
+        "heart";
     const tipos = [
         "❤️",
         "❤️",
@@ -1139,252 +1636,253 @@ function criarCoracao(){
         "💖",
         "❤️"
     ];
-
     heart.textContent =
-        tipos[Math.floor(Math.random() * tipos.length)];
-
+        tipos[
+            Math.floor(
+                Math.random() *
+                tipos.length
+            )
+        ];
     heart.style.left =
         Math.random() * 100 + "vw";
-
     heart.style.fontSize =
-        (16 + Math.random() * 22) + "px";
-
+        (
+            16 +
+            Math.random() * 22
+        ) + "px";
     heart.style.setProperty(
         "--x",
-        (-80 + Math.random() * 160) + "px"
+        (
+            -80 +
+            Math.random() * 160
+        ) + "px"
     );
-
     const duracao =
-        4.5 + Math.random() * 3;
-
+        4.5 +
+        Math.random() * 3;
     heart.style.animationDuration =
         duracao + "s";
-
-    document.body.appendChild(heart);
-
-    setTimeout(function(){
-
-        heart.remove();
-
-    },(duracao * 1000) + 500);
+    document.body.appendChild(
+        heart
+    );
+    setTimeout(
+        function(){
+            heart.remove();
+        },
+        (duracao * 1000) + 500
+    );
 }
-
-
 /* Mais corações durante a navegação */
-
-setInterval(criarCoracao,1200);
-
-
-/* =========================
+setInterval(
+    criarCoracao,
+    1200
+);
+/* =========================================================
    BOTÃO REVIVER
-========================= */
-
+========================================================= */
 function reviverHistoria(){
-
     window.scrollTo({
         top:window.innerHeight,
         behavior:"smooth"
     });
-
-    for(let i = 0; i < 18; i++){
-
+    for(
+        let i = 0;
+        i < 18;
+        i++
+    ){
         setTimeout(
             criarCoracao,
             i * 90
         );
-
     }
 }
-
-
-/* =========================
+/* =========================================================
    SURPRESA
-========================= */
-
+========================================================= */
 function mostrarSurpresa(){
-
     const surpresa =
-        document.getElementById("surpresa");
-
-    surpresa.classList.add("show");
-
-    const musica =
-        document.getElementById("musica");
-
-    musica.play().catch(function(){
-
-        console.log(
-            "O navegador bloqueou o autoplay."
+        document.getElementById(
+            "surpresa"
         );
-
-    });
-
-
+    surpresa.classList.add(
+        "show"
+    );
+    const musica =
+        document.getElementById(
+            "musica"
+        );
+    musica.play().catch(
+        function(){
+            console.log(
+                "O navegador bloqueou o autoplay."
+            );
+        }
+    );
     /*
        CHUVA DE CORAÇÕES ❤️
-
-       Agora são MUITO mais corações
-       do que antes.
     */
-
-    for(let i = 0; i < 120; i++){
-
-        setTimeout(function(){
-
-            criarCoracao();
-
-        },i * 55);
-
+    for(
+        let i = 0;
+        i < 120;
+        i++
+    ){
+        setTimeout(
+            function(){
+                criarCoracao();
+            },
+            i * 55
+        );
     }
-
 }
-
-
-/* =========================
+/* =========================================================
    GALERIA / FOTO AMPLIADA
-========================= */
-
+========================================================= */
 const viewer =
-    document.getElementById("photoViewer");
-
+    document.getElementById(
+        "photoViewer"
+    );
 const viewerImg =
-    document.getElementById("photoViewerImg");
-
-
+    document.getElementById(
+        "photoViewerImg"
+    );
 document.querySelectorAll(
     ".gallery img, .memory-card img"
-).forEach(function(img){
-
-    img.addEventListener("click",function(){
-
-        viewerImg.src = img.currentSrc || img.src;
-
-        viewer.classList.add("show");
-
-        document.body.style.overflow = "hidden";
-
-    });
-
-});
-
-
+).forEach(
+    function(img){
+        img.addEventListener(
+            "click",
+            function(){
+                viewerImg.src =
+                    img.currentSrc ||
+                    img.src;
+                viewer.classList.add(
+                    "show"
+                );
+                document.body.style.overflow =
+                    "hidden";
+            }
+        );
+    }
+);
 function fecharFoto(){
-
-    viewer.classList.remove("show");
-
+    viewer.classList.remove(
+        "show"
+    );
     viewerImg.src = "";
-
-    document.body.style.overflow = "";
-
+    document.body.style.overflow =
+        "";
 }
-
-
-viewer.addEventListener("click",function(event){
-
-    if(event.target === viewer){
-
-        fecharFoto();
-
+viewer.addEventListener(
+    "click",
+    function(event){
+        if(
+            event.target === viewer
+        ){
+            fecharFoto();
+        }
     }
-
-});
-
-
-document.addEventListener("keydown",function(event){
-
-    if(event.key === "Escape"){
-
-        fecharFoto();
-
+);
+document.addEventListener(
+    "keydown",
+    function(event){
+        if(
+            event.key === "Escape"
+        ){
+            fecharFoto();
+        }
     }
-
-});
-
-
-/* =========================
+);
+/* =========================================================
    CARREGAMENTO ANTECIPADO
-========================= */
-
-/*
-   O navegador já recebe loading="eager"
-   nas fotos.
-
-   Além disso, damos um pequeno tempo para
-   o navegador começar a carregar a galeria
-   depois dos elementos principais.
-
-   Isso faz com que as fotos estejam sendo
-   baixadas antes da pessoa chegar nelas.
-*/
-
-window.addEventListener("load",function(){
-
-    const fotos =
-        document.querySelectorAll(".gallery img");
-
-    fotos.forEach(function(img,index){
-
-        setTimeout(function(){
-
-            /*
-               Garante que o navegador priorize
-               a decodificação da imagem.
-            */
-
-            if(img.complete){
-
-                img.decode?.().catch(function(){});
-
+========================================================= */
+window.addEventListener(
+    "load",
+    function(){
+        const fotos =
+            document.querySelectorAll(
+                ".gallery img"
+            );
+        fotos.forEach(
+            function(img,index){
+                setTimeout(
+                    function(){
+                        if(img.complete){
+                            img.decode?.()
+                                .catch(
+                                    function(){}
+                                );
+                        }
+                    },
+                    index * 40
+                );
             }
-
-        },index * 40);
-
-    });
-
-});
-
-
-/* =========================
+        );
+    }
+);
+/* =========================================================
    MEMÓRIAS
-========================= */
-
+========================================================= */
 const cards =
-    document.querySelectorAll(".memory-card");
-
+    document.querySelectorAll(
+        ".memory-card"
+    );
 const observer =
-    new IntersectionObserver(function(entries){
-
-        entries.forEach(function(entry){
-
-            if(entry.isIntersecting){
-
-                entry.target.style.opacity = "1";
-                entry.target.style.transform =
-                    "translateY(0)";
-
-                observer.unobserve(entry.target);
-
-            }
-
-        });
-
-    },{
-        threshold:.08
-    });
-
-
-cards.forEach(function(card){
-
-    card.style.opacity = "0";
-    card.style.transform = "translateY(20px)";
-    card.style.transition =
-        "opacity .7s ease, transform .7s ease";
-
-    observer.observe(card);
-
-});
-
+    new IntersectionObserver(
+        function(entries){
+            entries.forEach(
+                function(entry){
+                    if(
+                        entry.isIntersecting
+                    ){
+                        entry.target.style.opacity =
+                            "1";
+                        entry.target.style.transform =
+                            "translateY(0)";
+                        observer.unobserve(
+                            entry.target
+                        );
+                    }
+                }
+            );
+        },
+        {
+            threshold:.08
+        }
+    );
+cards.forEach(
+    function(card){
+        card.style.opacity =
+            "0";
+        card.style.transform =
+            "translateY(20px)";
+        card.style.transition =
+            "opacity .7s ease, transform .7s ease";
+        observer.observe(
+            card
+        );
+    }
+);
+/* =========================================================
+   INICIALIZA A RASPADINHA
+========================================================= */
+window.addEventListener(
+    "load",
+    function(){
+        configurarRaspadinha();
+    }
+);
+window.addEventListener(
+    "resize",
+    function(){
+        /*
+           Só recalcula se ainda
+           estiver na tela inicial.
+        */
+        if(!liberado){
+            configurarRaspadinha();
+        }
+    }
+);
 </script>
-
 </body>
 </html>
